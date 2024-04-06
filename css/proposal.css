@@ -21,12 +21,8 @@ section:first-child {
 }
 
 section p, section li {
-<<<<<<< HEAD
   margin-left: 40px;
   max-width: 70%
-=======
-  margin-left: 10%;
->>>>>>> 606907aa031751ebac2961af1d8d9bc92073de06
 }
 
 body {
