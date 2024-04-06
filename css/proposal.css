@@ -10,8 +10,15 @@
 
 body {
   font-family: "DM Sans", Arial, sans-serif;
+  width: 90%;
 }
 
-body footer p {
+footer p {
   font-size: 0.8em;
+  display: inline-block;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
 }
