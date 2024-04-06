@@ -8,6 +8,27 @@
   This is the stylesheet for the index page of our final project website.
 */
 
+h1, h2, h3 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+h3 {
+  padding-bottom: 5px;
+}
+
+section:first-child {
+  padding: 20px;
+}
+
+section p, section li {
+<<<<<<< HEAD
+  margin-left: 40px;
+  max-width: 70%
+=======
+  margin-left: 10%;
+>>>>>>> 606907aa031751ebac2961af1d8d9bc92073de06
+}
+
 body {
   font-family: "DM Sans", Arial, sans-serif;
   width: 90%;
