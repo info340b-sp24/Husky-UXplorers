@@ -22,7 +22,7 @@ section p, section li {
 
 body {
   font-family: "DM Sans", Arial, sans-serif;
-  width: 95%;
+  width: 90%;
   margin: auto;
 }
 
@@ -34,4 +34,5 @@ footer p {
 footer {
   display: flex;
   justify-content: space-between;
+  margin-top: 10%;
 }
