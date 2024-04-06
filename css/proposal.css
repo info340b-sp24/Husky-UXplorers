@@ -23,7 +23,6 @@ section:first-child {
 
 section p, section li {
   margin-left: 40px;
-  max-width: 70%;
   margin-left: 10%;
 }
 
