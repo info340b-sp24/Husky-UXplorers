@@ -7,3 +7,7 @@
 
   This is the stylesheet for the index page of our final project website.
 */
+
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+}
