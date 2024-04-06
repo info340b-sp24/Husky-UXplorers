@@ -12,18 +12,24 @@ h1, h2, h3 {
   font-family: "Space Grotesk", sans-serif;
 }
 
+h3 {
+  color: rgb(red, green, rgb(112, 15, 22));
+  padding-bottom: 5px;
+}
+
 section:first-child {
   padding: 20px;
 }
 
 section p, section li {
+  margin-left: 40px;
+  max-width: 70%;
   margin-left: 10%;
 }
 
 body {
   font-family: "DM Sans", Arial, sans-serif;
   width: 90%;
-  margin: auto;
 }
 
 footer p {
@@ -34,5 +40,4 @@ footer p {
 footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 10%;
 }
