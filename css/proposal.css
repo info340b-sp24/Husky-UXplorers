@@ -23,9 +23,6 @@ section p, section li {
 
 body {
   font-family: "DM Sans", Arial, sans-serif;
-<<<<<<< HEAD
-  margin: 40px;
-=======
   width: 90%;
 }
 
@@ -37,5 +34,4 @@ footer p {
 footer {
   display: flex;
   justify-content: space-between;
->>>>>>> fe24e4efc9fa5f5c85db6d10b68e2bfa727f5359
 }
