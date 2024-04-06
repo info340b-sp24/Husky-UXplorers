@@ -1,0 +1,46 @@
+/*
+  Sunny Tian, Farrel Sudrajat, Cristina Villavicencio
+  3/29/24
+  INFO 340 Section B
+  Prof. Tim Carlson
+  Final Project
+
+  This is the stylesheet for the index page of our final project website.
+*/
+
+h1, h2, h3 {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+h3 {
+  color: rgb(red, green, rgb(112, 15, 22));
+  padding-bottom: 5px;
+}
+
+section:first-child {
+  padding: 20px;
+}
+
+section p, section li {
+  margin-left: 40px;
+  max-width: 70%;
+  margin-left: 10%;
+}
+
+body {
+  font-family: "DM Sans", Arial, sans-serif;
+  width: 90%;
+  margin: auto;
+}
+
+footer p {
+  font-size: 0.8em;
+  display: inline-block;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*checking to see if pushing to gh-pages works now*/
