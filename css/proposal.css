@@ -13,7 +13,7 @@ h1, h2, h3 {
 }
 
 h3 {
-  color: rgb(red, green, rgb(112, 15, 22))
+  color: rgb(red, green, rgb(112, 15, 22));
   padding-bottom: 5px;
 }
 
@@ -23,7 +23,7 @@ section:first-child {
 
 section p, section li {
   margin-left: 40px;
-  max-width: 70%
+  max-width: 70%;
   margin-left: 10%;
 }
 
