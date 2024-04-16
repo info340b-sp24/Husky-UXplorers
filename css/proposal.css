@@ -32,12 +32,16 @@ body {
   margin: auto;
 }
 
-footer p {
-  font-size: 0.8em;
-  display: inline-block;
-}
-
 footer {
   display: flex;
   justify-content: space-between;
+}
+
+footer p, footer a {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+footer a {
+  color: black;
 }
