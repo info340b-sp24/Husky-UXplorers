@@ -56,3 +56,13 @@ footer p, footer a {
 footer a {
   color: black;
 }
+
+.profile-pic {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.jumbotron {
+  height: 500px;
+}
