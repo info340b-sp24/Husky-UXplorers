@@ -44,8 +44,8 @@ body {
 
 .project {
   position: relative;
-  width: calc(25% - 20px); 
-  margin-bottom: 20px; 
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
 }
 
 .project img {
@@ -59,7 +59,7 @@ body {
 }
 
 .info h3, .info img {
-  display: inline-block; 
+  display: inline-block;
 }
 
 .info h3 {
@@ -69,8 +69,8 @@ body {
 }
 
 .info img {
-  width: 30px; 
-  height: auto; 
+  width: 30px;
+  height: auto;
 }
 
 .info p {
@@ -82,6 +82,7 @@ body {
 footer {
   display: flex;
   justify-content: space-between;
+  padding-top: 4rem;
 }
 
 footer p, footer a {
