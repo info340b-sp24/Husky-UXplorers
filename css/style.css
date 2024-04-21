@@ -87,8 +87,8 @@ footer a {
 }
 
 .profile-pic {
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   object-fit: cover;
 }
 
