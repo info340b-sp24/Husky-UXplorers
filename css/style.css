@@ -8,8 +8,11 @@
   This is the stylesheet for the index page of our final project website.
 */
 
-body, .navbar {
+body {
   background-color: #FAF9F6;
+  font-family: "DM Sans", Arial, sans-serif;
+  width: 95%;
+  margin: auto;
 }
 
 h1, h2, h3 {
@@ -21,19 +24,23 @@ h3 {
   padding-bottom: 5px;
 }
 
-section:first-child {
-  padding: 20px;
+section {
+  padding-top: 2rem;
 }
 
-section p, section li {
-  margin-left: 40px;
-  margin-left: 10%;
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4rem;
 }
 
-body {
-  font-family: "DM Sans", Arial, sans-serif;
-  width: 95%;
-  margin: auto;
+footer p, footer a {
+  font-size: 0.8rem;
+  display: inline-block;
+}
+
+footer a {
+  color: black;
 }
 
 .container-row {
@@ -77,21 +84,6 @@ body {
   display: inline-block;
   margin: 0;
   text-align: right;
-}
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 4rem;
-}
-
-footer p, footer a {
-  font-size: 0.8rem;
-  display: inline-block;
-}
-
-footer a {
-  color: black;
 }
 
 .profile-pic {
