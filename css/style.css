@@ -72,7 +72,6 @@ footer a {
   width: 25px;
   height: auto;
   float: right;
-  margin-top: 1rem;
 }
 
 h3.card-title {
@@ -121,6 +120,27 @@ h3.card-title {
 .gallery {
   display: flex;
   justify-content: space-between;
+}
+
+.project-intro {
+  display: flex;
+  align-items: center;  
+}
+
+#project-introduction {
+  max-width: 50%; 
+  padding-left: 50px; 
+}
+
+#project-description {
+  padding: 2rem;
+}
+
+.project-img {
+  max-width: 50%;
+  height: auto;
+  margin: 2rem;
+  margin-bottom: 0;
 }
 
 /* Responds to screen size */
