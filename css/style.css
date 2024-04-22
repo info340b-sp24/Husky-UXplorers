@@ -63,17 +63,9 @@ footer a {
 .card .arrow {
   width: 30px;
   height: auto;
-.info h3, .info img {
-  display: inline-block;
 }
 
-.info h3 {
-  font-size: 1.5em;
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-}
-
-.info img, .card .bookmark {
+.card .bookmark {
   width: 25px;
   height: auto;
   float: right;
