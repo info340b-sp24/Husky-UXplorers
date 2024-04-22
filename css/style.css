@@ -65,26 +65,24 @@ footer a {
   transform: scale(1.1);
 }
 
-.info h3, .info img {
-  display: inline-block;
+.card .arrow {
+  width: 30px;
+  height: auto;
 }
 
-.info h3 {
-  font-size: 1.5em;
-  margin-top: 0.5rem;
-  margin-bottom: 0;
-}
-
-.info img, .card .bookmark {
-  width: 25px; 
-  height: auto; 
+.card .bookmark {
+  width: 25px;
+  height: auto;
   float: right;
   margin-top: 1rem;
 }
 
-.info p {
+h3.card-title {
   display: inline-block;
+  text-align: right;
+  font-size: 1.5em;
   margin: 0;
+  margin-top: 0.5rem;
 }
 
 .profile-pic {
@@ -115,6 +113,17 @@ footer a {
   object-fit: cover;
 }
 
+@media (min-width: 0px) {
+  .m-2 button {
+    display: none;
+  }
+
+  h3.py-3 {
+    display: none;
+  }
+}
+
+
 @media (min-width: 768px) {
   .input-group.rounded {
     margin: auto;
@@ -126,5 +135,13 @@ footer a {
   .input-group.rounded {
     margin: auto;
     width: 45%
+  }
+
+  .m-2 button {
+    display: inline;
+  }
+
+  h3.py-3 {
+    display: block;
   }
 }
