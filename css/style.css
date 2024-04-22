@@ -38,11 +38,6 @@ footer a {
   color: black;
 }
 
-#gallery {
-  display: flex;
-  justify-content: space-between;
-}
-
 .container-row {
   display: flex;
   flex-wrap: wrap;
@@ -120,6 +115,12 @@ h3.card-title {
   height: 200px;
   object-fit: cover;
 }
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 @media (min-width: 0px) {
   .m-2 button {
