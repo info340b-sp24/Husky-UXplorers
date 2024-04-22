@@ -109,6 +109,17 @@ footer a {
   object-fit: cover;
 }
 
+@media (min-width: 0px) {
+  .m-2 button {
+    display: none;
+  }
+
+  h3.py-3 {
+    display: none;
+  }
+}
+
+
 @media (min-width: 768px) {
   .input-group.rounded {
     margin: auto;
@@ -120,5 +131,13 @@ footer a {
   .input-group.rounded {
     margin: auto;
     width: 45%
+  }
+
+  .m-2 button {
+    display: inline;
+  }
+
+  h3.py-3 {
+    display: block;
   }
 }
