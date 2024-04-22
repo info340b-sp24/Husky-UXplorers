@@ -75,7 +75,7 @@ footer a {
   margin-bottom: 0;
 }
 
-.info img {
+.info img, .card .arrow {
   width: 30px;
   height: auto;
 }
@@ -113,4 +113,3 @@ footer a {
   height: 200px;
   object-fit: cover;
 }
-
