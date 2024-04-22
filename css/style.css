@@ -19,11 +19,6 @@ h1, h2, h3 {
   font-family: "Space Grotesk", sans-serif;
 }
 
-h3 {
-  color: rgb(red, green, rgb(112, 15, 22));
-  padding-bottom: 5px;
-}
-
 section {
   padding-top: 2rem;
 }
