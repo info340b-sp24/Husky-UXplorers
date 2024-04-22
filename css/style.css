@@ -92,6 +92,13 @@ h3.card-title {
   object-fit: cover;
 }
 
+.profile {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
 .jumbotron {
   height: 500px;
 }
