@@ -46,8 +46,12 @@
     </nav>
 
     <main class="container-fluid">
-      <header>
+      <header id="gallery">
         <h1>Gallery</h1>
+        <div class="input-group rounded">
+          <input type="search" class="form-control rounded" placeholder="Search by project, artist, aesthetic, etc." aria-label="Search" aria-describedby="search-addon" />
+          <i class="fas fa-search"></i>
+        </div>
       </header>
 
       <body>
@@ -109,7 +113,9 @@
             <h2>Projects</h2>
             <div class="container-row">
               <div class="project">
-                <img src="img/projects/p1.jpg" alt="Ostomi">
+                <a href="project_example.html">
+                  <img src="img/projects/p1.jpg" alt="Ostomi">
+                </a>
                 <div class="info">
                   <h3>Ostomi</h3>
                   <img src="img/icons/bookmark-white.png" alt="bookmark">
