@@ -38,6 +38,11 @@ footer a {
   color: black;
 }
 
+#gallery {
+  display: flex;
+  justify-content: space-between;
+}
+
 .container-row {
   display: flex;
   flex-wrap: wrap;
