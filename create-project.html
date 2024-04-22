@@ -14,7 +14,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="author" content="Sunny Tian, Farrel Sudrajat, Cristina Villavicencio">
-    <title>My Profile</title>
+    <title>New Project</title>
     <link rel="icon" href="img/icon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
@@ -45,7 +45,101 @@
     </nav>
 
     <main class="container-fluid">
-      
+      <h1>New Project</h1>
+      <form>
+        <section>
+          <h2>Project Introduction</h2>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="project-name" placeholder="ex: Cooking Master App">
+            <label for="project-name">Project Name</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="project-authors" placeholder="ex: Joe and Laura">
+            <label for="project-authors">Author Name(s)</label>
+          </div>
+
+          <div>
+            <label for="project-type-option1" class="form-label mb-3">Type of Project: </label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="project-type-option1" value="option1">
+              <label class="form-check-label" for="project-type-option1">For School</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="project-type-option2" value="option2">
+              <label class="form-check-label" for="project-type-option2">For a Client</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="project-type-option3" value="option3">
+              <label class="form-check-label" for="project-type-option3">For Fun</label>
+            </div>
+          </div>
+
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Write a Description" id="project-description" style="height: 100px"></textarea>
+            <label for="project-description">Give an introduction to the project</label>
+          </div>
+
+          <div class="mb-3">
+            <label for="project-images" class="form-label">Add images</label>
+            <input class="form-control" type="file" id="project-images" multiple>
+          </div>
+        </section>
+
+        <section>
+          <h2>Problem</h2>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Write a Description" id="project-problem" style="height: 100px"></textarea>
+            <label for="project-problem">Give a description of the problem</label>
+          </div>
+          <div class="mb-3">
+            <label for="project-problem-images" class="form-label">Add Images</label>
+            <input class="form-control" type="file" id="project-problem-images" multiple>
+          </div>
+        </section>
+
+        <section>
+          <h2>Solution</h2>
+          <div class="form-floating mb-3">
+            <textarea class="form-control" placeholder="Write a Description" id="project-solution" style="height: 100px"></textarea>
+            <label for="project-solution">Give a description of the solution</label>
+          </div>
+          <div class="mb-3">
+            <label for="project-solution-images" class="form-label">Add Images</label>
+            <input class="form-control" type="file" id="project-solution-images" multiple>
+          </div>
+        </section>
+
+        <section>
+          <h2>Technical Details</h2>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="project-date" placeholder="ex: March 2021">
+            <label for="project-date">Month and year of project</label>
+          </div>
+          <div class="mb-3">
+            <h3 class="fs-5">Tools Used</h3>
+
+            <input type="checkbox" class="btn-check" id="btn-check-1" autocomplete="off">
+            <label class="btn" for="btn-check-1">Figma</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
+            <label class="btn" for="btn-check-2">Adobe XD</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check-3" autocomplete="off">
+            <label class="btn" for="btn-check-3">Framer</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check-4" autocomplete="off">
+            <label class="btn" for="btn-check-4">WebFlow</label>
+
+            <input type="checkbox" class="btn-check" id="btn-check-5" autocomplete="off">
+            <label class="btn" for="btn-check-5">Sketch</label>
+          </div>
+        </section>
+
+        <a class="btn rounded-0 px-4 py-3 bg-dark text-white" href="profile-finished.html" role="button">Sumbit Project</a></button>
+
+      </form>
+
     </main>
 
     <footer class="container-fluid">
