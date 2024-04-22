@@ -95,3 +95,22 @@ footer a {
 .jumbotron {
   height: 500px;
 }
+
+.jumbotron.m-5.pt-5.text-center button {
+  border-radius: 10px;
+}
+
+.block {
+  padding: 5px;
+}
+
+.input-group.rounded {
+  margin: auto;
+  width: 45%
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
