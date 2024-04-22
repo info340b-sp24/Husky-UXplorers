@@ -8,6 +8,7 @@
   This is the stylesheet for the index page of our final project website.
 */
 
+/* Main styles */
 body {
   background-color: #FAF9F6;
   font-family: "DM Sans", Arial, sans-serif;
@@ -38,6 +39,7 @@ footer a {
   color: black;
 }
 
+/* Styling classes */
 .container-row {
   display: flex;
   flex-wrap: wrap;
@@ -121,7 +123,7 @@ h3.card-title {
   justify-content: space-between;
 }
 
-
+/* Responds to screen size */
 @media (min-width: 0px) {
   .m-2 button {
     display: none;
@@ -131,7 +133,6 @@ h3.card-title {
     display: none;
   }
 }
-
 
 @media (min-width: 768px) {
   .input-group.rounded {
