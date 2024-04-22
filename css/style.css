@@ -8,32 +8,34 @@
   This is the stylesheet for the index page of our final project website.
 */
 
-body, .navbar {
+body {
   background-color: #FAF9F6;
+  font-family: "DM Sans", Arial, sans-serif;
+  width: 95%;
+  margin: auto;
 }
 
 h1, h2, h3 {
   font-family: "Space Grotesk", sans-serif;
 }
 
-h3 {
-  color: rgb(red, green, rgb(112, 15, 22));
-  padding-bottom: 5px;
+section {
+  padding-top: 2rem;
 }
 
-section:first-child {
-  padding: 20px;
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 4rem;
 }
 
-section p, section li {
-  margin-left: 40px;
-  margin-left: 10%;
+footer p, footer a {
+  font-size: 0.8rem;
+  display: inline-block;
 }
 
-body {
-  font-family: "DM Sans", Arial, sans-serif;
-  width: 95%;
-  margin: auto;
+footer a {
+  color: black;
 }
 
 .container-row {
@@ -44,8 +46,8 @@ body {
 
 .project {
   position: relative;
-  width: calc(25% - 20px); 
-  margin-bottom: 20px; 
+  width: calc(25% - 20px);
+  margin-bottom: 20px;
 }
 
 .project img {
@@ -68,7 +70,7 @@ body {
   margin-bottom: 0;
 }
 
-.info img {
+.info img, .card .bookmark {
   width: 25px; 
   height: auto; 
   float: right;
@@ -80,26 +82,44 @@ body {
   margin: 0;
 }
 
-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-footer p, footer a {
-  font-size: 0.8rem;
-  display: inline-block;
-}
-
-footer a {
-  color: black;
-}
-
 .profile-pic {
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   object-fit: cover;
 }
 
 .jumbotron {
   height: 500px;
+}
+
+.jumbotron.m-5.pt-5.text-center button {
+  border-radius: 10px;
+}
+
+.block {
+  padding: 5px;
+}
+
+.input-group.rounded {
+  margin: auto;
+  width: 45%
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .input-group.rounded {
+    margin: auto;
+    width: 75%
+  }
+}
+
+@media (min-width: 992px) {
+  .input-group.rounded {
+    margin: auto;
+    width: 45%
+  }
 }
