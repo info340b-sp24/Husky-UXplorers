@@ -59,7 +59,7 @@ body {
 }
 
 .info h3, .info img {
-  display: inline-block; 
+  display: inline-block;
 }
 
 .info h3 {
@@ -69,14 +69,15 @@ body {
 }
 
 .info img {
-  width: 30px; 
+  width: 25px; 
   height: auto; 
+  float: right;
+  margin-top: 1rem;
 }
 
 .info p {
   display: inline-block;
   margin: 0;
-  text-align: right;
 }
 
 footer {
