@@ -122,23 +122,24 @@ h3.card-title {
   justify-content: space-between;
 }
 
-.project-intro {
+.example-intro {
   display: flex;
   align-items: center;  
 }
 
-#project-introduction {
+#example-introduction {
   max-width: 50%; 
   padding-left: 50px; 
 }
 
-#project-description {
+#example-description {
   padding: 2rem;
 }
 
-.project-img {
+.example-img {
   max-width: 50%;
   height: auto;
+  border-radius: 10px;
   margin: 2rem;
   margin-bottom: 0;
 }
