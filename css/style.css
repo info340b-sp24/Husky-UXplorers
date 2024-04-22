@@ -95,3 +95,12 @@ footer a {
 .jumbotron {
   height: 500px;
 }
+
+.jumbotron.m-5.pt-5.text-center button {
+  border-radius: 10px;
+}
+
+.block {
+  padding: 5px;
+}
+
