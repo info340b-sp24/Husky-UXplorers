@@ -25,18 +25,19 @@ section {
 }
 
 footer {
-  display: flex;
-  justify-content: space-between;
   padding-top: 4rem;
 }
 
-footer p, footer a {
-  font-size: 0.8rem;
-  display: inline-block;
+footer p {
+  display: block;
 }
 
 footer a {
   color: black;
+}
+
+footer p, footer a {
+  font-size: 0.8rem;
 }
 
 /* Styling classes */
@@ -124,12 +125,12 @@ h3.card-title {
 
 .example-intro {
   display: flex;
-  align-items: center;  
+  align-items: center;
 }
 
 #example-introduction {
-  max-width: 50%; 
-  padding-left: 50px; 
+  max-width: 50%;
+  padding-left: 50px;
 }
 
 #example-description {
@@ -159,6 +160,17 @@ h3.card-title {
   .input-group.rounded {
     margin: auto;
     width: 75%
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer p {
+    display: inline-block;
+    margin-left: 1em;
+    margin-right: 1em;
   }
 }
 
