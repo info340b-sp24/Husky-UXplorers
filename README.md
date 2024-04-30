@@ -4,3 +4,6 @@ This repository contains code for Husky UXplorers, an interactive information we
 
 Group members:
 Sunny Tian, Farrel Sudrajat, Cristina Villavicencio
+
+View project at:
+https://husky-uxplorers.web.app
