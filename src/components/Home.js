@@ -14,14 +14,12 @@ export default function Home(props) {
 }
 
 function MainHome (props) {
-  const main = (
+  return (
     <main className="container-fluid">
       <Spotlight />
       <FeaturedSection />
     </main>
   );
-
-  return main;
 }
 
 function Spotlight() {
@@ -64,7 +62,6 @@ function FeaturedSection() {
       <FeaturedProjects />
     </div>
   );
-
 }
 
 function FeaturedProjects() {
@@ -95,7 +92,7 @@ function FeaturedProjects() {
             <img src="img/projects/career_assistant.jpeg" className="card-img-top" alt="AI Career Assistant" />
             <div className="card-body">
               <h4 className="card-title">AI Career Assistant</h4>
-              <p className="card-text">Lauren James Info '24</p>
+              <p className="card-text">Lauren James INFO '24</p>
             </div>
           </div>
         </div>
@@ -132,7 +129,7 @@ function FeaturedPortfolios() {
             <img src="img/portfolios/marcel_mounie.png" className="card-img-top" alt="Marcel Mounie's Portfolio" />
             <div className="card-body">
               <h4 className="card-title">Marcel Mounie</h4>
-              <p className="card-text">Info '25</p>
+              <p className="card-text">INFO '25</p>
             </div>
           </div>
         </div>
