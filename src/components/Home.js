@@ -25,7 +25,7 @@ function MainHome (props) {
 function Spotlight() {
   return (
     <div>
-      <h1 className="text-center">Husky UXplorers</h1>
+      <h1 className="text-center">HELLO Husky UXplorers</h1>
       <div className="jumbotron m-5 text-center">
         <h1 className="py-4">For students, by students.</h1>
         <p>
