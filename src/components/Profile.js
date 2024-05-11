@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import ProfileInfo from './profile_components/ProfileInfo'
 
 export default function Profile(props) {
   return (
@@ -20,30 +21,12 @@ function MainProfile(props) {
       </header>
 
       <ProfileInfo />
-      
+
       <article>
         <ProfileProjects />
         <ProfileBookmarks />
       </article>
     </main>
-  );
-}
-
-function ProfileInfo(props) {
-  return (
-    <article className="profile">
-      <div>
-        <section>
-          <img className="profile-pic rounded-circle" src="img/profiles/red-panda.jpg" alt="profile picture" />
-          <h2>@milllan</h2>
-        </section>
-        <section>
-          <h3>Mila Nguyen</h3>
-          <p>Major: HCDE</p>
-          <p>Grad: 2026</p>
-        </section>
-      </div>
-    </article>
   );
 }
 
@@ -78,7 +61,7 @@ function ProfileBookmarks(props) {
             <div className="card-body">
               <h3 className="card-title">Maya Patel's Portfolio</h3>
               <p className="card-text">HCDE '26</p>
-              <img className="arrow" src="img/icons/arrow.png" />
+              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button"/>
             </div>
           </div>
         </div>
@@ -89,7 +72,7 @@ function ProfileBookmarks(props) {
             <div className="card-body">
               <h3 className="card-title">Noah Martinez's Portfolio</h3>
               <p className="card-text">INFO '25</p>
-              <img className="arrow" src="img/icons/arrow.png" />
+              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button"/>
             </div>
           </div>
         </div>
