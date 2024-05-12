@@ -43,13 +43,18 @@ footer p, footer a {
 }
 
 /* Styling classes */
+.content {
+  width: 90%;
+  margin: auto;
+}
+
 .container-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.project {
+.project{
   position: relative;
   width: calc(25% - 20px);
   margin-bottom: 20px;
@@ -128,6 +133,11 @@ h3.card-title {
 .example-intro {
   display: flex;
   align-items: center;
+}
+
+.small-text {
+  font-size: 0.8rem;
+  color: rgb(99, 99, 99);
 }
 
 #example-introduction {

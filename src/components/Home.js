@@ -38,7 +38,10 @@ function Spotlight() {
         </div>
         <h3 className="py-3">or</h3>
         <div className="m-2">
-          <button type="button" className="rounded px-4 py-3 bg-dark text-white">Begin your UX journey</button>
+          <a type="button" className="btn rounded px-4 py-3 bg-dark text-white" href="guide">
+            Begin your UX journey
+          </a>
+
         </div>
       </div>
     </div>

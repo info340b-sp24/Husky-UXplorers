@@ -23,11 +23,11 @@ function MainGallery (props) {
 
 function GalleryHeader (props) {
   return (
-    <header class="gallery">
+    <header className="gallery">
       <h1>Gallery</h1>
-      <div class="input-group rounded">
-        <input type="search" class="form-control rounded" placeholder="Search by project, artist, aesthetic, etc." aria-label="Search" aria-describedby="search-addon" />
-        <i class="fas fa-search"></i>
+      <div className="input-group rounded">
+        <input type="search" className="form-control rounded" placeholder="Search by project, artist, aesthetic, etc." aria-label="Search" aria-describedby="search-addon" />
+        <i className="fas fa-search"></i>
       </div>
     </header>
   );
