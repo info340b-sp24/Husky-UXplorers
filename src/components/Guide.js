@@ -32,7 +32,7 @@ function MainGuide (props) {
             </p>
           </section>
 
-          <section>
+          <section className="content">
             <h2>Projects</h2>
             <p>
               UX design is a field that combines human factors, technology, and
