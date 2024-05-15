@@ -48,6 +48,10 @@ footer p, footer a {
   margin: auto;
 }
 
+.img-left-container {
+  display: flex;
+}
+
 .container-row {
   display: flex;
   flex-wrap: wrap;
@@ -179,6 +183,10 @@ h2.subheading {
   border-radius: 10px;
   margin: 2rem;
   margin-bottom: 0;
+}
+
+.img-left-container img{
+  height: 300px;
 }
 
 /* Responds to screen size */

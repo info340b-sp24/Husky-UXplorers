@@ -25,21 +25,27 @@ function Spotlight() {
   return (
     <div>
       <div className="jumbotron m-5 py-2 text-left">
-        <div className="my-5"> 
-          <h1 className="display-text">Husky <span className="purple">UX</span>plorers</h1>
-          <h2 className="subheading font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
-        </div>
+        <div className="img-left-container">
 
-        <div className="py-2 my-5">
-          <p className="pr-5" style={{"width" : "45%"}}>
-            Here to give you your UX design inspiration and needs.
-            Share your work with our student community or begin
-            your UX journey here.
-          </p>
-          <a type="button" className="purple-btn btn rounded px-4 py-3 text-white" href="guide">
-            <b>Start Your UX Journey Here</b>
-          </a>
+          <div>
+            <div className="my-5"> 
+              <h1 className="display-text">Husky <span className="purple">UX</span>plorers</h1>
+              <h2 className="subheading font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
+            </div>
 
+            <div className="py-2 my-5">
+              <p className="pr-5" style={{"width" : "45%"}}>
+                Here to give you your UX design inspiration and needs.
+                Share your work with our student community or begin
+                your UX journey here.
+              </p>
+              <a type="button" className="purple-btn btn rounded px-4 py-3 text-white" href="guide">
+                <b>Start Your UX Journey Here</b>
+              </a>
+            </div>
+          </div>
+
+          <img src="img/landing_img.png" alt="UXplorers logo" className="m-5"/>
         </div>
       </div>
     </div>
@@ -57,7 +63,9 @@ function FeaturedSection() {
           Want to share your successes? Upload your project to inspire the next generation
           of designers.
         </p>
+
       </div>
+
       <FeaturedPortfolios />
       <FeaturedProjects />
     </div>
