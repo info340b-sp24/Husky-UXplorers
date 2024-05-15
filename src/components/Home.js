@@ -26,7 +26,7 @@ function Spotlight() {
     <div>
       <div className="jumbotron m-5 py-2 text-left">
         <div className="my-5"> 
-          <h1 className="display-text">Husky UXplorers</h1>
+          <h1 className="display-text">Husky <span className="purple">UX</span>plorers</h1>
           <h2 className="subheading font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
         </div>
 
@@ -36,8 +36,8 @@ function Spotlight() {
             Share your work with our student community or begin
             your UX journey here.
           </p>
-          <a type="button" className="btn rounded px-4 py-3 bg-dark text-white" href="guide">
-            Start Your UX Journey Here
+          <a type="button" className="purple-btn btn rounded px-4 py-3 text-white" href="guide">
+            <b>Start Your UX Journey Here</b>
           </a>
 
         </div>

@@ -139,6 +139,14 @@ h3.card-title {
   align-items: center;
 }
 
+.purple {
+  color: #ab91ff
+}
+
+.purple-btn {
+  background-color: #ab91ff
+}
+
 h1.display-text {
   font-size: 4em;
 }
