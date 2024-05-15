@@ -24,22 +24,20 @@ function MainHome (props) {
 function Spotlight() {
   return (
     <div>
-      <h1 className="text-center">Husky UXplorers</h1>
-      <div className="jumbotron m-5 text-center">
-        <h1 className="py-4">For students, by students.</h1>
-        <p>
-          Here to give you your UX design inspiration and needs.
-          Share your work with our student community or begin
-          your UX journey here.
-        </p>
-        <div className="input-group rounded">
-          <input type="search" className="form-control rounded" placeholder="Find your next design inspiration" aria-label="Search" aria-describedby="search-addon" />
-          <i className="fas fa-search"></i>
+      <div className="jumbotron m-5 py-2 text-left">
+        <div className="my-5"> 
+          <h1 className="display-text">Husky UXplorers</h1>
+          <h2 className="subheading font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
         </div>
-        <h3 className="py-3">or</h3>
-        <div className="m-2">
+
+        <div className="py-2 my-5">
+          <p className="pr-5" style={{"width" : "45%"}}>
+            Here to give you your UX design inspiration and needs.
+            Share your work with our student community or begin
+            your UX journey here.
+          </p>
           <a type="button" className="btn rounded px-4 py-3 bg-dark text-white" href="guide">
-            Begin your UX journey
+            Start Your UX Journey Here
           </a>
 
         </div>

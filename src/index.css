@@ -8,7 +8,7 @@
   This is the stylesheet for the index page of our final project website.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Eczar:wght@400..800&family=Space+Grotesk:wght@300..700&display=swap');
 
 /* Main styles */
 body {
@@ -82,6 +82,10 @@ footer p, footer a {
   float: right;
 }
 
+.display-type {
+  font-family: "Eczar", serif;
+}
+
 h3.card-title {
   display: inline;
   text-align: right;
@@ -133,6 +137,18 @@ h3.card-title {
 .example-intro {
   display: flex;
   align-items: center;
+}
+
+h1.display-text {
+  font-size: 4em;
+}
+
+.subheading {
+  font-size: 2em;
+}
+
+h2.subheading {
+  font-family: "DM Sans";
 }
 
 .small-text {
