@@ -17,13 +17,13 @@ function MainGuide (props) {
     <main className="container-fluid">
       <div>
         <article>
-          <section>
-            <h1>Guide to UX design</h1>
-            <p className="small-text">May 11, 2024</p>
-            <p>Are you new to UX design? This is a great place to start!</p>
+          <section className="text-center bg-purple p-5 banner">
+            <h1 className="text-light">The Husky UXplorers <b>Official</b> Guide to UX Design</h1>
+            <p className="small-text text-light">May 11, 2024</p>
           </section>
 
           <section className="content">
+            <h2 className="subheading mt-5">New to UX design? Congrats. You're at the right place.</h2>
             <h2>Portfolios</h2>
             <p>
               UX designers use portfolios to show their design work to prospective

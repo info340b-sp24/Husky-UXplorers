@@ -151,6 +151,10 @@ h3.card-title {
   background-color: #ab91ff
 }
 
+.bg-purple {
+  background-color: #ab91ff
+}
+
 h1.display-text {
   font-size: 4em;
 }
@@ -191,6 +195,10 @@ h2.subheading {
 
 .primary-btn {
   font-family: 'Space Grotesk'
+}
+
+.banner {
+  width: 100%;
 }
 
 /* Responds to screen size */
