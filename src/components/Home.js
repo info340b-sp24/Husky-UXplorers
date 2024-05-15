@@ -29,8 +29,8 @@ function Spotlight() {
 
           <div>
             <div className="my-5"> 
-              <h1 className="display-text">Husky <span className="purple">UX</span>plorers</h1>
-              <h2 className="subheading font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
+              <h1 className="display-text display-type">Husky <span className="purple">UX</span>plorers</h1>
+              <h2 className="font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
             </div>
 
             <div className="py-2 my-5">
@@ -39,8 +39,8 @@ function Spotlight() {
                 Share your work with our student community or begin
                 your UX journey here.
               </p>
-              <a type="button" className="purple-btn btn rounded px-4 py-3 text-white" href="guide">
-                <b>Start Your UX Journey Here</b>
+              <a type="button" className="purple-btn primary-btn btn rounded px-4 py-3 text-white" href="guide">
+                <b>Start your UX Journey here</b>
               </a>
             </div>
           </div>
@@ -74,7 +74,7 @@ function FeaturedSection() {
 
 function FeaturedProjects() {
   return (
-    <section>
+    <section className="mx-5 mb-5">
       <h3 className="mt-5">Featured Projects</h3>
       <div className="row row-cols-1 row-cols-md-3">
         <div className="col">
@@ -111,7 +111,7 @@ function FeaturedProjects() {
 
 function FeaturedPortfolios() {
   return (
-    <section>
+    <section className="mx-5">
       <h3 className="mt-5">Featured Portfolios</h3>
       <div className="row row-cols-1 row-cols-md-3">
         <div className="col">

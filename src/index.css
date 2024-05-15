@@ -189,6 +189,10 @@ h2.subheading {
   height: 300px;
 }
 
+.primary-btn {
+  font-family: 'Space Grotesk'
+}
+
 /* Responds to screen size */
 @media (min-width: 0px) {
   .m-2 button {
