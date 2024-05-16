@@ -163,6 +163,10 @@ h2.subheading {
   font-family: "DM Sans";
 }
 
+h3.subheading {
+  font-family: "DM Sans";
+}
+
 .small-text {
   font-size: 0.8rem;
   color: rgb(99, 99, 99);
