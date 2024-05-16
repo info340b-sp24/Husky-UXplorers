@@ -25,10 +25,6 @@ function GalleryHeader (props) {
   return (
     <header className="gallery">
       <h1>Gallery</h1>
-      <div className="input-group rounded">
-        <input type="search" className="form-control rounded" placeholder="Search by project, artist, aesthetic, etc." aria-label="Search" aria-describedby="search-addon" />
-        <i className="fas fa-search"></i>
-      </div>
     </header>
   );
 }
