@@ -75,7 +75,36 @@ function MainGuide (props) {
                   <h3>Ideate</h3>
                   <p>
                     Now, we begin designing to bring our solution to life. No one expects their first idea to work
-                     and be perfect, so do not 
+                     and be perfect, so do not set your expectations too high. This process can be general where you 
+                     may want to brainstorm multiple ideas with your team that address the problem through different
+                     perspectives and approaches. A key tip is to visualize your ideas by developing rough sketches
+                      or mind maps that connects and solidifies what users can see going through your product. 
+                      <b className="purple"> Information architecture</b> is also a great form of conceptualizing the 
+                      user flows. This provides a generalized overview of the content and structure of your design along 
+                      with the path the user takes to interact with it.
+                  </p>
+                </div>
+                <div className="container">
+                  <h3>Prototype</h3>
+                  <p>
+                    As you have a blueprint to work with, you will build on this to develop a detailed and life-like model.
+                    There are two types of prototypes, <b className="purple"> Low-Fidelity Prototypes</b> and 
+                    <b className="purple"> High-Fidelity Prototypes</b>. Low fidelity prototypes can looks like basic wireframes
+                    that emphasize on functionality and layout. On the other hand, high fidelity prototypes highlight the 
+                    finer details of the design and simulates how a product will look and feel to users. Whether you are working 
+                    with a website or app, it is important to include visual designs that appeal to the users but also enable
+                    clear navigation of content. Another essential idea is including robust interactivity for users understand how 
+                    the product is used uring testing.
+                  </p>
+                </div>
+                <div className="container">
+                  <h3>Test</h3>
+                  <p>
+                    We developed a solution, but does it really work? <b className="purple"> Usability testing </b>
+                    ensures that the final product effectively solves the user problem. This process identifies if 
+                    improvements need to be made to the initial design to allow the product to become more user-friendly. 
+                    It is important to note that your design will most likely go through cycles of iteration after testing;
+                     however, this leads us to the goal of creating meaningful user experiences with our designs.
                   </p>
                 </div>
               </div>
