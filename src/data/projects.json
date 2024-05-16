@@ -1,0 +1,38 @@
+[
+  {
+    "authorData": {
+      "author": "Jasmine Rivers",
+      "username": "jazzyr",
+      "authorMajor": "INFO",
+      "authorGrad": 2026
+    },
+    "metadata": {
+      "timestamp": 1,
+      "title": "Ostomi",
+      "type": "project",
+      "typeOfProj": "school"
+    },
+    "intro": {
+      "description": "Have you ever needed to get dumplings?",
+      "imgSrc": "p1.jpg",
+      "imgAlt": "Ostomi App Mockup"
+    },
+    "problem": {
+      "description": "Many of us need dumplings",
+      "imgSrc": "",
+      "imgAlt": ""
+    },
+    "solution": {
+      "description": "We decided to solve this by..",
+      "imgSrc": "",
+      "imgAlt": ""
+    },
+    "technicalDetails": {
+      "date": "August 2021",
+      "tools": [
+        "Figma",
+        "Framer"
+      ]
+    }
+  }
+]
