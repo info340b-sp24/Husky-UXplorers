@@ -201,6 +201,8 @@ h3.subheading {
   width: 100%;
 }
 
+
+
 /* Responds to screen size */
 @media (min-width: 0px) {
   .m-2 button {

@@ -25,7 +25,8 @@ function GalleryHeader (props) {
 
 function GalleryContent(props) {
   return (
-    <div>
+    <div className="container-fluid">
+      <GalleryFilter />
       <GalleryProjects />
       {/* <GalleryPortfolios /> */}
     </div>
@@ -39,6 +40,104 @@ function GalleryProjects(props) {
       <ProjectCardRow data={PROJECT_DATA} />
     </section>
   );
+}
+
+function GalleryFilter(props) {
+  return (
+    <div className="card" style={{"width" : "15rem"}}>
+      <div className="card-header">
+        <h5 className="card-title">Filter</h5>
+      </div>
+
+      <div className="card-body">
+        <div className="my-3">
+          <h6 className="card-subtitle">Type</h6>
+          <div>
+            <input id="projectCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="projectCheckbox" className="form-check-label"> Project</label>
+          </div>
+          
+          <div>
+            <input id="portfolioCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="portfolioCheckbox" className="form-check-label"> Portfolio</label>
+          </div>
+        </div>
+        
+        <div className="my-3">
+          <h6 className="card-subtitle">Purpose</h6>
+
+          <div>
+            <input id="schoolCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="schoolCheckbox" className="form-check-label"> School</label>
+          </div>
+          
+          <div>
+            <input id="clientCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="clientCheckbox" className="form-check-label"> Client</label>
+          </div>
+          
+          <div>
+            <input id="funCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="funCheckbox" className="form-check-label"> Fun</label>
+          </div>
+        </div>
+
+        <div className="my-3">
+          <h6 className="card-subtitle">Tools</h6>
+
+          <div>
+            <input id="adobeCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="adobeCheckbox" className="form-check-label"> Adobe XD</label>
+          </div>
+          
+          <div>
+            <input id="figmaCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="figmaCheckbox" className="form-check-label"> Figma</label>
+          </div>
+          
+          <div>
+            <input id="framerCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="framerCheckbox" className="form-check-label"> Framer</label>
+          </div>
+          
+          <div>
+            <input id="sketchCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="sketchCheckbox" className="form-check-label"> Sketch</label>
+          </div>
+
+          <div>
+            <input id="webflowCheckbox" type="checkbox" className="form-check-input" value=""/>
+            <label htmlFor="webflowCheckbox" className="form-check-label"> Webflow</label>
+          </div>
+        </div>
+
+        <div className="my-3">
+          <h6 className="card-subtitle">Major</h6>
+
+          <div>
+            <input id="allRadioBtn" type="radio" className="form-check-input" value="allMajors" />
+            <label htmlFor="allRadioBtn" className="form-check-label"> All</label>
+          </div>
+
+          <div>
+            <input id="designRadioBtn" type="radio" className="form-check-input" value="design" />
+            <label htmlFor="designRadioBtn" className="form-check-label"> Design</label>
+          </div>
+
+          <div>
+            <input id="hcdeRadioBtn" type="radio" className="form-check-input" value="hcde" />
+            <label htmlFor="hcdeRadioBtn" className="form-check-label"> HCDE</label>
+          </div>
+
+          <div>
+            <input id="informaticsRadioBtn" type="radio" className="form-check-input" value="informatics" />
+            <label htmlFor="informaticsRadioBtn" className="form-check-label"> Informatics</label>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  )
 }
 
 // function GalleryPortfolios(props) {
