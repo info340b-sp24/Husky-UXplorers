@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import PROJECT_DATA from '../data/projects.json';
 import Home from './Home.js';
 import Gallery from './Gallery.js';
 import Profile from './Profile.js';
@@ -16,7 +17,7 @@ export default function App(props) {
     <Routes>
       <Route path = "" element = {<Home />} />
       <Route path = "index" element = {<Home />} />
-      <Route path = "gallery" element = {<Gallery />} />
+      <Route path = "gallery" element = {<Gallery data={PROJECT_DATA} />} />
       <Route path = "profile" element = {<Profile />} />
       <Route path = "guide" element = {<Guide />} />
       <Route path = "create-project" element = {<CreateProject/>} />

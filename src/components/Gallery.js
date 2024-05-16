@@ -2,7 +2,10 @@ import React from 'react';
 import NavBar from './NavBar';
 import Footer from './Footer';
 
+let DATA;
+
 export default function Gallery (props) {
+  DATA = props.data;
   return (
     <div>
       <NavBar />
@@ -32,8 +35,8 @@ function GalleryHeader (props) {
 function GalleryContent(props) {
   return (
     <div>
-      <GalleryPortfolios />
       <GalleryProjects />
+      <GalleryPortfolios />
     </div>
   );
 }
@@ -42,55 +45,46 @@ function GalleryProjects(props) {
   return (
     <section className="projects container">
       <h2 className="mt-5">Projects</h2>
-      <div className="row row-cols-1 row-cols-md-4">
-        <div className="col">
-          <div className="card block">
-            <a href="project_example.html">
-              <img src="img/projects/p1.jpg" className="card-img-top" alt="Ostomi App Mockup" />
-            </a>
-            <div className="card-body">
-              <h3 className="card-title">Ostomi</h3>
-              <img className="arrow" src="img/icons/arrow.png" />
-              <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-              <p className="card-text">Jasmine Rivers INFO '26</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/projects/p2.jpg" className="card-img-top" alt="App Home Mockup" />
-            <div className="card-body">
-              <h3 className="card-title">App Home</h3>
-              <img className="arrow" src="img/icons/arrow.png" />
-              <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-              <p className="card-text">Aria Donovan INFO '25</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/projects/p3.jpg" className="card-img-top" alt="Park Quest App Mockup" />
-            <div className="card-body">
-              <h3 className="card-title">Park Quest</h3>
-              <img className="arrow" src="img/icons/arrow.png" />
-              <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-              <p className="card-text">Jackson Thompson IxD '25</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/projects/p4.jpg" className="card-img-top" alt="Shoeholic App Mockup" />
-            <div className="card-body">
-              <h3 className="card-title">Shoeholic</h3>
-              <img className="arrow" src="img/icons/arrow.png" />
-              <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-              <p className="card-text">Mila Nguyen HCDE '24</p>
-            </div>
-          </div>
+      <ProjectsRow />
+    </section>
+  );
+}
+
+function ProjectsRow(props) {
+  const row = DATA.map((projectData) => {
+    let {metadata, authorData} = projectData;
+    return (
+      <ProjectCard
+        data={projectData}
+        key={authorData.author + metadata.title}
+      />
+    );
+  });
+
+  return (
+    <div className="row row-cols-1 row-cols-md-4">
+      {row}
+    </div>
+  )
+}
+
+function ProjectCard(props) {
+  let {metadata, authorData, intro} = props.data;
+
+  return (
+    <div className="col">
+      <div className="card block">
+        <a href="project_example.html">
+          <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
+        </a>
+        <div className="card-body">
+          <h3 className="card-title">{metadata.title}</h3>
+          <img className="arrow" src="img/icons/arrow.png" />
+          <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
+          <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -149,3 +143,42 @@ function GalleryPortfolios(props) {
     </section>
   );
 }
+
+// archived data .. delete later
+const data =
+  <div className="row row-cols-1 row-cols-md-4">
+    <ProjectCard />
+    <div className="col">
+      <div className="card block">
+        <img src="img/projects/p2.jpg" className="card-img-top" alt="App Home Mockup" />
+        <div className="card-body">
+          <h3 className="card-title">App Home</h3>
+          <img className="arrow" src="img/icons/arrow.png" />
+          <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
+          <p className="card-text">Aria Donovan INFO '25</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div className="card block">
+        <img src="img/projects/p3.jpg" className="card-img-top" alt="Park Quest App Mockup" />
+        <div className="card-body">
+          <h3 className="card-title">Park Quest</h3>
+          <img className="arrow" src="img/icons/arrow.png" />
+          <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
+          <p className="card-text">Jackson Thompson IxD '25</p>
+        </div>
+      </div>
+    </div>
+    <div className="col">
+      <div className="card block">
+        <img src="img/projects/p4.jpg" className="card-img-top" alt="Shoeholic App Mockup" />
+        <div className="card-body">
+          <h3 className="card-title">Shoeholic</h3>
+          <img className="arrow" src="img/icons/arrow.png" />
+          <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
+          <p className="card-text">Mila Nguyen HCDE '24</p>
+        </div>
+      </div>
+    </div>
+  </div>
