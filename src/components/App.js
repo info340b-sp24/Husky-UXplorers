@@ -18,7 +18,10 @@ export default function App(props) {
     <Routes>
       <Route path = "" element = {<Home />} />
       <Route path = "index" element = {<Home />} />
-      <Route path = "gallery" element = {<Gallery projectData={PROJECT_DATA} portfolioData={PORTFOLIO_DATA} />} />
+      <Route path = "gallery" element = {<Gallery />} >
+        <Route index element = {GalleryMain}/>
+        <Route path = "projects" element = {}
+      </Route>
       <Route path = "profile" element = {<Profile />} />
       <Route path = "guide" element = {<Guide />} />
       <Route path = "create-project" element = {<CreateProject/>} />
