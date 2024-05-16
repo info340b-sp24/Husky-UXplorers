@@ -147,11 +147,7 @@ h3.card-title {
   color: #ab91ff
 }
 
-.purple-btn {
-  background-color: #ab91ff
-}
-
-.bg-purple {
+.purple-btn, .bg-purple, .purple-btn:hover, .bg-purple:hover {
   background-color: #ab91ff
 }
 
