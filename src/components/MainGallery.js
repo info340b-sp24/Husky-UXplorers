@@ -7,12 +7,10 @@ export default function MainGallery (props) {
 
   return (
     <div>
-      <NavBar />
       <main className = "container-fluid">
         <GalleryHeader />
         <GalleryContent />
       </main>
-    <Footer />
     </div>
   )
 }
