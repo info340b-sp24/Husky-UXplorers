@@ -45,6 +45,11 @@ function MainGuide (props) {
                   </p>
                 </div>
             </div>
+
+            <div className="my-5 pl-5">
+              <h2 className="my-5">Learn about the <b className="purple">UX design Process</b></h2>
+              <img src="img/guide/process.png" alt="UX process" className="img-fluid"/>
+            </div>
           </section>
 
 
