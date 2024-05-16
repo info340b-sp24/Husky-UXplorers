@@ -4,7 +4,11 @@
       "author": "Jasmine Rivers",
       "username": "jazzyr",
       "authorMajor": "INFO",
-      "authorGrad": 2026
+      "authorGrad": 2026,
+      "links": [
+        "linked.in/sjfj",
+        "jasminerivers.com"
+      ]
     },
     "metadata": {
       "timestamp": 1,
@@ -32,6 +36,95 @@
       "tools": [
         "Figma",
         "Framer"
+      ]
+    }
+  },
+  {
+    "authorData": {
+      "author": "Aria Donovan",
+      "username": "donaria",
+      "authorMajor": "INFO",
+      "authorGrad": 2025
+    },
+    "metadata": {
+      "timestamp": 2,
+      "title": "App Home",
+      "type": "project",
+      "typeOfProj": "hackathon"
+    },
+    "intro": {
+      "description": "Need a home for your apps?"
+    },
+    "problem": {
+      "description": "We were tasked with.."
+    },
+    "solution": {
+      "description": "We decided to solve this by.."
+    },
+    "technicalDetails": {
+      "date": "September 2021",
+      "tools": [
+        "Figma"
+      ]
+    }
+  },
+  {
+    "authorData": {
+      "author": "Jackson Thompson",
+      "username": "jackiethomp",
+      "authorMajor": "IxD",
+      "authorGrad": 2025,
+      "links": []
+    },
+    "metadata": {
+      "timestamp": 3,
+      "title": "Park Quest",
+      "type": "project",
+      "typeOfProj": "School"
+    },
+    "intro": {
+      "description": "Need a home for your apps?"
+    },
+    "problem": {
+      "description": "We were tasked with.."
+    },
+    "solution": {
+      "description": "We decided to solve this by.."
+    },
+    "technicalDetails": {
+      "date": "September 2021",
+      "tools": [
+        "Figma"
+      ]
+    }
+  },
+  {
+    "authorData": {
+      "author": "Mila Nguyen",
+      "username": "milllan",
+      "authorMajor": "HCDE",
+      "authorGrad": 2024,
+      "links": []
+    },
+    "metadata": {
+      "timestamp": 1,
+      "title": "Shoeholic",
+      "type": "project",
+      "typeOfProj": "For Fun"
+    },
+    "intro": {
+      "description": "An app for buying shoes!"
+    },
+    "problem": {
+      "description": "We were tasked with.."
+    },
+    "solution": {
+      "description": "We decided to solve this by.."
+    },
+    "technicalDetails": {
+      "date": "October 2022",
+      "tools": [
+        "Figma"
       ]
     }
   }
