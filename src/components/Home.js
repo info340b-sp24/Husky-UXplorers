@@ -59,7 +59,7 @@ function FeaturedSection() {
         <h2 className="mt-5">Projects. <b>Open-sourced.</b></h2>
         <p>
           Husky UXplorers is your map to starting your UX career. Gain inspiration for your
-          portfolio or your next project by browsing our selection of community projects.
+          portfolio or your next project by browsing our selection of community-made projects from students here at the  University of Washington.
           Want to share your successes? Upload your project to inspire the next generation
           of designers.
         </p>

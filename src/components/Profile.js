@@ -19,7 +19,7 @@ function MainProfile(props) {
       <header>
         <h1>My Profile</h1>
       </header>
-
+      
       <ProfileInfo />
 
       <article>
