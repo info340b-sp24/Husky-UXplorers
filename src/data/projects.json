@@ -127,5 +127,77 @@
         "Figma"
       ]
     }
+  },
+  {
+    "authorData": {
+      "author": "Maya Patel",
+      "username": "pmaya",
+      "authorMajor": "HCDE",
+      "authorGrad": 2026,
+      "links": []
+    },
+    "metadata": {
+      "timestamp": 22,
+      "title": "Maya's Portfolio",
+      "type": "portfolio"
+    },
+    "information": {
+      "imgSrc": "port1.jpeg",
+      "description": "I created my portfolio in 2022"
+    },
+    "technicalDetails": {
+      "date": "December 2022",
+      "tools": [
+        "WebFlow"
+      ]
+    }
+  },
+  {
+    "authorData": {
+      "author": "Noah Martinez",
+      "username": "noahmartinez",
+      "authorMajor": "INFO",
+      "authorGrad": 2025,
+      "links": []
+    },
+    "metadata": {
+      "timestamp": 23,
+      "title": "Noah's Portfolio",
+      "type": "portfolio"
+    },
+    "information": {
+      "imgSrc": "port2.jpeg",
+      "description": ""
+    },
+    "technicalDetails": {
+      "date": "Jan 2023",
+      "tools": [
+        "HTML/CSS/JS"
+      ]
+    }
+  },
+  {
+    "authorData": {
+      "author": "Alec Santiago",
+      "username": "alecsantiago1",
+      "authorMajor": "INFO",
+      "authorGrad": 2024,
+      "links": []
+    },
+    "metadata": {
+      "timestamp": 24,
+      "title": "Alec's Portfolio",
+      "type": "portfolio"
+    },
+    "information": {
+      "imgSrc": "port3.jpeg",
+      "description": ""
+    },
+    "technicalDetails": {
+      "date": "Feb 2023",
+      "tools": [
+        "Squarespace"
+      ]
+    }
   }
 ]
