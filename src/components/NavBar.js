@@ -19,10 +19,11 @@ export default function NavBar() {
               <a className="nav-link" href="profile">My Profile</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-secondary" type="submit">Search</button>
+          <form className="d-flex" role="search">
+            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button className="btn btn-outline-secondary" type="submit">Search</button>
           </form>
+          <a type="button" className="btn purple-btn text-white mx-2" href="create-project">Upload Project</a>
         </div>
       </div>
     </nav>
