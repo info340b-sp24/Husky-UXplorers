@@ -49,6 +49,36 @@ function MainGuide (props) {
             <div className="my-5 pl-5">
               <h2 className="my-5">Learn about the <b className="purple">UX design Process</b></h2>
               <img src="img/guide/process.png" alt="UX process" className="img-fluid"/>
+
+              <div>
+                <div className="container">
+                  <h3>Empathize</h3>
+                  <p>An essential part of the design process is to <b className="purple">research</b> as it
+                  is the foundation of understanding your users and their needs, behavior, and pain points. 
+                  To gain insights about our users, we must learn about or observe their experiences.
+                  This can be achieved through various quanlitative and quantitative research including 
+                  user interviews, surveys, A/B tests, competitive analysis, etc. The objective is to learn
+                  what works in existing solutions and what users desire/need from a new solution (your product!).
+                  </p>
+                </div>
+                <div className="container">
+                  <h3>Define</h3>
+                  <p>
+                    Now that we have gain valuable findings about our users, we can consolidate our analysis into 
+                    a powerful problem statement that encapsulates the primary problem you are designing a 
+                    solution for. A basic yet powerful way to craft a problem statement is using a 
+                    <b className="purple"> "How might we?"</b> statement. This frames the problem as an opportunity 
+                    rather than a limitation. A basic structure to this can be “How might we [action] for [user] in order to [outcome]?”
+                  </p>
+                </div>
+                <div className="container">
+                  <h3>Ideate</h3>
+                  <p>
+                    Now, we begin designing to bring our solution to life. No one expects their first idea to work
+                     and be perfect, so do not 
+                  </p>
+                </div>
+              </div>
             </div>
           </section>
 
