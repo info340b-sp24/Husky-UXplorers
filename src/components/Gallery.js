@@ -97,7 +97,6 @@ function ProjectCard(props) {
           <img className="arrow" src="img/icons/arrow.png" />
           <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
           <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
->>>>>>> b260c04662f4b58ade8f564156dbb49947237e3e
         </div>
       </div>
     </div>
