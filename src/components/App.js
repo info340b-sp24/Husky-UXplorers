@@ -9,7 +9,6 @@ import ProjectPage from './ProjectPage.js';
 import Profile from './Profile.js';
 import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
-import Sort from './Sort.js';
 
 // create GLOBAL VARIABLE WITH PROJECTs
 // projects = {name:Lily W, major:INFO, projType:project, img:"img1.jpg", description:"blah blah"}
