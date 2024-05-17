@@ -82,7 +82,7 @@
       "timestamp": 3,
       "title": "Park Quest",
       "type": "project",
-      "typeOfProj": "School"
+      "typeOfProj": "school"
     },
     "intro": {
       "imgSrc": "p3.jpg",
@@ -114,7 +114,7 @@
       "timestamp": 1,
       "title": "Shoeholic",
       "type": "project",
-      "typeOfProj": "For Fun"
+      "typeOfProj": "fun"
     },
     "intro": {
       "imgSrc": "p4.jpg",

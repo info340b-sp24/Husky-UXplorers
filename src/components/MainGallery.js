@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 
-let PROJECT_DATA;
-let PORTFOLIO_DATA;
+export default function MainGallery(props) {
+  const { projectData, portfolioData } = props;
 
-export default function MainGallery (props) {
-  PROJECT_DATA = props.projectData;
-  PORTFOLIO_DATA = props.portfolioData;
-
-  const[filters, setFilters] = useState({
+  const [filters, setFilters] = useState({
     type: {
       project: false,
       portfolio: false,
-    }, 
+    },
     purpose: {
       school: false,
-      client: false,
+      hackathon: false,
       fun: false,
     },
     tools: {
@@ -44,30 +40,30 @@ export default function MainGallery (props) {
     }));
   };
 
-  const filteredProjects = PROJECT_DATA.filter((project) => {
-    const filterType = Object.entries(filters.type).every(([key, value]) => !value || project.type?.includes(key));
-    const filterPurpose = Object.entries(filters.purpose).every(([key, value]) => !value || project.purpose?.includes(key));
-    const filterTools = Object.entries(filters.tools).every(([key, value]) => !value || project.tools?.includes(key));
-    const filterMajor = !filters.major || project.major?.includes(filters.major);
+  const filteredProjects = projectData.filter((project) => {
+    const filterType = !filters.type.project || project.metadata.type === 'project';
+    const filterPurpose = !filters.purpose.school || project.metadata.typeOfProj === 'school';
+    const filterTools = Object.keys(filters.tools).every((key) => !filters.tools[key] || (project.technicalDetails.tools && project.technicalDetails.tools.includes(key)));
+    const filterMajor = !filters.major || project.authorData.authorMajor === filters.major;
     return filterType && filterPurpose && filterTools && filterMajor;
   });
 
   return (
     <div>
-      <main className = "container-fluid">
+      <main className="container-fluid">
         <GalleryHeader />
-        <GalleryContent 
+        <GalleryContent
           filters={filters}
           onFilterChange={handleFilterChange}
           onMajorChange={handleMajorChange}
           projects={filteredProjects}
-          />
+        />
       </main>
     </div>
-  )
+  );
 }
 
-function GalleryHeader (props) {
+function GalleryHeader() {
   return (
     <header className="gallery">
       <h1>Gallery</h1>
@@ -78,18 +74,17 @@ function GalleryHeader (props) {
 function GalleryContent({ filters, onFilterChange, onMajorChange, projects }) {
   return (
     <div className="container-fluid">
-      <GalleryFilter filters={filters} onFilterChange={onFilterChange} onMajorChange={onMajorChange}/>
-      <GalleryProjects projects={projects}/>
-      {/* <GalleryPortfolios /> */}
+      <GalleryFilter filters={filters} onFilterChange={onFilterChange} onMajorChange={onMajorChange} />
+      <GalleryProjects projects={projects} />
     </div>
   );
 }
 
-function GalleryProjects(props) {
+function GalleryProjects({ projects }) {
   return (
     <section className="projects container">
       <h2 className="mt-5">Projects</h2>
-      <ProjectCardRow data={PROJECT_DATA} />
+      <ProjectCardRow data={projects} />
     </section>
   );
 }
@@ -124,8 +119,8 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
           </div>
           
           <div>
-            <input id="clientCheckbox" type="checkbox" className="form-check-input" checked={filters.purpose.client} onChange={() => onFilterChange('purpose', 'client')}/>
-            <label htmlFor="clientCheckbox" className="form-check-label"> Client</label>
+            <input id="clientCheckbox" type="checkbox" className="form-check-input" checked={filters.purpose.hackathon} onChange={() => onFilterChange('purpose', 'hackathon')}/>
+            <label htmlFor="clientCheckbox" className="form-check-label"> Hackathon</label>
           </div>
           
           <div>
@@ -167,25 +162,19 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
           <h6 className="card-subtitle">Major</h6>
 
           <div>
-            <input id="allRadioBtn" type="radio" className="form-check-input" checked={filters.major === 'all'}
-              onChange={() => onMajorChange('all')} />
-            <label htmlFor="allRadioBtn" className="form-check-label"> All</label>
-          </div>
-
-          <div>
-            <input id="designRadioBtn" type="radio" className="form-check-input" checked={filters.major === 'Design'}
-              onChange={() => onMajorChange('Design')} />
+            <input id="designRadioBtn" type="radio" className="form-check-input" checked={filters.authorMajor === 'Design'}
+              onChange={() => onMajorChange('IxD')} />
             <label htmlFor="designRadioBtn" className="form-check-label"> Design</label>
           </div>
 
           <div>
-            <input id="hcdeRadioBtn" type="radio" className="form-check-input" checked={filters.major === 'HCDE'}
+            <input id="hcdeRadioBtn" type="radio" className="form-check-input" checked={filters.authorMajor === 'HCDE'}
               onChange={() => onMajorChange('HCDE')}/>
             <label htmlFor="hcdeRadioBtn" className="form-check-label"> HCDE</label>
           </div>
 
           <div>
-            <input id="informaticsRadioBtn" type="radio" className="form-check-input" checked={filters.major === 'INFO'}
+            <input id="informaticsRadioBtn" type="radio" className="form-check-input" checked={filters.authorMajor === 'INFO'}
               onChange={() => onMajorChange('INFO')}/>
             <label htmlFor="informaticsRadioBtn" className="form-check-label"> Informatics</label>
           </div>
@@ -196,27 +185,23 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
   )
 }
 
-function ProjectCardRow(props) {
-  let data = props.data;
-  const row = data.map((currData) => {
-    let {metadata, authorData} = currData;
-    return (
-      <ProjectCard
-        data={currData}
-        key={authorData.author + metadata.title}
-      />
-    );
-  });
+function ProjectCardRow({ data }) {
+  const row = data.map((currData) => (
+    <ProjectCard
+      data={currData}
+      key={currData.id} 
+    />
+  ));
 
   return (
     <div className="row row-cols-1 row-cols-md-4">
       {row}
     </div>
-  )
+  );
 }
 
-function ProjectCard(props) {
-  let {metadata, authorData, intro} = props.data;
+function ProjectCard({ data }) {
+  const { metadata, authorData, intro } = data;
 
   return (
     <div className="col">
@@ -234,6 +219,7 @@ function ProjectCard(props) {
     </div>
   );
 }
+
 
 // function GalleryPortfolios(props) {
 //   console.log(PORTFOLIO_DATA);
