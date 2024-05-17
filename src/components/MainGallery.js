@@ -140,16 +140,6 @@ function GalleryFilter(props) {
   )
 }
 
-// function GalleryPortfolios(props) {
-//   console.log(PORTFOLIO_DATA);
-//   return (
-//     <section className="projects container">
-//       <h2 className="mt-5">Portfolios</h2>
-//       <PortfolioCardRow data={PORTFOLIO_DATA} />
-//     </section>
-//   )
-// }
-
 function ProjectCardRow(props) {
   let data = props.data;
   const row = data.map((currData) => {
@@ -188,6 +178,16 @@ function ProjectCard(props) {
     </div>
   );
 }
+
+// function GalleryPortfolios(props) {
+//   console.log(PORTFOLIO_DATA);
+//   return (
+//     <section className="projects container">
+//       <h2 className="mt-5">Portfolios</h2>
+//       <PortfolioCardRow data={PORTFOLIO_DATA} />
+//     </section>
+//   )
+// }
 
 // function GalleryPortfolios(props) {
 //   return (
