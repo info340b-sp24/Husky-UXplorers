@@ -96,8 +96,8 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
         <h5 className="card-title">Filter</h5>
       </div>
 
-      <div className="card-body">
-        <div className="my-3">
+      <div className="card-body  d-flex flex-wrap">
+        <div className="my-3 me-3">
           <h6 className="card-subtitle">Type</h6>
           <div>
             <input id="projectCheckbox" type="checkbox" className="form-check-input" checked={filters.type.project} onChange={() => onFilterChange('type', 'project')}/>
@@ -110,7 +110,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
           </div>
         </div>
         
-        <div className="my-3">
+        <div className="my-3 mb-3">
           <h6 className="card-subtitle">Purpose</h6>
 
           <div>
@@ -129,7 +129,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
           </div>
         </div>
 
-        <div className="my-3">
+        <div className="my-3 me-3">
           <h6 className="card-subtitle">Tools</h6>
 
           <div>
@@ -158,7 +158,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
           </div>
         </div>
 
-        <div className="my-3">
+        <div className="my-3 mb-3">
           <h6 className="card-subtitle">Major</h6>
 
           <div>
