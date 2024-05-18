@@ -20,7 +20,7 @@ export default function MainGallery(props) {
       sketch: false,
       webflow: false,
     },
-    major: '',
+    major: 'AllMajors',
   });
 
   const handleFilterChange = (category, key) => {
@@ -49,13 +49,14 @@ export default function MainGallery(props) {
       (!filters.purpose.hackathon || project.metadata.typeOfProj === 'hackathon') &&
       (!filters.purpose.fun || project.metadata.typeOfProj === 'fun'));
     const filterTools = Object.keys(filters.tools).every((key) => !filters.tools[key] || (project.technicalDetails.tools && project.technicalDetails.tools.includes(key)));
-    const filterMajor = !filters.major || project.authorData.authorMajor === filters.major;
+    // const filterMajor = !filters.major || project.authorData.authorMajor === filters.major;
+    const filterMajor = filters.major === 'AllMajors' || project.authorData.authorMajor === filters.major;
     return filterType && filterPurpose && filterTools && filterMajor;
   });
 
   return (
     <div>
-      <main className="container-fluid">
+      <main className="container-fluid mx-5 mt-3">
         <GalleryHeader projectAmount={filteredProjects.length}/>
         <hr className="mb-4"/>
         <GalleryContent
@@ -168,6 +169,12 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
 
         <div className="my-3 mb-3">
           <h6 className="card-subtitle">Major</h6>
+
+          <div>
+            <input id="allRadioBtn" type="radio" className="form-check-input" checked={filters.authorMajor === 'AllMajors'}
+              onChange={() => onMajorChange('AllMajors')}/>
+            <label htmlFor="allRadioBtn" className="form-check-label"> All</label>
+          </div>
 
           <div>
             <input id="designRadioBtn" type="radio" className="form-check-input" checked={filters.authorMajor === 'Design'}

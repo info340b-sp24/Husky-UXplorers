@@ -15,7 +15,7 @@ export default function Profile(props) {
 
 function MainProfile(props) {
   return (
-    <main className="container-fluid">
+    <main className="container-fluid mx-5">
       <header>
         <h1>My Profile</h1>
       </header>
