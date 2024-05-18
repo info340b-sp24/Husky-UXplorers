@@ -15,12 +15,13 @@ export default function Profile(props) {
 
 function MainProfile(props) {
   return (
-    <main className="container-fluid mx-5">
-      <header>
+    <main className="container-fluid mx-5 mt-3">
+      {/* <header className="pt-3">
         <h1>My Profile</h1>
-      </header>
-      
+      </header> */}
+
       <ProfileInfo />
+      <hr />
 
       <article>
         <ProfileProjects />
@@ -53,7 +54,7 @@ function ProfileProjects(props) {
 function ProfileBookmarks(props) {
   return (
     <section>
-      <h2>Bookmarks</h2>
+      <h2>Bookmarked Projects</h2>
       <div className="row row-cols-1 row-cols-md-3">
         <div className="col">
           <div className="card">

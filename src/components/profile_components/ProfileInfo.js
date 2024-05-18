@@ -9,20 +9,20 @@ let profileData = {
 
 export default function ProfileInfo(props) {
   return (
-    <article className="profile">
-      <div className="img-left-container align-center">
+    <div className="profile">
+      <div className="img-left-container">
         <section>
           <img className="profile-pic rounded-circle mx-3" style={Object.assign({"width" : "150px"}, {"height" : "150px"})}src={"img/profiles/"
             + profileData.profilePic} alt={profileData.profilePicAlt}
           />
         </section>
         <section className="mt-1" style={{"textAlign" : "left"}}>
-          <h2>{profileData.name}</h2>
+          <h1>{profileData.name}</h1>
           <p>{"@" + profileData.username}</p>
           <p className="my-4 px-3 py-1 bg-purple rounded-5 text-light">{profileData.major}, {profileData.gradYear}</p>
         </section>
       </div>
-    </article>
+    </div>
   );
 
   // ADD EVENT LISTENER
