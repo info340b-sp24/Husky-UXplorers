@@ -136,6 +136,10 @@ h3.card-title {
 .gallery {
   display: flex;
   justify-content: space-between;
+} 
+
+header.gallery {
+  display: flex;
 }
 
 .example-intro {

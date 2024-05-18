@@ -51,7 +51,7 @@ export default function MainGallery(props) {
   return (
     <div>
       <main className="container-fluid">
-        <GalleryHeader />
+        <GalleryHeader projectAmount={filteredProjects.length}/>
         <hr className="mb-4"/>
         <GalleryContent
           filters={filters}
@@ -64,10 +64,13 @@ export default function MainGallery(props) {
   );
 }
 
-function GalleryHeader() {
+function GalleryHeader(props) {
+  let projectAmount = props.projectAmount
+
   return (
-    <header className="gallery pt-3">
+    <header className="d-flex align-items-baseline pt-3">
       <h1>Gallery</h1>
+      <p className="small-text m-3">Showing {projectAmount} items</p>
     </header>
   );
 }
