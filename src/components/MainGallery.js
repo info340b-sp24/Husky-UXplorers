@@ -52,6 +52,7 @@ export default function MainGallery(props) {
     <div>
       <main className="container-fluid">
         <GalleryHeader />
+        <hr className="mb-4"/>
         <GalleryContent
           filters={filters}
           onFilterChange={handleFilterChange}
@@ -65,7 +66,7 @@ export default function MainGallery(props) {
 
 function GalleryHeader() {
   return (
-    <header className="gallery">
+    <header className="gallery pt-3">
       <h1>Gallery</h1>
     </header>
   );
@@ -73,7 +74,7 @@ function GalleryHeader() {
 
 function GalleryContent({ filters, onFilterChange, onMajorChange, projects }) {
   return (
-    <div className="container-fluid">
+    <div className="d-flex flex-row mb-3 align-items-start">
       <GalleryFilter filters={filters} onFilterChange={onFilterChange} onMajorChange={onMajorChange} />
       <GalleryProjects projects={projects} />
     </div>
@@ -82,10 +83,9 @@ function GalleryContent({ filters, onFilterChange, onMajorChange, projects }) {
 
 function GalleryProjects({ projects }) {
   return (
-    <section className="projects container">
-      <h2 className="mt-5">Projects</h2>
+    <div className="projects container">
       <ProjectCardRow data={projects} />
-    </section>
+    </div>
   );
 }
 
@@ -97,7 +97,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
       </div>
 
       <div className="card-body  d-flex flex-wrap">
-        <div className="my-3 me-3">
+        <div className="my-2">
           <h6 className="card-subtitle">Type</h6>
           <div>
             <input id="projectCheckbox" type="checkbox" className="form-check-input" checked={filters.type.project} onChange={() => onFilterChange('type', 'project')}/>
@@ -129,7 +129,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
           </div>
         </div>
 
-        <div className="my-3 me-3">
+        <div className="my-3 mb-3">
           <h6 className="card-subtitle">Tools</h6>
 
           <div>
@@ -194,7 +194,7 @@ function ProjectCardRow({ data }) {
   ));
 
   return (
-    <div className="row row-cols-1 row-cols-md-4">
+    <div className="row row-cols-1 row-cols-md-3">
       {row}
     </div>
   );
@@ -205,7 +205,7 @@ function ProjectCard({ data }) {
 
   return (
     <div className="col">
-      <div className="card block">
+      <div className="card block mb-3">
         <a href="project_example.html">
           <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
         </a>
