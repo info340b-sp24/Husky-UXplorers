@@ -41,8 +41,13 @@ export default function MainGallery(props) {
   };
 
   const filteredProjects = projectData.filter((project) => {
-    const filterType = !filters.type.project || project.metadata.type === 'project';
-    const filterPurpose = !filters.purpose.school || project.metadata.typeOfProj === 'school';
+    const filterType =
+      ((!filters.type.project || project.metadata.type === 'project') &&
+      (!filters.type.portfolio || project.metadata.type === 'portfolio'));
+    const filterPurpose = 
+      ((!filters.purpose.school || project.metadata.typeOfProj === 'school') &&
+      (!filters.purpose.hackathon || project.metadata.typeOfProj === 'hackathon') &&
+      (!filters.purpose.fun || project.metadata.typeOfProj === 'fun'));
     const filterTools = Object.keys(filters.tools).every((key) => !filters.tools[key] || (project.technicalDetails.tools && project.technicalDetails.tools.includes(key)));
     const filterMajor = !filters.major || project.authorData.authorMajor === filters.major;
     return filterType && filterPurpose && filterTools && filterMajor;
