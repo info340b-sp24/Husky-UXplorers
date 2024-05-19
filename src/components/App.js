@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import PROJECT_DATA from '../data/projects.json';
 import PORTFOLIO_DATA from '../data/portfolios.json';
 import Home from './Home.js';
@@ -9,13 +9,6 @@ import ProjectPage from './ProjectPage.js';
 import Profile from './Profile.js';
 import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
-
-// create GLOBAL VARIABLE WITH PROJECTs
-// projects = {name:Lily W, major:INFO, projType:project, img:"img1.jpg", description:"blah blah"}
-// can be used for project cards and also individual project pages
-// something like this
-
-
 
 export default function App(props) {
   return (
