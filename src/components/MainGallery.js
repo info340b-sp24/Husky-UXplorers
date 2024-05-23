@@ -1,4 +1,5 @@
-import React, { useState, Link } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 export default function MainGallery(props) {
   const { projectData, portfolioData } = props;
@@ -225,14 +226,10 @@ function ProjectCard({ data }) {
       <div className="card block mb-3">
         <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
         <div className="card-body">
-          
-          <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
-          {/* <img className="arrow" src="img/icons/arrow.png" /> */}
-
-          {/* <Link to={"/gallery/" + metadata.title} className='btn btn-primary'>Hi</Link> */}
-          
+          <Link to={"/gallery/" + metadata.title} style={{ textDecoration: 'none', color: 'inherit'}}>
+            <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
+          </Link>
           <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-
           <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
         </div>
       </div>
