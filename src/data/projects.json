@@ -74,7 +74,7 @@
     "authorData": {
       "author": "Jackson Thompson",
       "username": "jackiethomp",
-      "authorMajor": "IxD",
+      "authorMajor": "Design",
       "authorGrad": 2025,
       "links": []
     },
@@ -98,7 +98,8 @@
     "technicalDetails": {
       "date": "September 2021",
       "tools": [
-        "Figma"
+        "Figma",
+        "Webflow"
       ]
     }
   },
@@ -130,7 +131,8 @@
     "technicalDetails": {
       "date": "October 2022",
       "tools": [
-        "Figma"
+        "Figma",
+        "Sketch"
       ]
     }
   }

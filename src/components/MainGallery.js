@@ -14,11 +14,11 @@ export default function MainGallery(props) {
       fun: false,
     },
     tools: {
-      adobeXD: false,
-      figma: false,
-      framer: false,
-      sketch: false,
-      webflow: false,
+      AdobeXD: false,
+      Figma: false,
+      Framer: false,
+      Sketch: false,
+      Webflow: false,
     },
     major: 'AllMajors',
   });
@@ -31,8 +31,6 @@ export default function MainGallery(props) {
         [key]: !prev[category][key],
       },
     }));
-
-    console.log(filters);
   };
 
   const handleMajorChange = (value) => {
@@ -180,7 +178,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
 
           <div>
             <input id="designRadioBtn" type="radio" className="form-check-input" checked={filters.authorMajor === 'Design'}
-              onChange={() => onMajorChange('IxD')} />
+              onChange={() => onMajorChange('Design')} />
             <label htmlFor="designRadioBtn" className="form-check-label"> Design</label>
           </div>
 
