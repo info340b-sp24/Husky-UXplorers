@@ -9,6 +9,7 @@ import ProjectPage from './ProjectPage.js';
 import Profile from './Profile.js';
 import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
+import PageNotFound from './PageNotFound.js';
 
 export default function App(props) {
   return (
@@ -22,6 +23,7 @@ export default function App(props) {
       <Route path = "profile" element = {<Profile />} />
       <Route path = "guide" element = {<Guide />} />
       <Route path = "create-project" element = {<CreateProject/>} />
+      <Route path = "*" element = {<PageNotFound />} />
     </Routes>
   );
 }
