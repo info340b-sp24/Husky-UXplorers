@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Link } from 'react';
 
 export default function MainGallery(props) {
   const { projectData, portfolioData } = props;
@@ -223,13 +223,16 @@ function ProjectCard({ data }) {
   return (
     <div className="col">
       <div className="card block mb-3">
-        <a href="project_example.html">
-          <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
-        </a>
+        <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
         <div className="card-body">
-          <h3 className="card-title">{metadata.title}</h3>
-          <img className="arrow" src="img/icons/arrow.png" />
+          
+          <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
+          {/* <img className="arrow" src="img/icons/arrow.png" /> */}
+
+          {/* <Link to={"/gallery/" + metadata.title} className='btn btn-primary'>Hi</Link> */}
+          
           <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
+
           <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
         </div>
       </div>
