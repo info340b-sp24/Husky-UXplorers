@@ -31,6 +31,8 @@ export default function MainGallery(props) {
         [key]: !prev[category][key],
       },
     }));
+
+    console.log(filters);
   };
 
   const handleMajorChange = (value) => {
@@ -44,7 +46,7 @@ export default function MainGallery(props) {
     const filterType =
       ((!filters.type.project || project.metadata.type === 'project') &&
       (!filters.type.portfolio || project.metadata.type === 'portfolio'));
-    const filterPurpose = 
+    const filterPurpose =
       ((!filters.purpose.school || project.metadata.typeOfProj === 'school') &&
       (!filters.purpose.hackathon || project.metadata.typeOfProj === 'hackathon') &&
       (!filters.purpose.fun || project.metadata.typeOfProj === 'fun'));
@@ -112,13 +114,13 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
             <input id="projectCheckbox" type="checkbox" className="form-check-input" checked={filters.type.project} onChange={() => onFilterChange('type', 'project')}/>
             <label htmlFor="projectCheckbox" className="form-check-label"> Project</label>
           </div>
-          
+
           <div>
             <input id="portfolioCheckbox" type="checkbox" className="form-check-input" checked={filters.type.portfolio} onChange={() => onFilterChange('type', 'portfolio')}/>
             <label htmlFor="portfolioCheckbox" className="form-check-label"> Portfolio</label>
           </div>
         </div>
-        
+
         <div className="my-3 mb-3">
           <h6 className="card-subtitle">Purpose</h6>
 
@@ -126,12 +128,12 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
             <input id="schoolCheckbox" type="checkbox" className="form-check-input" checked={filters.purpose.school} onChange={() => onFilterChange('purpose', 'school')}/>
             <label htmlFor="schoolCheckbox" className="form-check-label"> School</label>
           </div>
-          
+
           <div>
             <input id="clientCheckbox" type="checkbox" className="form-check-input" checked={filters.purpose.hackathon} onChange={() => onFilterChange('purpose', 'hackathon')}/>
             <label htmlFor="clientCheckbox" className="form-check-label"> Hackathon</label>
           </div>
-          
+
           <div>
             <input id="funCheckbox" type="checkbox" className="form-check-input" checked={filters.purpose.fun} onChange={() => onFilterChange('purpose', 'fun')}/>
             <label htmlFor="funCheckbox" className="form-check-label"> Fun</label>
@@ -145,17 +147,17 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
             <input id="adobeCheckbox" type="checkbox" className="form-check-input" checked={filters.tools.adobeXD} onChange={() => onFilterChange('tools', 'AdobeXD')}/>
             <label htmlFor="adobeCheckbox" className="form-check-label"> Adobe XD</label>
           </div>
-          
+
           <div>
             <input id="figmaCheckbox" type="checkbox" className="form-check-input" checked={filters.tools.figma} onChange={() => onFilterChange('tools', 'Figma')}/>
             <label htmlFor="figmaCheckbox" className="form-check-label"> Figma</label>
           </div>
-          
+
           <div>
             <input id="framerCheckbox" type="checkbox" className="form-check-input" checked={filters.tools.framer} onChange={() => onFilterChange('tools', 'Framer')}/>
             <label htmlFor="framerCheckbox" className="form-check-label"> Framer</label>
           </div>
-          
+
           <div>
             <input id="sketchCheckbox" type="checkbox" className="form-check-input" checked={filters.tools.sketch} onChange={() => onFilterChange('tools', 'Sketch')}/>
             <label htmlFor="sketchCheckbox" className="form-check-label"> Sketch</label>
@@ -193,7 +195,7 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
               onChange={() => onMajorChange('INFO')}/>
             <label htmlFor="informaticsRadioBtn" className="form-check-label"> Informatics</label>
           </div>
-          
+
         </div>
       </div>
     </div>
@@ -201,12 +203,14 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
 }
 
 function ProjectCardRow({ data }) {
-  const row = data.map((currData) => (
-    <ProjectCard
-      data={currData}
-      key={currData.id} 
-    />
-  ));
+  const row = data.map((currData) => {
+    return (
+      <ProjectCard
+        data={currData}
+        key={currData.metadata.title + currData.authorData.author}
+      />
+    );
+  });
 
   return (
     <div className="row row-cols-1 row-cols-md-3">
@@ -234,70 +238,3 @@ function ProjectCard({ data }) {
     </div>
   );
 }
-
-
-// function GalleryPortfolios(props) {
-//   console.log(PORTFOLIO_DATA);
-//   return (
-//     <section className="projects container">
-//       <h2 className="mt-5">Portfolios</h2>
-//       <PortfolioCardRow data={PORTFOLIO_DATA} />
-//     </section>
-//   )
-// }
-
-// function GalleryPortfolios(props) {
-//   return (
-//     <section className="portfolios container">
-//       <h2 className="mt-5">Portfolios</h2>
-//       <div className="row row-cols-1 row-cols-md-4">
-//         <div className="col">
-//           <div className="card block">
-//             <a href="portfolio_example.html">
-//               <img src="img/portfolios/port1.jpeg" className="card-img-top" alt="Maya Patel's Portfolio" />
-//             </a>
-//             <div className="card-body">
-//               <h3 className="card-title">Maya Patel </h3>
-//               <img className="arrow" src="img/icons/arrow.png" />
-//               <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-//               <p className="card-text">HCDE '26</p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="col">
-//           <div className="card block">
-//             <img src="img/portfolios/port2.jpeg" className="card-img-top" alt="Noah Martinez's Portfolio" />
-//             <div className="card-body">
-//               <h3 className="card-title">Noah Martinez</h3>
-//               <img className="arrow" src="img/icons/arrow.png" />
-//               <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-//               <p className="card-text">Info '25</p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="col">
-//           <div className="card block">
-//             <img src="img/portfolios/port3.jpeg" className="card-img-top" alt="Alec Santiago's Portfolio" />
-//             <div className="card-body">
-//               <h3 className="card-title">Alec Santiago</h3>
-//               <img className="arrow" src="img/icons/arrow.png" />
-//               <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-//               <p className="card-text">Info '24</p>
-//             </div>
-//           </div>
-//         </div>
-//         <div className="col">
-//           <div className="card block">
-//             <img src="img/portfolios/port4.jpeg" className="card-img-top" alt="Ava Kim's Portfolio" />
-//             <div className="card-body">
-//               <h3 className="card-title">Ava Kim</h3>
-//               <img className="arrow" src="img/icons/arrow.png" />
-//               <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
-//               <p className="card-text">IxD '25</p>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
