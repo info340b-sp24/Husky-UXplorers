@@ -224,7 +224,9 @@ function ProjectCard({ data }) {
   return (
     <div className="col">
       <div className="card block mb-3">
-        <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
+        <Link to={"/gallery/" + metadata.title}>
+          <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
+        </Link>
         <div className="card-body">
           <Link to={"/gallery/" + metadata.title} style={{ textDecoration: 'none', color: 'inherit'}}>
             <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
