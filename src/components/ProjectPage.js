@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { useParams } from 'react-router-dom';
 import PROJECT_DATA from '../data/projects.json';
+import { Link } from 'react-router-dom';
 
 export default function ProjectPage(props) {
 
@@ -11,7 +12,7 @@ export default function ProjectPage(props) {
   return (
     <div className="m-5">
       <p>
-        In progress.
+        <Link to="/gallery" style={{color: 'inherit'}}>&lArr; Back</Link>
       </p>
       <div className="d-flex" style={{"gap" : "1rem"}}>
         <ProjectInfo data={project}/>
@@ -23,13 +24,14 @@ export default function ProjectPage(props) {
 
 function ProjectImage({ data }) {
   const { intro } = data;
+  const userImg = new Image();
+  userImg.src = "/img/projects/" + intro.imgSrc;  
+  console.log("width: " + userImg.width + " height: " + userImg.height);
+  let aspectRatio = userImg.height / userImg.width;
+  let newWidth = 36 * aspectRatio;
 
   return (
-    <img
-      src={"/img/projects/" + intro.imgSrc}
-      style={{"width" : "30rem"}}
-      alt={intro.imgAlt}
-    />
+    <img src={"/img/projects/" + intro.imgSrc} className="rounded" style={{"width" : {newWidth} + "rem" , "height" : "36rem"}}/>
   )
 }
 
