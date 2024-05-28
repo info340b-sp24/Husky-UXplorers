@@ -25,13 +25,17 @@ export default function ProjectPage(props) {
 function ProjectImage({ data }) {
   const { intro } = data;
   const userImg = new Image();
-  userImg.src = "/img/projects/" + intro.imgSrc;  
+  userImg.src = "/img/projects/" + intro.imgSrc;
   console.log("width: " + userImg.width + " height: " + userImg.height);
   let aspectRatio = userImg.height / userImg.width;
   let newWidth = 36 * aspectRatio;
 
   return (
-    <img src={"/img/projects/" + intro.imgSrc} className="rounded" style={{"width" : {newWidth} + "rem" , "height" : "36rem"}}/>
+    <img src={"/img/projects/" + intro.imgSrc}
+      className="rounded"
+      style={{"width" : {newWidth} + "rem" , "height" : "36rem"}}
+      alt={intro.imgAlt}
+    />
   )
 }
 
