@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 export default function MainGallery(props) {
-  const { projectData, portfolioData } = props;
+  const { projectData } = props;
 
   const [filters, setFilters] = useState({
     type: {
