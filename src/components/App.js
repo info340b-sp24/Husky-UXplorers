@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom'
 import PROJECT_DATA from '../data/projects.json';
-import PORTFOLIO_DATA from '../data/portfolios.json';
 import Home from './Home.js';
 import Gallery from './Gallery.js';
 import GalleryMain from './MainGallery.js';
@@ -18,7 +17,7 @@ export default function App(props) {
       <Route path = "index" element = {<Home />} />
       <Route path = "gallery" element = {<Gallery />} >
         <Route path = ":projectName" element = {<ProjectPage />} />
-        <Route index element = {<GalleryMain projectData={PROJECT_DATA} portfolioData={PORTFOLIO_DATA} />}/>
+        <Route index element = {<GalleryMain projectData={PROJECT_DATA} />}/>
       </Route>
       <Route path = "profile" element = {<Profile />} />
       <Route path = "guide" element = {<Guide />} />
