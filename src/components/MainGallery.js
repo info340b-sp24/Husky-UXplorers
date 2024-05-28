@@ -5,10 +5,6 @@ export default function MainGallery(props) {
   const { projectData, portfolioData } = props;
 
   const [filters, setFilters] = useState({
-    type: {
-      project: false,
-      portfolio: false,
-    },
     purpose: {
       school: false,
       hackathon: false,
@@ -42,9 +38,6 @@ export default function MainGallery(props) {
   };
 
   const filteredProjects = projectData.filter((project) => {
-    const filterType =
-      ((!filters.type.project || project.metadata.type === 'project') &&
-      (!filters.type.portfolio || project.metadata.type === 'portfolio'));
     const filterPurpose =
       ((!filters.purpose.school || project.metadata.typeOfProj === 'school') &&
       (!filters.purpose.hackathon || project.metadata.typeOfProj === 'hackathon') &&
@@ -52,7 +45,7 @@ export default function MainGallery(props) {
     const filterTools = Object.keys(filters.tools).every((key) => !filters.tools[key] || (project.technicalDetails.tools && project.technicalDetails.tools.includes(key)));
     // const filterMajor = !filters.major || project.authorData.authorMajor === filters.major;
     const filterMajor = filters.major === 'AllMajors' || project.authorData.authorMajor === filters.major;
-    return filterType && filterPurpose && filterTools && filterMajor;
+    return filterPurpose && filterTools && filterMajor;
   });
 
   return (
@@ -108,19 +101,6 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
 
       <div className="card-body  d-flex flex-wrap">
         <div className="my-2">
-          <h6 className="card-subtitle">Type</h6>
-          <div>
-            <input id="projectCheckbox" type="checkbox" className="form-check-input" checked={filters.type.project} onChange={() => onFilterChange('type', 'project')}/>
-            <label htmlFor="projectCheckbox" className="form-check-label"> Project</label>
-          </div>
-
-          <div>
-            <input id="portfolioCheckbox" type="checkbox" className="form-check-input" checked={filters.type.portfolio} onChange={() => onFilterChange('type', 'portfolio')}/>
-            <label htmlFor="portfolioCheckbox" className="form-check-label"> Portfolio</label>
-          </div>
-        </div>
-
-        <div className="my-3 mb-3">
           <h6 className="card-subtitle">Purpose</h6>
 
           <div>
