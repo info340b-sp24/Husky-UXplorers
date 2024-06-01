@@ -1,6 +1,9 @@
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 
+import NavBar from './NavBar';
+import Footer from './Footer';
+
 export default function SignIn (props) {
 
   const auth = getAuth();
@@ -24,12 +27,16 @@ export default function SignIn (props) {
 
   return(
     <div>
-      <h1>Continue to sign in or create account</h1>
-      <div className="container card-body">
-        <StyledFirebaseAuth firebaseAuth={auth} uiConfig={configObj} />
+      <NavBar />
+      <div className="m-auto my-5 text-center">
+        <h1 className="fs-2">Continue</h1>
+        <p>to Sign In or Create an account</p>
+        <div className="container card-body">
+          <StyledFirebaseAuth firebaseAuth={auth} uiConfig={configObj} />
+        </div>
       </div>
+      <Footer />
     </div>
-
   )
 
 }
