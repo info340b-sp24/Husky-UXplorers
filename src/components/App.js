@@ -12,6 +12,7 @@ import Profile from './Profile.js';
 import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
 import PageNotFound from './PageNotFound.js';
+import SignIn from './SignIn.js';
 
 export default function App() {
   const [projectData, setProjectData] = useState([]);
@@ -60,6 +61,7 @@ export default function App() {
       <Route path = "create-project" element =
         {<CreateProject uploadProject={uploadProject} />}
       />
+      <Route path = "sign-in" element = {<SignIn />} />
       <Route path = "*" element = {<PageNotFound />} />
     </Routes>
   );
