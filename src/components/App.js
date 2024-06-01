@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import { Routes, Route } from 'react-router-dom'
-import PROJECT_DATA from '../data/projects.json';
+/** Packages */
+import React, { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { getDatabase, ref, push as firebasePush, onValue} from 'firebase/database';
+
+/** Local components */
 import Home from './Home.js';
 import Gallery from './Gallery.js';
 import GalleryMain from './MainGallery.js';
@@ -11,11 +14,37 @@ import CreateProject from './CreateProject.js';
 import PageNotFound from './PageNotFound.js';
 
 export default function App() {
-  const [projectData, setProjectData] = useState(PROJECT_DATA);
+  const [projectData, setProjectData] = useState([]);
 
-  function uploadProject(newProject) {
-    let newProjectData = [...projectData, newProject];
-    setProjectData(newProjectData);
+  useEffect(() => {
+    const db = getDatabase();
+    const projectsRef = ref(db, "projects");
+
+    const unregisterFunction = onValue(projectsRef, (snapshot) => {
+      const projectsObj = snapshot.val();
+
+      const projectKeys = Object.keys(projectsObj);
+      const projectsArr = projectKeys.map((keyName) => {
+        const currProject = projectsObj[keyName];
+        currProject.key = keyName;
+        return projectsObj[keyName];
+      });
+
+      setProjectData(projectsArr);
+    });
+
+
+    function cleanup() {
+      unregisterFunction();
+    }
+
+    return cleanup;
+  }, []);
+
+  const uploadProject = (newProject) => {
+    const db = getDatabase();
+    const projectsRef = ref(db, "projects");
+    firebasePush(projectsRef, newProject);
   }
 
   return (
