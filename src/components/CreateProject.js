@@ -20,16 +20,48 @@ function MainCreateProject (props) {
   // saves each section of the form in a single object
   const [ newProject, setNewProject ] = useState();
   // individual sections of the form
-  const [ introForm, setIntroForm ] = useState();
-  const [ problemForm, setProblemForm] = useState();
-  const [ solutionForm, setSolutionForm ] = useState();
-  const [ toolsForm, setToolsForm ] = useState([]);
+  const [ introDetails, setIntroDetails ] = useState({});
+  const [ metadataDetails, setMetadataDetails ] = useState({});
+  const [ problemDetails, setProblemDetails] = useState({});
+  const [ solutionDetails, setSolutionDetails ] = useState({});
+  const [ technicalDetails, setTechnicalDetails ] = useState({});
+  // TO DO: create a callback function for each of these that
+  // ADDS/REPLACES key value pairs in the object
 
-  useEffect(() => {
+  // wrapper callbacks for state var setters,
+  // which are passed to form children Components
+  const addIntroDetails = (details) => {
+    // MAKE SPECIFIC TO FORM FOR INTRO
+    setIntroDetails();
+  }
 
-    setNewProject();
-  }, []);
+  const addMetadataDetails = (details) => {
+    // MAKE SPECIFIC TO FORM FOR INTRO
+    setMetadataDetails();
+  }
 
+  const addProblemDetails = (details) => {
+    // PASSED TO PROBLEMCREATE PROBEJCT
+    setProblemDetails();
+  }
+
+  const addSolutionDetails = (details) => {
+    // PASSED TO SOLUTION CREATE PROBEJCT
+    setSolutionDetails();
+  }
+
+  const addTechnicalDetails = (details) => {
+    // pASSED TO TECHNICAL CREATE PROBEJCT
+    setTechnicalDetails();
+  }
+
+  // we might not need to use effect
+  // useEffect(() => {
+
+  //   setNewProject();
+  // }, []);
+
+  // adds project to firebase database
   const handleSubmit = function () {
     uploadProject(newProject);
   }
