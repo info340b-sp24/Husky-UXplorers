@@ -120,6 +120,12 @@ function IntroCreateProject (props) {
 }
 
 function DescribeCreateProject (props) {
+  let description = props.description;
+
+  const handleChange = (event) => {
+
+  }
+
   return (
     <div>
       <section>
@@ -128,7 +134,10 @@ function DescribeCreateProject (props) {
           <textarea className="form-control"
             placeholder="Write a Description"
             id="project-problem"
-            style={{height: "100px"}}>
+            style={{height: "100px"}}
+            type="text"
+            onChange={handleChange}
+            value={description.problem}>
           </textarea>
           <label htmlFor="project-problem">Give a description of the problem</label>
         </div>

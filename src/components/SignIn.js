@@ -25,7 +25,7 @@ export default function SignIn (props) {
     credentialHelper: 'none'
   }
 
-  const signOut = props.signOutCallback;
+  const signOut = props.signoutCallback;
 
   if (props.currentUser.userId === null) {
     return (

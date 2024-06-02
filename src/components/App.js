@@ -20,6 +20,11 @@ import Footer from './Footer.js';
 export default function App() {
   const [projectData, setProjectData] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
+  const navigateTo = useNavigate();
+
+  const nullUser = {
+    userId : null
+  }
 
   // PROJECT DATA
   useEffect(() => {
@@ -54,24 +59,35 @@ export default function App() {
   }
 
   // USER AUTH
-  const auth = getAuth();
+  useEffect(() => {
+    const auth = getAuth();
 
-  onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser) {
-      firebaseUser.userId = firebaseUser.uid;
-      firebaseUser.username = firebaseUser.displayName;
-      firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
+    onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        firebaseUser.userId = firebaseUser.uid;
+        firebaseUser.username = firebaseUser.displayName;
+        firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
-      setCurrentUser(firebaseUser);
-      console.log("the current user is : " + currentUser + " " + currentUser.userId);
-      /** TO DO: Figure out how to navigate user to home screen on login */
-    } else {
-      setCurrentUser(null);
-      /** TO DO: Make a default user with null VALUES for userId, and so on. */
-    }
+        setCurrentUser(firebaseUser);
+        console.log("the current user is : " + currentUser + " " + currentUser.userId);
+        /** TO DO: Figure out how to navigate user to home screen on login */
+      } else {
+        setCurrentUser({ userId : null });
+        /** TO DO: Make a default user with null VALUES for userId, and so on. */
+      }
+    })
   }, []);
 
-  const handleSignout = (event) => {
+  const loginUser = (user) => {
+    console.log("logging in as", user.username);
+    setCurrentUser(user);
+
+    if (user.userId !== null) {
+      navigateTo("./index");
+    }
+  }
+
+  const signoutUser = (event) => {
     signOut(getAuth());
   }
 
@@ -91,7 +107,8 @@ export default function App() {
           {<CreateProject uploadProject={uploadProject} />}
         />
         <Route path = "sign-in" element = {
-          <SignIn currentUser={currentUser} signOutCallback={handleSignout}/>
+          <SignIn currentUser={currentUser} signoutCallback={signoutUser}
+          loginCallback={loginUser}/>
         } />
         <Route path = "*" element = {<PageNotFound />} />
       </Routes>
