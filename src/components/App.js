@@ -20,11 +20,7 @@ import NavBar from './NavBar.js';
 
 export default function App() {
   const [projectData, setProjectData] = useState([]);
-  const [currentUser, setCurrentUser] = useState({  });
-
-  const nullUser = {
-    userId : null
-  }
+  const [currentUser, setCurrentUser] = useState({});
 
   // PROJECT DATA
   useEffect(() => {
@@ -61,6 +57,9 @@ export default function App() {
   // USER AUTH
   useEffect(() => {
     const auth = getAuth();
+    const nullUser = {
+      userId : null
+    }
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -69,13 +68,11 @@ export default function App() {
         firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
         setCurrentUser(firebaseUser);
-        console.log("the current user is : " + currentUser + " " + currentUser.userId);
-        console.log(currentUser.username);
-        /** TO DO: Figure out how to navigate user to home screen on login */
       } else {
         setCurrentUser(nullUser);
       }
     })
+    console.log(currentUser.userId);
   }, []);
 
   const signoutUser = (event) => {
