@@ -6,9 +6,7 @@ import ProfileInfo from './profile_components/ProfileInfo'
 export default function Profile(props) {
   return (
     <div>
-      <NavBar />
       <MainProfile />
-      <Footer />
     </div>
   );
 }

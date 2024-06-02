@@ -6,9 +6,7 @@ import Footer from './Footer';
 export default function Gallery (props) {
   return (
     <div>
-      <NavBar />
       <Outlet/>
-      <Footer />
     </div>
   );
 }

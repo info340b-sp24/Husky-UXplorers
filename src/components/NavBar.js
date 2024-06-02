@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function NavBar() {
+export default function NavBar (props) {
+  console.log(props.currentUser);
+  let btn = "";
+  if (props.currentUser === null) {
+    btn = "Sign In";
+  } else {
+    btn = "Log out";
+  }
+
   const nav = (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -31,7 +39,7 @@ export default function NavBar() {
             <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
           </div>
           <div className="nav-item me-2">
-            <Link type="button" className="btn purple-btn text-white" to="../sign-in">Sign In</Link>
+            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">{btn}</Link>
           </div>
         </div>
       </div>

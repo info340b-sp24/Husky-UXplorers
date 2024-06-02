@@ -1,42 +1,49 @@
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
+import { Navigate } from 'react-router-dom';
 
 import NavBar from './NavBar';
 import Footer from './Footer';
 
 export default function SignIn (props) {
-
   const auth = getAuth();
 
   const configObj = {
     signInOptions: [
       {
         provider: EmailAuthProvider.PROVIDER_ID,
-        requireDisplayName: true,  // require username
+        requireDisplayName: true,
       },
       {
         provider: GoogleAuthProvider.PROVIDER_ID
       }
     ],
-    signInFlow: 'popup',  // opens the google auth as a pop up (doesnt redirect from page)
+    signInFlow: 'popup',
+    // callbacks: {
+    //   signInSuccessWithAuthResult: () => false
+    // },
     callbacks: {
-      signInSuccessWithAuthResult: () => false //don't do anything special on signin
+      signInSuccessWithAuthResult: () => false
     },
     credentialHelper: 'none'
   }
 
-  return(
-    <div>
-      <NavBar />
-      <div className="m-auto my-5 text-center">
-        <h1 className="fs-2">Continue</h1>
-        <p>to Sign In or Create an account</p>
-        <div className="container card-body">
-          <StyledFirebaseAuth firebaseAuth={auth} uiConfig={configObj} />
+  const signOut = props.signOutCallback;
+
+  if (props.currentUser.userId === null) {
+    return (
+      <div>
+        <div className="m-auto my-5 text-center">
+          <h1 className="fs-2">Continue</h1>
+          <p>to Sign In or Create an account</p>
+          <div className="container card-body">
+            <StyledFirebaseAuth firebaseAuth={auth} uiConfig={configObj} />
+          </div>
         </div>
       </div>
-      <Footer />
-    </div>
-  )
-
+    )
+  } else {
+    signOut();
+    return <Navigate to="/index" />
+  }
 }

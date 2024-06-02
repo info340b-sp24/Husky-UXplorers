@@ -5,9 +5,7 @@ import Footer from './Footer'
 export default function Home(props) {
   return (
     <div>
-      <NavBar />
       <MainHome />
-      <Footer />
     </div>
   );
 }
@@ -28,7 +26,7 @@ function Spotlight() {
         <div className="img-left-container">
 
           <div>
-            <div className="my-5"> 
+            <div className="my-5">
               <h1 className="display-text display-type">Husky <span className="purple">UX</span>plorers</h1>
               <h2 className="font-italic mb-5"> For <i>students</i>, by <i>students</i>.</h2>
             </div>

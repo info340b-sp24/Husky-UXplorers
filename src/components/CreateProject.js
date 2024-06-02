@@ -7,9 +7,7 @@ export default function CreateProject (props) {
 
   return (
     <div>
-      <NavBar />
       <MainCreateProject uploadProject={uploadProject}/>
-      <Footer />
     </div>
   );
 }
