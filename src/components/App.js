@@ -110,7 +110,7 @@ export default function App() {
 
 function ProtectedPage(props) {
   if(props.currentUser.userId === null) {
-    return <Navigate To="/SignIn" />
+    return <Navigate To="/sign-in" />
   } else {
     return <Outlet />
   }
