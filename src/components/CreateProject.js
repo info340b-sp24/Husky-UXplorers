@@ -13,41 +13,51 @@ export default function CreateProject (props) {
 function MainCreateProject (props) {
   const { uploadProject } = props;
 
+  const init = {
+    authorData : {
+      "author": "Jasmine Rivers",
+      "username": "jazzyr",
+      "authorMajor": "INFO",
+      "authorGrad": 2026,
+      "links": [
+        "linked.in/sjfj",
+        "jasminerivers.com"
+      ]
+    }
+  }
   // saves each section of the form in a single object
-  const [ newProject, setNewProject ] = useState();
-  // individual sections of the form
-  const [ intro, setIntro ] = useState({});
-  const [ metadata, setMetadata ] = useState({});
-  const [ description, setDescription ] = useState({});
-  const [ technical, setTechnical ] = useState({});
+  const [ newProject, setNewProject ] = useState(init);
+  console.log(newProject);
 
-  // TO DO: create a callback function for each of these that
-  // ADDS/REPLACES key value pairs in the object
+  // updates new Project's fields based on inputs
+  const handleChange = function (section, key, value) {
+    let copy = [...newProject];
 
-  // wrapper callbacks for state var setters,
-  // which are passed to form children Components
-  const addIntro = (details) => {
-    // MAKE SPECIFIC TO FORM FOR INTRO
-    setIntro();
-  }
+    /** TO BE FILLED IN */
+    if (section === "metadata") {
 
-  const addMetadata = (details) => {
-    // MAKE SPECIFIC TO FORM FOR INTRO
-    setMetadata();
-  }
+    } else if (section === "intro") {
 
-  const addDescription = (details) => {
-    setDescription();
-  }
+    } else if (section === "problem") {
 
-  const addTechnical = (details) => {
-    // pASSED TO TECHNICAL CREATE PROBEJCT
-    setTechnical();
+    } else if (section === "solution") {
+
+    } else if (section === "technicalDetails") {
+      if (key === "date") {
+
+      } else if (key === "tools") {
+        // push value into tools array
+      }
+    }
+
+    setNewProject(copy);
   }
 
   // adds project to firebase database
-  const handleSubmit = function () {
+  const handleSubmit = function (event) {
+    event.preventDefault();
     uploadProject(newProject);
+    setNewProject({});
   }
 
   return (
@@ -138,12 +148,6 @@ function TypeOfProject (props) {
 }
 
 function DescribeCreateProject (props) {
-  let description = props.description;
-
-  const handleChange = (event) => {
-
-  }
-
   return (
     <div>
       <section>
