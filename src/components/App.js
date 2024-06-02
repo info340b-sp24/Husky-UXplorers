@@ -20,6 +20,7 @@ import NavBar from './NavBar.js';
 
 export default function App() {
   const [projectData, setProjectData] = useState([]);
+<<<<<<< HEAD
   const [currentUser, setCurrentUser] = useState({  });
 
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ export default function App() {
   const nullUser = {
     userId : null
   }
+=======
+  const [currentUser, setCurrentUser] = useState({});
+>>>>>>> a211cba4e929dd633aa1bf497f52994a74d83b51
 
   // PROJECT DATA
   useEffect(() => {
@@ -63,6 +67,9 @@ export default function App() {
   // USER AUTH
   useEffect(() => {
     const auth = getAuth();
+    const nullUser = {
+      userId : null
+    }
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
@@ -71,15 +78,19 @@ export default function App() {
         firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
         setCurrentUser(firebaseUser);
+<<<<<<< HEAD
         console.log("the current user is : " + currentUser + " " + currentUser.userId);
         console.log(currentUser.username);
         /** TO DO: Figure out how to navigate user to home screen on login */
 
         navigate("/index");
+=======
+>>>>>>> a211cba4e929dd633aa1bf497f52994a74d83b51
       } else {
         setCurrentUser(nullUser);
       }
     })
+    console.log(currentUser.userId);
   }, []);
 
   const signoutUser = (event) => {
