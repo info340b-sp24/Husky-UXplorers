@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function NavBar() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/search?query=${searchQuery}`);
+  };
+
+
   const nav = (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -21,8 +35,8 @@ export default function NavBar() {
           </ul>
 
           <div className="nav-item">
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchQuery} onChange={handleInputChange}/>
               <button className="btn btn-outline-secondary" type="submit">Search</button>
             </form>
           </div>
