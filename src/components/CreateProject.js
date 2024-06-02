@@ -31,7 +31,7 @@ function MainCreateProject (props) {
 
   // updates new Project's fields based on inputs
   const handleChange = function (section, key, value) {
-    let copy = [...newProject];
+    let copy = [ ...newProject ];
 
     /** TO BE FILLED IN */
     if (section === "metadata") {
@@ -47,6 +47,7 @@ function MainCreateProject (props) {
 
       } else if (key === "tools") {
         // push value into tools array
+
       }
     }
 
@@ -64,7 +65,7 @@ function MainCreateProject (props) {
     <main className="container-fluid">
       <h1>New Project</h1>
       <p className="small-text">Enter in information to post a new project</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <IntroCreateProject />
         <DescribeCreateProject />
         <TechnicalCreateProject />
@@ -73,9 +74,8 @@ function MainCreateProject (props) {
           className="rounded px-4 py-3 bg-dark text-white"
           href="profile-finished.html"
           type="submit"
-          onSubmit={handleSubmit}
         >
-          Sumbit Project
+          Submit Project
         </button>
       </form>
     </main>
