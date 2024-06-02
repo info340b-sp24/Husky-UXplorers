@@ -1,6 +1,6 @@
 /** Packages */
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, Outlet } from 'react-router-dom';
 import { getDatabase, ref, push as firebasePush, onValue} from 'firebase/database';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
@@ -21,6 +21,8 @@ import NavBar from './NavBar.js';
 export default function App() {
   const [projectData, setProjectData] = useState([]);
   const [currentUser, setCurrentUser] = useState({  });
+
+  const navigate = useNavigate();
 
   const nullUser = {
     userId : null
@@ -72,6 +74,8 @@ export default function App() {
         console.log("the current user is : " + currentUser + " " + currentUser.userId);
         console.log(currentUser.username);
         /** TO DO: Figure out how to navigate user to home screen on login */
+
+        navigate("/index");
       } else {
         setCurrentUser(nullUser);
       }
@@ -84,7 +88,7 @@ export default function App() {
 
   return (
     <div>
-      <NavBar />
+      <NavBar currentUser={currentUser}/>
       <Routes>
         <Route path = "" element = {<Home />} />
         <Route path = "index" element = {<Home />} />

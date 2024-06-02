@@ -22,6 +22,12 @@ export default function NavBar (props) {
   //   }
   // }, [])
 
+  const currentUser = props.currentUser;
+
+  const handleSignOut = (event) => {
+    console.log("Signing out");
+  }
+
   const nav = (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -47,12 +53,18 @@ export default function NavBar (props) {
               <button className="btn btn-outline-secondary" type="submit">Search</button>
             </form>
           </div>
-          <div className="nav-item me-2">
-            <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
-          </div>
-          <div className="nav-item me-2">
-            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
-          </div>
+
+          {currentUser.userId &&
+            <div className="nav-item me-2">
+              <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
+            </div>
+          }
+          {!currentUser.userId &&
+            <div className="nav-item me-2">
+              <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
+            </div>
+          }
+          
         </div>
       </div>
     </nav>
