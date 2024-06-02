@@ -1,6 +1,6 @@
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const configObj = {
   signInOptions: [
@@ -24,8 +24,8 @@ const configObj = {
 
 export default function SignIn (props) {
   const currUser = props.currentUser;
-  const loginUser = props.loginCallback;
   const signOut = props.signoutCallback;
+  console.log(currUser);
 
   const auth = getAuth();
 
@@ -43,6 +43,6 @@ export default function SignIn (props) {
     )
   } else {  // user signed in
     signOut();
-    return <Navigate to="/index" />
+    return <Navigate to=".." />
   }
 }

@@ -19,7 +19,7 @@ import Footer from './Footer.js';
 
 export default function App() {
   const [projectData, setProjectData] = useState([]);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({  });
   const navigateTo = useNavigate();
 
   const nullUser = {
@@ -74,19 +74,9 @@ export default function App() {
         /** TO DO: Figure out how to navigate user to home screen on login */
       } else {
         setCurrentUser({ userId : null });
-        /** TO DO: Make a default user with null VALUES for userId, and so on. */
       }
     })
   }, []);
-
-  const loginUser = (user) => {
-    console.log("logging in as", user.username);
-    setCurrentUser(user);
-
-    if (user.userId !== null) {
-      navigateTo("./index");
-    }
-  }
 
   const signoutUser = (event) => {
     signOut(getAuth());
@@ -108,8 +98,7 @@ export default function App() {
           {<CreateProject uploadProject={uploadProject} />}
         />
         <Route path = "sign-in" element = {
-          <SignIn currentUser={currentUser} signoutCallback={signoutUser}
-          loginCallback={loginUser}/>
+          <SignIn currentUser={currentUser} signoutCallback={signoutUser} />
         } />
         <Route path = "*" element = {<PageNotFound />} />
       </Routes>

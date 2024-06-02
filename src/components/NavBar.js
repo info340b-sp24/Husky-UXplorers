@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavBar (props) {
-  const currUser = props.currentUser;
+  // ATTEMPTING TO CHANGE BUTTON TO REFLECT SIGN IN STATE
+  // DO NOT DELETE
+  // const currUser = props.currentUser;
+  // console.log(currUser.userId);
+  // const userId = currUser.userId;
 
-  let btn = "";
-  if (currUser === null || currUser.userId === null) {
-    btn = "Sign In";
-  } else {
-    btn = "Log out";
-  }
+  // const [signInOrOut, setSignInOrOut] = useState("");
+
+  // useEffect(() =>  {
+  //   console.log(userId);
+  //   if (userId === null) {
+  //     setSignInOrOut("Sign In");
+  //     console.log(signInOrOut)
+  //   } else {
+  //     console.log(userId);
+  //     setSignInOrOut("Log out");
+  //     console.log(signInOrOut);
+  //   }
+  // }, [])
 
   const nav = (
     <nav className="navbar navbar-expand-lg">
@@ -40,7 +51,7 @@ export default function NavBar (props) {
             <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
           </div>
           <div className="nav-item me-2">
-            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">{btn}</Link>
+            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
           </div>
         </div>
       </div>
