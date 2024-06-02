@@ -73,6 +73,11 @@ function MainCreateProject (props) {
 }
 
 function IntroCreateProject (props) {
+  const [typeSelected, setTypeSelected] = useState({});
+  const changeTypeSelected = (newType) => {
+    setTypeSelected(newType);
+  }
+
   return (
     <section>
       <h2>Project Introduction</h2>
@@ -81,24 +86,7 @@ function IntroCreateProject (props) {
         <label htmlFor="project-name">Project Name</label>
       </div>
 
-      <div>
-        <label htmlFor="project-type-option1" className="form-label mb-3">Type of Project: </label>
-        <div className="form-check form-check-inline mx-2">
-          <input className="form-check-input" type="radio"
-          id="project-type-option1" value="option1" name="project-type"/>
-          <label className="form-check-label" htmlFor="project-type-option1">For School</label>
-        </div>
-        <div className="form-check form-check-inline mx-2">
-          <input className="form-check-input" type="radio"
-          id="project-type-option2" value="option2" name="project-type"/>
-          <label className="form-check-label" htmlFor="project-type-option2">For a Client</label>
-        </div>
-        <div className="form-check form-check-inline mx-2">
-          <input className="form-check-input" type="radio"
-          id="project-type-option3" value="option3" name="project-type"/>
-          <label className="form-check-label" htmlFor="project-type-option3">For Fun</label>
-        </div>
-      </div>
+      <TypeOfProject typeSelected={typeSelected} changeTypeSelected={changeTypeSelected}/>
 
       <div className="form-floating mb-3">
         <textarea className="form-control"
@@ -114,6 +102,38 @@ function IntroCreateProject (props) {
         <input className="form-control" type="file" id="project-images" />
       </div>
     </section>
+  );
+}
+
+function TypeOfProject (props) {
+  const typeSelected = props.typeSelected;
+  const changeTypeSelected = props.changeTypeSelected;
+  const handleChange = (newType) => {
+    changeTypeSelected(newType);
+  }
+
+  return(
+    <div>
+      <label htmlFor="project-type-option1" className="form-label mb-3">Type of Project: </label>
+      <div className="form-check form-check-inline mx-2">
+        <input className="form-check-input" type="radio"
+        id="project-type-option1" value="For School" name="project-type"
+        checked={typeSelected === "For School"} onChange={() => { handleChange("For School") }}/>
+        <label className="form-check-label" htmlFor="project-type-option1">For School</label>
+      </div>
+      <div className="form-check form-check-inline mx-2">
+        <input className="form-check-input" type="radio"
+        id="project-type-option2" value="For a Client" name="project-type"
+        checked={typeSelected === "For a Client"} onChange={() => { handleChange("For a Client") }}/>
+        <label className="form-check-label" htmlFor="project-type-option2">For a Client</label>
+      </div>
+      <div className="form-check form-check-inline mx-2">
+        <input className="form-check-input" type="radio"
+        id="project-type-option3" value="For Fun" name="project-type"
+        checked={typeSelected === "For Fun"} onChange={() => { handleChange("For Fun") }}/>
+        <label className="form-check-label" htmlFor="project-type-option3">For Fun</label>
+      </div>
+    </div>
   );
 }
 
@@ -133,9 +153,7 @@ function DescribeCreateProject (props) {
             placeholder="Write a Description"
             id="project-problem"
             style={{height: "100px"}}
-            type="text"
-            onChange={handleChange}
-            value={description.problem}>
+            type="text">
           </textarea>
           <label htmlFor="project-problem">Give a description of the problem</label>
         </div>

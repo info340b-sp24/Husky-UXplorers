@@ -1,6 +1,6 @@
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const configObj = {
   signInOptions: [
