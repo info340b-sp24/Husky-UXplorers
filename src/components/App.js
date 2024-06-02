@@ -1,6 +1,6 @@
 /** Packages */
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { getDatabase, ref, push as firebasePush, onValue} from 'firebase/database';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
@@ -106,4 +106,12 @@ export default function App() {
       <Footer />
     </div>
   );
+}
+
+function ProtectedPage(props) {
+  if(props.currentUser.userId === null) {
+    return <Navigate To="/SignIn" />
+  } else {
+    return <Outlet />
+  }
 }
