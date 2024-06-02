@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from './NavBar';
 
 export default function PageNotFound(props) {
   return (
     <div>
-      <NavBar />
       <main className="container-fluid">
         <header>
           <h1>Are you lost?</h1>

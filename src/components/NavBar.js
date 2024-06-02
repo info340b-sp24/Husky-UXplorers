@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-export default function NavBar() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const navigate = useNavigate();
+export default function NavBar (props) {
+  // ATTEMPTING TO CHANGE BUTTON TO REFLECT SIGN IN STATE
+  // DO NOT DELETE
+  // const currUser = props.currentUser;
+  // console.log(currUser.userId);
+  // const userId = currUser.userId;
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  // const [signInOrOut, setSignInOrOut] = useState("");
 
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    navigate(`/search?query=${searchQuery}`);
-  };
-
+  // useEffect(() =>  {
+  //   console.log(userId);
+  //   if (userId === null) {
+  //     setSignInOrOut("Sign In");
+  //     console.log(signInOrOut)
+  //   } else {
+  //     console.log(userId);
+  //     setSignInOrOut("Log out");
+  //     console.log(signInOrOut);
+  //   }
+  // }, [])
 
   const nav = (
     <nav className="navbar navbar-expand-lg">
@@ -24,24 +31,27 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="../index">Home</a>
+              <Link className="nav-link active" aria-current="page" to="../index">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="../gallery">Gallery</a>
+              <Link className="nav-link" to="../gallery">Gallery</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="../profile">My Profile</a>
+              <Link className="nav-link" to="../profile">My Profile</Link>
             </li>
           </ul>
 
           <div className="nav-item">
-            <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchQuery} onChange={handleInputChange}/>
+            <form className="d-flex" role="search">
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
               <button className="btn btn-outline-secondary" type="submit">Search</button>
             </form>
           </div>
-          <div className="nav-item mx-2">
-            <a type="button" className="btn purple-btn text-white" href="create-project">Upload Project</a>
+          <div className="nav-item me-2">
+            <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
+          </div>
+          <div className="nav-item me-2">
+            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
           </div>
         </div>
       </div>

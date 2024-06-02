@@ -1,14 +1,10 @@
 import React from 'react';
-import NavBar from './NavBar';
-import Footer from './Footer';
 import ProfileInfo from './profile_components/ProfileInfo'
 
 export default function Profile(props) {
   return (
     <div>
-      <NavBar />
       <MainProfile />
-      <Footer />
     </div>
   );
 }
