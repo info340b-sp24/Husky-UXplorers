@@ -1,6 +1,6 @@
 /** Packages */
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { getDatabase, ref, push as firebasePush, onValue} from 'firebase/database';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
@@ -14,14 +14,13 @@ import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
 import PageNotFound from './PageNotFound.js';
 import SignIn from './SignIn.js';
-import NavBar from './NavBar.js';
-import Footer from './Footer.js';
 import SearchResults from './SearchResults.js';
+import Footer from './Footer.js';
+import NavBar from './NavBar.js';
 
 export default function App() {
   const [projectData, setProjectData] = useState([]);
   const [currentUser, setCurrentUser] = useState({  });
-  const navigateTo = useNavigate();
 
   const nullUser = {
     userId : null
@@ -74,7 +73,7 @@ export default function App() {
         console.log(currentUser.username);
         /** TO DO: Figure out how to navigate user to home screen on login */
       } else {
-        setCurrentUser({ userId : null });
+        setCurrentUser(nullUser);
       }
     })
   }, []);
@@ -84,18 +83,27 @@ export default function App() {
   }
 
   return (
-    <Routes>
-      <Route path = "" element = {<Home />} />
-      <Route path = "index" element = {<Home />} />
-      <Route path = "gallery" element = {<Gallery />} >
-        <Route path = ":projectName" element = {<ProjectPage />} />
-        <Route index element = {<GalleryMain projectData={PROJECT_DATA} portfolioData={PORTFOLIO_DATA} />}/>
-      </Route>
-      <Route path = "profile" element = {<Profile />} />
-      <Route path = "guide" element = {<Guide />} />
-      <Route path = "create-project" element = {<CreateProject/>} />
-      <Route path="search" element={<SearchResults />} />
-      <Route path = "*" element = {<PageNotFound />} />
-    </Routes>
+    <div>
+      <NavBar />
+      <Routes>
+        <Route path = "" element = {<Home />} />
+        <Route path = "index" element = {<Home />} />
+        <Route path = "gallery" element = {<Gallery />} >
+          <Route path = ":projectName" element = {<ProjectPage />} />
+          <Route index element = {<GalleryMain projectData={projectData} />}/>
+        </Route>
+        <Route path = "profile" element = {<Profile />} />
+        <Route path = "guide" element = {<Guide />} />
+        <Route path = "create-project" element = {
+          <CreateProject uploadProject={uploadProject} projectData={projectData}/>
+        } />
+        <Route path="search" element={<SearchResults />} />
+        <Route path="sign-in" element={
+          <SignIn signOut={signoutUser} currentUser={currentUser}/>
+        } />
+        <Route path = "*" element = {<PageNotFound />} />
+      </Routes>
+      <Footer />
+    </div>
   );
 }

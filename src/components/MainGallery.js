@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function MainGallery(props) {
   const { projectData } = props;
+  console.log(projectData);
 
   const [filters, setFilters] = useState({
     purpose: {

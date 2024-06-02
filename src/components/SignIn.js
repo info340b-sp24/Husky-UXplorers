@@ -13,9 +13,6 @@ const configObj = {
     }
   ],
   signInFlow: 'popup',
-  // callbacks: {
-  //   signInSuccessWithAuthResult: () => false
-  // },
   callbacks: {
     signInSuccessWithAuthResult: () => false
   },
@@ -24,7 +21,7 @@ const configObj = {
 
 export default function SignIn (props) {
   const currUser = props.currentUser;
-  const signOut = props.signoutCallback;
+  const signOut = props.signOut;
   console.log(currUser);
 
   const auth = getAuth();
