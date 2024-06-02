@@ -18,46 +18,34 @@ function MainCreateProject (props) {
   // saves each section of the form in a single object
   const [ newProject, setNewProject ] = useState();
   // individual sections of the form
-  const [ introDetails, setIntroDetails ] = useState({});
-  const [ metadataDetails, setMetadataDetails ] = useState({});
-  const [ problemDetails, setProblemDetails] = useState({});
-  const [ solutionDetails, setSolutionDetails ] = useState({});
-  const [ technicalDetails, setTechnicalDetails ] = useState({});
+  const [ intro, setIntro ] = useState({});
+  const [ metadata, setMetadata ] = useState({});
+  const [ description, setDescription ] = useState({});
+  const [ technical, setTechnical ] = useState({});
+
   // TO DO: create a callback function for each of these that
   // ADDS/REPLACES key value pairs in the object
 
   // wrapper callbacks for state var setters,
   // which are passed to form children Components
-  const addIntroDetails = (details) => {
+  const addIntro = (details) => {
     // MAKE SPECIFIC TO FORM FOR INTRO
-    setIntroDetails();
+    setIntro();
   }
 
-  const addMetadataDetails = (details) => {
+  const addMetadata = (details) => {
     // MAKE SPECIFIC TO FORM FOR INTRO
-    setMetadataDetails();
+    setMetadata();
   }
 
-  const addProblemDetails = (details) => {
-    // PASSED TO PROBLEMCREATE PROBEJCT
-    setProblemDetails();
+  const addDescription = (details) => {
+    setDescription();
   }
 
-  const addSolutionDetails = (details) => {
-    // PASSED TO SOLUTION CREATE PROBEJCT
-    setSolutionDetails();
-  }
-
-  const addTechnicalDetails = (details) => {
+  const addTechnical = (details) => {
     // pASSED TO TECHNICAL CREATE PROBEJCT
-    setTechnicalDetails();
+    setTechnical();
   }
-
-  // we might not need to use effect
-  // useEffect(() => {
-
-  //   setNewProject();
-  // }, []);
 
   // adds project to firebase database
   const handleSubmit = function () {
@@ -70,8 +58,7 @@ function MainCreateProject (props) {
       <p className="small-text">Enter in information to post a new project</p>
       <form>
         <IntroCreateProject />
-        <ProblemCreateProject />
-        <SolutionCreateProject />
+        <DescribeCreateProject />
         <TechnicalCreateProject />
 
         <button
@@ -96,23 +83,21 @@ function IntroCreateProject (props) {
         <label htmlFor="project-name">Project Name</label>
       </div>
 
-      <div className="form-floating mb-3">
-        <input type="text" className="form-control" id="project-authors" placeholder="ex: Joe and Laura" />
-        <label htmlFor="project-authors">Author Name(s)</label>
-      </div>
-
       <div>
         <label htmlFor="project-type-option1" className="form-label mb-3">Type of Project: </label>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" id="project-type-option1" value="option1" />
+        <div className="form-check form-check-inline mx-2">
+          <input className="form-check-input" type="radio"
+          id="project-type-option1" value="option1" name="project-type"/>
           <label className="form-check-label" htmlFor="project-type-option1">For School</label>
         </div>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" id="project-type-option2" value="option2" />
+        <div className="form-check form-check-inline mx-2">
+          <input className="form-check-input" type="radio"
+          id="project-type-option2" value="option2" name="project-type"/>
           <label className="form-check-label" htmlFor="project-type-option2">For a Client</label>
         </div>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" id="project-type-option3" value="option3" />
+        <div className="form-check form-check-inline mx-2">
+          <input className="form-check-input" type="radio"
+          id="project-type-option3" value="option3" name="project-type"/>
           <label className="form-check-label" htmlFor="project-type-option3">For Fun</label>
         </div>
       </div>
@@ -128,49 +113,38 @@ function IntroCreateProject (props) {
 
       <div className="mb-3">
         <label htmlFor="project-images" className="form-label">Add images</label>
-        <input className="form-control" type="file" id="project-images" multiple />
+        <input className="form-control" type="file" id="project-images" />
       </div>
     </section>
   );
 }
 
-function ProblemCreateProject (props) {
+function DescribeCreateProject (props) {
   return (
-    <section>
-      <h2>Problem</h2>
-      <div className="form-floating mb-3">
-        <textarea className="form-control"
-          placeholder="Write a Description"
-          id="project-problem"
-          style={{height: "100px"}}>
-        </textarea>
-        <label htmlFor="project-problem">Give a description of the problem</label>
-      </div>
-      <div className="mb-3">
-        <label htmlFor="project-problem-images" className="form-label">Add Images</label>
-        <input className="form-control" type="file" id="project-problem-images" multiple />
-      </div>
-    </section>
-  );
-}
-
-function SolutionCreateProject (props) {
-  return (
-    <section>
-      <h2>Solution</h2>
-      <div className="form-floating mb-3">
-        <textarea className="form-control"
-          placeholder="Write a Description"
-          id="project-solution"
-          style={{height: "100px"}}>
-        </textarea>
-        <label htmlFor="project-solution">Give a description of the solution</label>
-      </div>
-      <div className="mb-3">
-        <label htmlFor="project-solution-images" className="form-label">Add Images</label>
-        <input className="form-control" type="file" id="project-solution-images" multiple />
-      </div>
-    </section>
+    <div>
+      <section>
+        <h2>Problem</h2>
+        <div className="form-floating mb-3">
+          <textarea className="form-control"
+            placeholder="Write a Description"
+            id="project-problem"
+            style={{height: "100px"}}>
+          </textarea>
+          <label htmlFor="project-problem">Give a description of the problem</label>
+        </div>
+      </section>
+      <section>
+        <h2>Solution</h2>
+        <div className="form-floating mb-3">
+          <textarea className="form-control"
+            placeholder="Write a Description"
+            id="project-solution"
+            style={{height: "100px"}}>
+          </textarea>
+          <label htmlFor="project-solution">Give a description of the solution</label>
+        </div>
+      </section>
+    </div>
   );
 }
 

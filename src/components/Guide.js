@@ -1,12 +1,7 @@
-import NavBar from "./NavBar";
-import Footer from "./Footer";
-
 export default function Guide (props) {
   return (
     <div>
-      <NavBar />
       <MainGuide />
-      <Footer />
     </div>
 
   );
@@ -35,7 +30,7 @@ function MainGuide (props) {
                   should have. You can build your own portfolio using this website!
                 </p>
               </div>
-              
+
               <div className="my-5 pl-5">
                   <h2>Some Projects</h2>
                   <p>
@@ -54,9 +49,9 @@ function MainGuide (props) {
                 <div className="container">
                   <h3>Empathize</h3>
                   <p>An essential part of the design process is to <b className="purple">research</b> as it
-                  is the foundation of understanding your users and their needs, behavior, and pain points. 
+                  is the foundation of understanding your users and their needs, behavior, and pain points.
                   To gain insights about our users, we must learn about or observe their experiences.
-                  This can be achieved through various quanlitative and quantitative research including 
+                  This can be achieved through various quanlitative and quantitative research including
                   user interviews, surveys, A/B tests, competitive analysis, etc. The objective is to learn
                   what works in existing solutions and what users desire/need from a new solution (your product!).
                   </p>
@@ -64,10 +59,10 @@ function MainGuide (props) {
                 <div className="container">
                   <h3>Define</h3>
                   <p>
-                    Now that we have gain valuable findings about our users, we can consolidate our analysis into 
-                    a powerful problem statement that encapsulates the primary problem you are designing a 
-                    solution for. A basic yet powerful way to craft a problem statement is using a 
-                    <b className="purple"> "How might we?"</b> statement. This frames the problem as an opportunity 
+                    Now that we have gain valuable findings about our users, we can consolidate our analysis into
+                    a powerful problem statement that encapsulates the primary problem you are designing a
+                    solution for. A basic yet powerful way to craft a problem statement is using a
+                    <b className="purple"> "How might we?"</b> statement. This frames the problem as an opportunity
                     rather than a limitation. A basic structure to this can be “How might we [action] for [user] in order to [outcome]?”
                   </p>
                 </div>
@@ -75,12 +70,12 @@ function MainGuide (props) {
                   <h3>Ideate</h3>
                   <p>
                     Now, we begin designing to bring our solution to life. No one expects their first idea to work
-                     and be perfect, so do not set your expectations too high. This process can be general where you 
+                     and be perfect, so do not set your expectations too high. This process can be general where you
                      may want to brainstorm multiple ideas with your team that address the problem through different
                      perspectives and approaches. A key tip is to visualize your ideas by developing rough sketches
-                      or mind maps that connects and solidifies what users can see going through your product. 
-                      <b className="purple"> Information architecture</b> is also a great form of conceptualizing the 
-                      user flows. This provides a generalized overview of the content and structure of your design along 
+                      or mind maps that connects and solidifies what users can see going through your product.
+                      <b className="purple"> Information architecture</b> is also a great form of conceptualizing the
+                      user flows. This provides a generalized overview of the content and structure of your design along
                       with the path the user takes to interact with it.
                   </p>
                 </div>
@@ -88,12 +83,12 @@ function MainGuide (props) {
                   <h3>Prototype</h3>
                   <p>
                     As you have a blueprint to work with, you will build on this to develop a detailed and life-like model.
-                    There are two types of prototypes, <b className="purple"> Low-Fidelity Prototypes</b> and 
+                    There are two types of prototypes, <b className="purple"> Low-Fidelity Prototypes</b> and
                     <b className="purple"> High-Fidelity Prototypes</b>. Low fidelity prototypes can looks like basic wireframes
-                    that emphasize on functionality and layout. On the other hand, high fidelity prototypes highlight the 
-                    finer details of the design and simulates how a product will look and feel to users. Whether you are working 
+                    that emphasize on functionality and layout. On the other hand, high fidelity prototypes highlight the
+                    finer details of the design and simulates how a product will look and feel to users. Whether you are working
                     with a website or app, it is important to include visual designs that appeal to the users but also enable
-                    clear navigation of content. Another essential idea is including robust interactivity for users understand how 
+                    clear navigation of content. Another essential idea is including robust interactivity for users understand how
                     the product is used uring testing.
                   </p>
                 </div>
@@ -101,8 +96,8 @@ function MainGuide (props) {
                   <h3>Test</h3>
                   <p>
                     We developed a solution, but does it really work? <b className="purple"> Usability testing </b>
-                    ensures that the final product effectively solves the user problem. This process identifies if 
-                    improvements need to be made to the initial design to allow the product to become more user-friendly. 
+                    ensures that the final product effectively solves the user problem. This process identifies if
+                    improvements need to be made to the initial design to allow the product to become more user-friendly.
                     It is important to note that your design will most likely go through cycles of iteration after testing;
                      however, this leads us to the goal of creating meaningful user experiences with our designs.
                   </p>
