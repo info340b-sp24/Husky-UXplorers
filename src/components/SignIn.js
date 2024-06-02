@@ -2,32 +2,34 @@ import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import { Navigate } from 'react-router-dom';
 
-export default function SignIn (props) {
-  const auth = getAuth();
-
-  const configObj = {
-    signInOptions: [
-      {
-        provider: EmailAuthProvider.PROVIDER_ID,
-        requireDisplayName: true,
-      },
-      {
-        provider: GoogleAuthProvider.PROVIDER_ID
-      }
-    ],
-    signInFlow: 'popup',
-    // callbacks: {
-    //   signInSuccessWithAuthResult: () => false
-    // },
-    callbacks: {
-      signInSuccessWithAuthResult: () => false
+const configObj = {
+  signInOptions: [
+    {
+      provider: EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: true,
     },
-    credentialHelper: 'none'
-  }
+    {
+      provider: GoogleAuthProvider.PROVIDER_ID
+    }
+  ],
+  signInFlow: 'popup',
+  // callbacks: {
+  //   signInSuccessWithAuthResult: () => false
+  // },
+  callbacks: {
+    signInSuccessWithAuthResult: () => false
+  },
+  credentialHelper: 'none'
+}
 
+export default function SignIn (props) {
+  const currUser = props.currentUser;
+  const loginUser = props.loginCallback;
   const signOut = props.signoutCallback;
 
-  if (props.currentUser.userId === null) {
+  const auth = getAuth();
+
+  if (currUser.userId === null) {  // user not signed in
     return (
       <div>
         <div className="m-auto my-5 text-center">
@@ -39,7 +41,7 @@ export default function SignIn (props) {
         </div>
       </div>
     )
-  } else {
+  } else {  // user signed in
     signOut();
     return <Navigate to="/index" />
   }

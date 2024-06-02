@@ -70,6 +70,7 @@ export default function App() {
 
         setCurrentUser(firebaseUser);
         console.log("the current user is : " + currentUser + " " + currentUser.userId);
+        console.log(currentUser.username);
         /** TO DO: Figure out how to navigate user to home screen on login */
       } else {
         setCurrentUser({ userId : null });

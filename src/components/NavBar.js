@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavBar (props) {
-  console.log(props.currentUser);
+  const currUser = props.currentUser;
+
   let btn = "";
-  if (props.currentUser === null) {
+  if (currUser === null || currUser.userId === null) {
     btn = "Sign In";
   } else {
     btn = "Log out";
