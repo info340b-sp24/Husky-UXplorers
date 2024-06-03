@@ -87,8 +87,6 @@ export default function App() {
         firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
         setCurrentUser(firebaseUser);
-        
-        /** TO DO: Figure out how to navigate user to home screen on login */
 
         navigateTo("/index");
       } else {
@@ -113,16 +111,19 @@ export default function App() {
           <Route path = ":projectName" element = {<ProjectPage />} />
           <Route index element = {<GalleryMain projectData={projectData} />}/>
         </Route>
-        <Route path = "profile" element = {<Profile />} />
         <Route path = "guide" element = {<Guide />} />
-        <Route path = "create-project" element = {
-          <CreateProject uploadProject={uploadProject} projectData={projectData}/>
-        } />
         <Route path="search" element={<SearchResults />} />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
         <Route path = "*" element = {<PageNotFound />} />
+
+        <Route element={<ProtectedPage currentUser={currentUser} />}>
+          <Route path = "profile" element = {<Profile />} />
+          <Route path = "create-project" element = {
+          <CreateProject uploadProject={uploadProject} projectData={projectData}/>
+        } />
+        </Route> 
       </Routes>
       <Footer />
     </div>
@@ -131,7 +132,7 @@ export default function App() {
 
 function ProtectedPage(props) {
   if(props.currentUser.userId === null) {
-    return <Navigate To="/sign-in" />
+    return <Navigate to="/sign-in" />
   } else {
     return <Outlet />
   }
