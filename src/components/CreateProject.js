@@ -48,36 +48,36 @@ function MainCreateProject (props) {
   const [ newProject, setNewProject ] = useState(init);
 
   // tools state
-  const [tools, setTools] = useState({
-    Figma: false,
-    Framer: false,
-    "Adobe XD": false,
-    Webflow: false,
-    Sketch: false
-  });
+  const [tools, setTools] = useState([]);
 
   /** Toggles a single tool to be true or false */
-  const handleToolChecked = (event) => {
+  const handleChecked = (event) => {
     const { name, checked } = event.target;
-    let copy = {...tools};
-    copy[name] = checked;
+
+    // if the checkbox was checked
+    if (checked) {
+      tools.push(name);
+    } else if (!checked) {  // if the checkbox was unchecked
+      const index = tools.indexOf(name);
+      tools.splice(index, 1);
+    }
+
+    const copy = [...tools];
     setTools(copy);
   }
 
-  const handleToolsChange = function (toolsObj) {
-    const toolsKeys = Object.keys(toolsObj);
-    const toolsArr = toolsKeys.map((key) => {
-      const tool = toolsObj[key];
-
-      if (tool === true) {
-        return tool;
-      }
-    });
-
-    const projCopy = {...newProject};
-    projCopy.technicalDetails.tools = toolsArr;
-    setNewProject(projCopy);
-  }
+  // const handleToolsChange = function (toolsObj) {
+  //   const toolsKeys = Object.keys(toolsObj);
+  //   const toolsArr = toolsKeys.map((key) => {
+  //     const tool = toolsObj[key];
+  //     if (tool === true) {
+  //       return tool;
+  //     }
+  //   });
+  //   const projCopy = {...newProject};
+  //   projCopy.technicalDetails.tools = toolsArr;
+  //   setNewProject(projCopy);
+  // }
 
   // updates new Project's fields based on inputs
   const handleChange = function (event) {
@@ -94,7 +94,6 @@ function MainCreateProject (props) {
 
   // adds project to firebase database
   const handleSubmit = function (event) {
-    handleToolsChange(tools);
     event.preventDefault();
     uploadProject(newProject);
     setNewProject({});
@@ -109,7 +108,7 @@ function MainCreateProject (props) {
         changeImageCallback={handleImageChange} />
         <Descriptions newProjectData={newProject} changeCallback={handleChange} />
         <TechnicalDetails newProjectData={newProject} changeCallback={handleChange}
-        updateTools={handleToolChecked} tools={tools} />
+        tools={tools} changeTools={handleChecked} />
 
         <button
           className="rounded px-4 py-3 bg-dark text-white"
@@ -214,10 +213,10 @@ function Descriptions ({newProjectData, changeCallback, ...props}) {
 }
 
 function TechnicalDetails ({newProjectData, changeCallback, tools,
-  handleToolChecked }) {
+  changeTools }) {
   const newProject = newProjectData;
   const handleChange = changeCallback;
-  const handleChecked = handleToolChecked;
+  const handleChecked = changeTools;
 
   return (
     <section>
