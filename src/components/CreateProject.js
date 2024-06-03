@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function CreateProject (props) {
   const { uploadProject } = props;
@@ -47,6 +47,37 @@ function MainCreateProject (props) {
   // saves each section of the form in a single object
   const [ newProject, setNewProject ] = useState(init);
 
+  // tools state
+  const [tools, setTools] = useState({
+    Figma: false,
+    Framer: false,
+    "Adobe XD": false,
+    Webflow: false,
+    Sketch: false
+  });
+
+  /** Toggles a single tool to be true or false */
+  const handleToolChecked = (event) => {
+    const { name, checked } = event.target;
+    let copy = {...tools};
+    copy[name] = checked;
+    setTools(copy);
+  }
+
+  const handleToolsChange = function (toolsObj) {
+    const toolsKeys = Object.keys(toolsObj);
+    const toolsArr = toolsKeys.map((key) => {
+      const tool = toolsObj[key];
+
+      if (tool === true) {
+        return tool;
+      }
+    });
+
+    const projCopy = {...newProject};
+    projCopy.technicalDetails.tools = toolsArr;
+    setNewProject(projCopy);
+  }
 
   // updates new Project's fields based on inputs
   const handleChange = function (event) {
@@ -63,6 +94,7 @@ function MainCreateProject (props) {
 
   // adds project to firebase database
   const handleSubmit = function (event) {
+    handleToolsChange(tools);
     event.preventDefault();
     uploadProject(newProject);
     setNewProject({});
@@ -76,12 +108,14 @@ function MainCreateProject (props) {
         <Intro newProjectData={newProject} changeCallback={handleChange}
         changeImageCallback={handleImageChange} />
         <Descriptions newProjectData={newProject} changeCallback={handleChange} />
-        <TechnicalDetails newProjectData={newProject} changeCallback={handleChange} />
+        <TechnicalDetails newProjectData={newProject} changeCallback={handleChange}
+        updateTools={handleToolChecked} tools={tools} />
 
         <button
           className="rounded px-4 py-3 bg-dark text-white"
           href="profile-finished.html"
           type="submit"
+          onChange={handleSubmit}
         >
           Submit Project
         </button>
@@ -179,9 +213,11 @@ function Descriptions ({newProjectData, changeCallback, ...props}) {
   );
 }
 
-function TechnicalDetails ({newProjectData, changeCallback, ...props}) {
+function TechnicalDetails ({newProjectData, changeCallback, tools,
+  handleToolChecked }) {
   const newProject = newProjectData;
   const handleChange = changeCallback;
+  const handleChecked = handleToolChecked;
 
   return (
     <section>
@@ -197,19 +233,29 @@ function TechnicalDetails ({newProjectData, changeCallback, ...props}) {
       <div className="mb-3">
         <h3 className="fs-5">Tools Used</h3>
 
-        <input type="checkbox" className="btn-check" id="btn-check-1" autoComplete="off" />
+        <input type="checkbox" className="btn-check" id="btn-check-1"
+        autoComplete="off" checked={tools.Figma} onChange={handleChecked}
+        name="Figma" />
         <label className="btn" htmlFor="btn-check-1">Figma</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-2" autoComplete="off" />
+        <input type="checkbox" className="btn-check" id="btn-check-2"
+        autoComplete="off" checked={tools["Adobe XD"]} onChange={handleChecked}
+        name="Adobe XD" />
         <label className="btn" htmlFor="btn-check-2">Adobe XD</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-3" autoComplete="off" />
+        <input type="checkbox" className="btn-check" id="btn-check-3"
+        autoComplete="off" checked={tools.Framer} onChange={handleChecked}
+        name="Framer" />
         <label className="btn" htmlFor="btn-check-3">Framer</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-4" autoComplete="off" />
+        <input type="checkbox" className="btn-check" id="btn-check-4"
+        autoComplete="off" checked={tools.Webflow} onChange={handleChecked}
+        name="Webflow" />
         <label className="btn" htmlFor="btn-check-4">WebFlow</label>
 
-        <input type="checkbox" className="btn-check" id="btn-check-5" autoComplete="off" />
+        <input type="checkbox" className="btn-check" id="btn-check-5"
+        autoComplete="off" checked={tools.Sketch} onChange={handleChecked}
+        name="Sketch" />
         <label className="btn" htmlFor="btn-check-5">Sketch</label>
       </div>
     </section>
