@@ -124,7 +124,7 @@ export default function App() {
           />
         </Route>
         <Route path = "guide" element = {<Guide />} />
-        <Route path="search" element={<SearchResults projectData={projectData} />} />
+        <Route path="search" element={<SearchResults projectData={projectData} getCorrectImgSrc={getCorrectImgSrc} />} />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
