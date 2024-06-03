@@ -23,16 +23,12 @@ export default function ProjectPage(props) {
 
 function ProjectImage({ data, getCorrectImgSrc }) {
   const { intro } = data;
-  const userImg = new Image();
-  userImg.src = "tbd.png";
-  console.log("width: " + userImg.width + " height: " + userImg.height);
-  let aspectRatio = userImg.height / userImg.width;
-  let newWidth = 36 * aspectRatio;
+  const imgSrc = getCorrectImgSrc(intro.imgSrc);
 
   return (
-    <img src={getCorrectImgSrc(intro.imgSrc)}
+    <img src={imgSrc}
       className="rounded"
-      style={{"width" : {newWidth} + "rem" , "height" : "36rem"}}
+      style={{"width" : "50%", "height" : "50%"}}
       alt={intro.imgAlt}
     />
   )

@@ -63,6 +63,7 @@ export default function App() {
   const getCorrectImgSrc = function (imgSrc) {
     if (!imgSrc.includes("https://firebasestorage.googleapis.com/")) {
       imgSrc = "img/projects/" + imgSrc;
+      console.log(imgSrc);
     }
     return imgSrc;
   }
