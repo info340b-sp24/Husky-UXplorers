@@ -15,43 +15,50 @@ function MainCreateProject (props) {
 
   const init = {
     authorData : {
-      "author": "Jasmine Rivers",
-      "username": "jazzyr",
-      "authorMajor": "INFO",
-      "authorGrad": 2026,
-      "links": [
+      author: "Jasmine Rivers",
+      username: "jazzyr",
+      authorMajor: "INFO",
+      authorGrad: 2026,
+      links: [
         "linked.in/sjfj",
         "jasminerivers.com"
       ]
+    },
+    metadata : {
+      title : "",
+      typeOfProj : ""
+    },
+    intro : {
+      description : "",
+      imgSrc : "",
+      imgAlt: "",
+    },
+    problem : {
+      description : ""
+    },
+    solution: {
+      description : ""
+    },
+    technical: {
+      date: "",
+      tools: []
     }
   }
   // saves each section of the form in a single object
   const [ newProject, setNewProject ] = useState(init);
-  console.log(newProject);
+
 
   // updates new Project's fields based on inputs
-  const handleChange = function (section, key, value) {
+  const handleChange = function (event) {
     let copy = [ ...newProject ];
-
-    /** TO BE FILLED IN */
-    if (section === "metadata") {
-
-    } else if (section === "intro") {
-
-    } else if (section === "problem") {
-
-    } else if (section === "solution") {
-
-    } else if (section === "technicalDetails") {
-      if (key === "date") {
-
-      } else if (key === "tools") {
-        // push value into tools array
-
-      }
-    }
+    const { name, value } = event.target;
 
     setNewProject(copy);
+  }
+
+  const handleImageChange = function (event) {
+    // save image to firebase storage and get download url
+
   }
 
   // adds project to firebase database
@@ -65,10 +72,11 @@ function MainCreateProject (props) {
     <main className="container-fluid">
       <h1>New Project</h1>
       <p className="small-text">Enter in information to post a new project</p>
-      <form onSubmit={handleSubmit}>
-        <IntroCreateProject />
-        <DescribeCreateProject />
-        <TechnicalCreateProject />
+      <form>
+        <Intro newProjectData={newProject} changeCallback={handleChange}
+        changeImageCallback={handleImageChange} />
+        <Descriptions newProjectData={newProject} changeCallback={handleChange} />
+        <TechnicalDetails newProjectData={newProject} changeCallback={handleChange} />
 
         <button
           className="rounded px-4 py-3 bg-dark text-white"
@@ -79,75 +87,63 @@ function MainCreateProject (props) {
         </button>
       </form>
     </main>
-  );
+  )
 }
 
-function IntroCreateProject (props) {
-  const [typeSelected, setTypeSelected] = useState({});
-  const changeTypeSelected = (newType) => {
-    setTypeSelected(newType);
-  }
+function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
+  const newProject = newProjectData;
+  const handleChange = changeCallback;
+  const handleImageChange = changeImageCallback;
 
   return (
     <section>
       <h2>Project Introduction</h2>
       <div className="form-floating mb-3">
-        <input type="text" className="form-control" id="project-name" placeholder="ex: Cooking Master App" />
+        <input type="text" className="form-control" id="project-name"
+        placeholder="ex: Cooking Master App"
+        name="metadata-title"
+        onChange={handleChange}
+        value={newProject.metadata.title}/>
         <label htmlFor="project-name">Project Name</label>
       </div>
 
-      <TypeOfProject typeSelected={typeSelected} changeTypeSelected={changeTypeSelected}/>
+      <div className="form-floating mb-3">
+        <input type="text" className="form-control" id="project-type"
+        placeholder="ex: School"
+        name = "metadata-typeOfProj"
+        onChange={handleChange}
+        value={newProject.metadata.typeOfProj}/>
+        <label htmlFor="project-type">Project for (School, Fun, Client)</label>
+      </div>
 
       <div className="form-floating mb-3">
         <textarea className="form-control"
           placeholder="Write a Description"
           id="project-description"
-          style={{height: "100px"}}>
+          style={{height: "100px"}}
+          name = "intro-description"
+          onChange={handleChange}
+          value={newProject.intro.description}
+          >
         </textarea>
         <label htmlFor="project-description">Give an introduction to the project</label>
       </div>
 
       <div className="mb-3">
         <label htmlFor="project-images" className="form-label">Add images</label>
-        <input className="form-control" type="file" id="project-images" />
+        <input className="form-control" type="file" id="project-images"
+        name="metadata-title"
+        onChange={handleImageChange}
+        value={newProject.metadata.title} />
       </div>
     </section>
   );
 }
 
-function TypeOfProject (props) {
-  const typeSelected = props.typeSelected;
-  const changeTypeSelected = props.changeTypeSelected;
-  const handleChange = (newType) => {
-    changeTypeSelected(newType);
-  }
+function Descriptions ({newProjectData, changeCallback, ...props}) {
+  const newProject = newProjectData;
+  const handleChange = changeCallback;
 
-  return(
-    <div>
-      <label htmlFor="project-type-option1" className="form-label mb-3">Type of Project: </label>
-      <div className="form-check form-check-inline mx-2">
-        <input className="form-check-input" type="radio"
-        id="project-type-option1" value="For School" name="project-type"
-        checked={typeSelected === "For School"} onChange={() => { handleChange("For School") }}/>
-        <label className="form-check-label" htmlFor="project-type-option1">For School</label>
-      </div>
-      <div className="form-check form-check-inline mx-2">
-        <input className="form-check-input" type="radio"
-        id="project-type-option2" value="For a Client" name="project-type"
-        checked={typeSelected === "For a Client"} onChange={() => { handleChange("For a Client") }}/>
-        <label className="form-check-label" htmlFor="project-type-option2">For a Client</label>
-      </div>
-      <div className="form-check form-check-inline mx-2">
-        <input className="form-check-input" type="radio"
-        id="project-type-option3" value="For Fun" name="project-type"
-        checked={typeSelected === "For Fun"} onChange={() => { handleChange("For Fun") }}/>
-        <label className="form-check-label" htmlFor="project-type-option3">For Fun</label>
-      </div>
-    </div>
-  );
-}
-
-function DescribeCreateProject (props) {
   return (
     <div>
       <section>
@@ -157,7 +153,10 @@ function DescribeCreateProject (props) {
             placeholder="Write a Description"
             id="project-problem"
             style={{height: "100px"}}
-            type="text">
+            type="text"
+            name = "problem-description"
+            onChange={handleChange}
+            value={newProject.problem.description}>
           </textarea>
           <label htmlFor="project-problem">Give a description of the problem</label>
         </div>
@@ -168,7 +167,10 @@ function DescribeCreateProject (props) {
           <textarea className="form-control"
             placeholder="Write a Description"
             id="project-solution"
-            style={{height: "100px"}}>
+            style={{height: "100px"}}
+            name = "solution-description"
+            onChange={handleChange}
+            value={newProject.solution.description}>
           </textarea>
           <label htmlFor="project-solution">Give a description of the solution</label>
         </div>
@@ -177,12 +179,19 @@ function DescribeCreateProject (props) {
   );
 }
 
-function TechnicalCreateProject (props) {
+function TechnicalDetails ({newProjectData, changeCallback, ...props}) {
+  const newProject = newProjectData;
+  const handleChange = changeCallback;
+
   return (
     <section>
       <h2>Technical Details</h2>
       <div className="form-floating mb-3">
-        <input type="text" className="form-control" id="project-date" placeholder="ex: March 2021" />
+        <input type="text" className="form-control" id="project-date"
+        placeholder="ex: March 2021"
+        name = "technical-date"
+        onChange={handleChange}
+        value={newProject.technical.date} />
         <label htmlFor="project-date">Month and year of project</label>
       </div>
       <div className="mb-3">
