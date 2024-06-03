@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function NavBar (props) {
   // ATTEMPTING TO CHANGE BUTTON TO REFLECT SIGN IN STATE
@@ -22,13 +22,21 @@ export default function NavBar (props) {
   //   }
   // }, [])
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    navigate(`/search?query=${searchQuery}`);
+  };
+
   const currentUser = props.currentUser;
   const isAuthenticated = props.isAuthenticated;
   const signoutUser = props.signoutUser;
-
-  const handleSignOut = (event) => {
-    console.log("Signing out");
-  }
 
   const nav = (
     <nav className="navbar navbar-expand-lg">
@@ -50,8 +58,8 @@ export default function NavBar (props) {
           </ul>
 
           <div className="nav-item">
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <form className="d-flex" role="search" onSubmit={handleSearchSubmit}>
+              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchQuery} onChange={handleSearchChange} />
               <button className="btn btn-outline-secondary" type="submit">Search</button>
             </form>
           </div>
@@ -75,9 +83,7 @@ export default function NavBar (props) {
                 <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In</Link>
               </>
             }
-              {/* <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link> */}
           </div>
-          
         </div>
       </div>
     </nav>
