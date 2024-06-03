@@ -17,6 +17,7 @@ import SearchResults from './SearchResults.js';
 import SignIn from './SignIn.js';
 import Footer from './Footer.js';
 import NavBar from './NavBar.js';
+import FirstTimeSignIn from './FirstTimeSignIn.js';
 
 export default function App() {
   const [projectData, setProjectData] = useState([]);
@@ -77,16 +78,23 @@ export default function App() {
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        console.log("the current user is : ", firebaseUser.displayName);
-        console.log(firebaseUser);
-
         firebaseUser.userId = firebaseUser.uid;
         firebaseUser.username = firebaseUser.displayName;
         firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
+        const creationTime = new Date(firebaseUser.metadata.creationTime).getTime();
+        const lastSignInTime = new Date(firebaseUser.metadata.lastSignInTime).getTime();
+
+        if (creationTime == lastSignInTime) {
+          console.log("First time sign-in for " + firebaseUser.username);
+          navigateTo("/first-time-sign-in")
+        } else {
+          console.log("Welcome back, " + firebaseUser.username);
+          navigateTo("/profile");
+        }
+
         setCurrentUser(firebaseUser);
         setIsAuthenticated(true);
-        navigateTo("/profile");
       } else {
         setCurrentUser(nullUser);
         setIsAuthenticated(false);
@@ -128,6 +136,7 @@ export default function App() {
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
+        <Route path="first-time-sign-in" element={<FirstTimeSignIn />} />
         <Route path = "*" element = {<PageNotFound />} />
 
         <Route element={<ProtectedPage currentUser={currentUser} />}>
