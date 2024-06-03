@@ -2,9 +2,11 @@ import React from 'react';
 import ProfileInfo from './profile_components/ProfileInfo'
 
 export default function Profile(props) {
+  const currentUser = props.currentUser;
+
   return (
     <div>
-      <MainProfile />
+      <MainProfile currentUser={currentUser}/>
     </div>
   );
 }
