@@ -1,48 +1,51 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDatabase, ref, set as firebaseSet } from 'firebase/database';
+// import { getDatabase, ref, set as firebaseSet } from 'firebase/database';
 import { getStorage, getDownloadURL, ref as storageRef } from 'firebase/storage';
 import { uploadBytes } from 'firebase/storage';
+
+const INIT_PROJECT = {
+  authorData : {
+    author: "",
+    username: "",
+    authorMajor: "INFO",
+    authorGrad: 2026,
+    links: [
+      "linked.in/sjfj",
+      "jasminerivers.com"
+    ]
+  },
+  metadata : {
+    title : "",
+    typeOfProj : ""
+  },
+  intro : {
+    description : "",
+    imgSrc : "",
+    imgAlt: "",
+  },
+  problem : {
+    description : ""
+  },
+  solution: {
+    description : ""
+  },
+  technicalDetails: {
+    date: "",
+    tools: []
+  }
+}
 
 export default function CreateProject (props) {
   const { uploadProject, currUser } = props;
   const navigateTo = useNavigate();
 
-  const init = {
-    authorData : {
-      author: "Jasmine Rivers",
-      username: "jazzyr",
-      authorMajor: "INFO",
-      authorGrad: 2026,
-      links: [
-        "linked.in/sjfj",
-        "jasminerivers.com"
-      ]
-    },
-    metadata : {
-      title : "",
-      typeOfProj : ""
-    },
-    intro : {
-      description : "",
-      imgSrc : "",
-      imgAlt: "",
-    },
-    problem : {
-      description : ""
-    },
-    solution: {
-      description : ""
-    },
-    technicalDetails: {
-      date: "",
-      tools: []
-    }
-  }
+  const { username, userId, userImg } = currUser;
+  INIT_PROJECT.authorData.author = username;
+  INIT_PROJECT.authorData.username = username;
 
-  const [ newProject, setNewProject ] = useState(init);
+  const [ newProject, setNewProject ] = useState(INIT_PROJECT);
   const [tools, setTools] = useState([]);
-  // const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
 
   const handleChecked = (event) => {
@@ -59,7 +62,6 @@ export default function CreateProject (props) {
     setTools(copy);
   }
 
-  // updates new Project's fields based on inputs
   const handleChange = function (event) {
     const { name, value } = event.target;
 
@@ -77,7 +79,6 @@ export default function CreateProject (props) {
     let { files } = event.target;
     if (files.length > 0) {
       const imageFile = files[0];
-      // setImageFile(imageFile);
 
       const storage = getStorage();
       const projectTitle = newProject.metadata.title;
@@ -89,7 +90,6 @@ export default function CreateProject (props) {
     }
   }
 
-  // adds project to firebase database
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -99,7 +99,7 @@ export default function CreateProject (props) {
 
     uploadProject(copy);
 
-    setNewProject({init});
+    setNewProject({INIT_PROJECT});
     navigateTo("../index");
   }
 

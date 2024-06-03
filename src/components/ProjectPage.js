@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import { useParams } from 'react-router-dom';
-// import PROJECT_DATA from '../data/projects.json';
 import { Link } from 'react-router-dom';
 
 export default function ProjectPage(props) {
