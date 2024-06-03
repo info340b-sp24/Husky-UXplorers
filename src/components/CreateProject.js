@@ -39,50 +39,40 @@ function MainCreateProject (props) {
     solution: {
       description : ""
     },
-    technical: {
+    technicalDetails: {
       date: "",
       tools: []
     }
   }
-  // saves each section of the form in a single object
+
   const [ newProject, setNewProject ] = useState(init);
 
-  // tools state
   const [tools, setTools] = useState([]);
 
-  /** Toggles a single tool to be true or false */
   const handleChecked = (event) => {
     const { name, checked } = event.target;
+    let copy = [...tools];
 
-    // if the checkbox was checked
     if (checked) {
-      tools.push(name);
-    } else if (!checked) {  // if the checkbox was unchecked
-      const index = tools.indexOf(name);
-      tools.splice(index, 1);
+      copy.push(name);
+    } else if (!checked) {
+      const index = copy.indexOf(name);
+      copy.splice(index, 1);
     }
 
-    const copy = [...tools];
     setTools(copy);
   }
 
-  // const handleToolsChange = function (toolsObj) {
-  //   const toolsKeys = Object.keys(toolsObj);
-  //   const toolsArr = toolsKeys.map((key) => {
-  //     const tool = toolsObj[key];
-  //     if (tool === true) {
-  //       return tool;
-  //     }
-  //   });
-  //   const projCopy = {...newProject};
-  //   projCopy.technicalDetails.tools = toolsArr;
-  //   setNewProject(projCopy);
-  // }
-
   // updates new Project's fields based on inputs
   const handleChange = function (event) {
-    let copy = [ ...newProject ];
     const { name, value } = event.target;
+
+    const section = name.split("-")[0];
+    const key = name.split("-")[1];
+
+    let copy = {...newProject};
+    copy[section][key] = value;
+    copy.technicalDetails.tools = tools;
 
     setNewProject(copy);
   }
@@ -95,7 +85,11 @@ function MainCreateProject (props) {
   // adds project to firebase database
   const handleSubmit = function (event) {
     event.preventDefault();
-    uploadProject(newProject);
+
+    let copy = {...newProject};
+    copy.technicalDetails.tools = tools;
+
+    uploadProject(copy);
     setNewProject({});
   }
 
@@ -165,15 +159,15 @@ function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
       <div className="mb-3">
         <label htmlFor="project-images" className="form-label">Add images</label>
         <input className="form-control" type="file" id="project-images"
-        name="metadata-title"
+        name="intro.imgSrc"
         onChange={handleImageChange}
-        value={newProject.metadata.title} />
+        value={newProject.intro.imgSrc} />
       </div>
     </section>
   );
 }
 
-function Descriptions ({newProjectData, changeCallback, ...props}) {
+function Descriptions ({newProjectData, changeCallback }) {
   const newProject = newProjectData;
   const handleChange = changeCallback;
 
@@ -224,9 +218,9 @@ function TechnicalDetails ({newProjectData, changeCallback, tools,
       <div className="form-floating mb-3">
         <input type="text" className="form-control" id="project-date"
         placeholder="ex: March 2021"
-        name = "technical-date"
+        name = "technicalDetails-date"
         onChange={handleChange}
-        value={newProject.technical.date} />
+        value={newProject.technicalDetails.date} />
         <label htmlFor="project-date">Month and year of project</label>
       </div>
       <div className="mb-3">

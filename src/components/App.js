@@ -24,11 +24,7 @@ export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigateTo = useNavigate();
-
-  const nullUser = {
-    userId : null
-  }
-
+  
   // PROJECT DATA
   useEffect(() => {
     const db = getDatabase();
@@ -98,7 +94,7 @@ export default function App() {
     } catch (error) {
       console.log(error);
     }
-      
+
   }
 
   return (
@@ -123,7 +119,7 @@ export default function App() {
           <Route path = "create-project" element = {
           <CreateProject uploadProject={uploadProject} projectData={projectData}/>
         } />
-        </Route> 
+        </Route>
       </Routes>
       <Footer />
     </div>
