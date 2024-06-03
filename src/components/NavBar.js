@@ -54,16 +54,13 @@ export default function NavBar (props) {
             </form>
           </div>
 
-          {currentUser.userId &&
-            <div className="nav-item me-2">
-              <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
-            </div>
-          }
-          {!currentUser.userId &&
-            <div className="nav-item me-2">
-              <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
-            </div>
-          }
+          <div className="nav-item me-2">
+            <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
+          </div>
+
+          <div className="nav-item me-2">
+            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
+          </div>
           
         </div>
       </div>

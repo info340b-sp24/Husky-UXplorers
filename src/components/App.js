@@ -22,7 +22,7 @@ export default function App() {
   const [projectData, setProjectData] = useState([]);
   const [currentUser, setCurrentUser] = useState({  });
 
-  const navigate = useNavigate();
+  const navigateTo = useNavigate();
 
   const nullUser = {
     userId : null
@@ -60,6 +60,16 @@ export default function App() {
     firebasePush(projectsRef, newProject);
   }
 
+  // NEW USER STUFF
+
+  // const loginUser = (userObj) => {
+  //   console.log("Logging in as", userObj.username);
+  //   setCurrentUser(userObj);
+  //   if(userObj.userId !== null) {
+  //     navigateTo("/index"); 
+  //   }
+  // }
+
   // USER AUTH
   useEffect(() => {
     const auth = getAuth();
@@ -69,21 +79,24 @@ export default function App() {
 
     onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
+        console.log("the current user is : ", firebaseUser.displayName);
+        console.log(firebaseUser);
+
         firebaseUser.userId = firebaseUser.uid;
         firebaseUser.username = firebaseUser.displayName;
         firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
         setCurrentUser(firebaseUser);
-        console.log("the current user is : " + currentUser + " " + currentUser.userId);
-        console.log(currentUser.username);
+        
         /** TO DO: Figure out how to navigate user to home screen on login */
 
-        navigate("/index");
+        navigateTo("/index");
       } else {
         setCurrentUser(nullUser);
+        console.log(firebaseUser);
+        console.log("Signed out");
       }
     })
-    console.log(currentUser.userId);
   }, []);
 
   const signoutUser = (event) => {
