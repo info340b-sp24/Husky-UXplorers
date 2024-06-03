@@ -107,7 +107,7 @@ export default function App() {
           <Route index element = {<GalleryMain projectData={projectData} />}/>
         </Route>
         <Route path = "guide" element = {<Guide />} />
-        <Route path="search" element={<SearchResults />} />
+        <Route path="search" />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
