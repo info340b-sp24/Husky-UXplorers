@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 export default function MainGallery(props) {
-  const { projectData } = props;
+  const { projectData, getCorrectImgSrc } = props;
 
   const [filters, setFilters] = useState({
     purpose: {
@@ -58,6 +58,7 @@ export default function MainGallery(props) {
           onFilterChange={handleFilterChange}
           onMajorChange={handleMajorChange}
           projects={filteredProjects}
+          getCorrectImgSrc={getCorrectImgSrc}
         />
       </main>
     </div>
@@ -75,19 +76,19 @@ function GalleryHeader(props) {
   );
 }
 
-function GalleryContent({ filters, onFilterChange, onMajorChange, projects }) {
+function GalleryContent({ filters, onFilterChange, onMajorChange, projects, getCorrectImgSrc }) {
   return (
     <div className="d-flex flex-row mb-3 align-items-start">
       <GalleryFilter filters={filters} onFilterChange={onFilterChange} onMajorChange={onMajorChange} />
-      <GalleryProjects projects={projects} />
+      <GalleryProjects projects={projects} getCorrectImgSrc={getCorrectImgSrc} />
     </div>
   );
 }
 
-function GalleryProjects({ projects }) {
+function GalleryProjects({ projects, getCorrectImgSrc }) {
   return (
     <div className="projects container">
-      <ProjectCardRow data={projects} />
+      <ProjectCardRow data={projects} getCorrectImgSrc={getCorrectImgSrc} />
     </div>
   );
 }
@@ -181,12 +182,13 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
   )
 }
 
-function ProjectCardRow({ data }) {
+function ProjectCardRow({ data, getCorrectImgSrc }) {
   const row = data.map((currData) => {
     return (
       <ProjectCard
         data={currData}
         key={currData.metadata.title + currData.authorData.author}
+        getCorrectImgSrc={getCorrectImgSrc}
       />
     );
   });
@@ -198,7 +200,7 @@ function ProjectCardRow({ data }) {
   );
 }
 
-function ProjectCard({ data }) {
+function ProjectCard({ data, getCorrectImgSrc }) {
   const { metadata, authorData, intro } = data;
 
   return (
@@ -217,11 +219,4 @@ function ProjectCard({ data }) {
       </div>
     </div>
   );
-}
-
-function getCorrectImgSrc (imgSrc) {
-  if (!imgSrc.includes("https://firebasestorage.googleapis.com/")) {
-    imgSrc = "img/projects/" + imgSrc;
-  }
-  return imgSrc;
 }

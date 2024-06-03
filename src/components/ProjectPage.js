@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function ProjectPage(props) {
-  const projectData = props.projectData;
+  const { projectData, getCorrectImgSrc } = props;
   const { projectName } = useParams();
   let project = _.find(projectData, (project) => _.get(project, 'metadata.title') === projectName);
 
@@ -15,22 +15,22 @@ export default function ProjectPage(props) {
       </p>
       <div className="d-flex" style={{"gap" : "1rem"}}>
         <ProjectInfo data={project}/>
-        <ProjectImage data={project} />
+        <ProjectImage data={project} getCorrectImgSrc={getCorrectImgSrc} />
       </div>
     </div>
   )
 }
 
-function ProjectImage({ data }) {
+function ProjectImage({ data, getCorrectImgSrc }) {
   const { intro } = data;
   const userImg = new Image();
-  userImg.src = "/img/projects/" + intro.imgSrc;
+  userImg.src = "tbd.png";
   console.log("width: " + userImg.width + " height: " + userImg.height);
   let aspectRatio = userImg.height / userImg.width;
   let newWidth = 36 * aspectRatio;
 
   return (
-    <img src={"/img/projects/" + intro.imgSrc}
+    <img src={getCorrectImgSrc(intro.imgSrc)}
       className="rounded"
       style={{"width" : {newWidth} + "rem" , "height" : "36rem"}}
       alt={intro.imgAlt}
@@ -43,7 +43,7 @@ function ProjectInfo({ data }) {
   const toolsUsed = technicalDetails.tools.join(", ");
   let links = authorData.links;
 
-  if (links.length > 0) {
+  if (links) {
     links = authorData.links.map((link, index) => {
       let workingLink;
 
