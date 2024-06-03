@@ -1,17 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateProject (props) {
   const { uploadProject } = props;
-
-  return (
-    <div>
-      <MainCreateProject uploadProject={uploadProject}/>
-    </div>
-  );
-}
-
-function MainCreateProject (props) {
-  const { uploadProject } = props;
+  const navigateTo = useNavigate();
 
   const init = {
     authorData : {
@@ -90,14 +82,16 @@ function MainCreateProject (props) {
     copy.technicalDetails.tools = tools;
 
     uploadProject(copy);
-    setNewProject({});
+    setNewProject({init});
+
+    navigateTo("../index");
   }
 
   return (
     <main className="container-fluid">
       <h1>New Project</h1>
       <p className="small-text">Enter in information to post a new project</p>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Intro newProjectData={newProject} changeCallback={handleChange}
         changeImageCallback={handleImageChange} />
         <Descriptions newProjectData={newProject} changeCallback={handleChange} />
@@ -108,7 +102,6 @@ function MainCreateProject (props) {
           className="rounded px-4 py-3 bg-dark text-white"
           href="profile-finished.html"
           type="submit"
-          onChange={handleSubmit}
         >
           Submit Project
         </button>

@@ -10,13 +10,15 @@ export default function Profile(props) {
 }
 
 function MainProfile(props) {
+  const currentUser = props.currentUser;
+
   return (
     <main className="container-fluid mx-5 mt-3">
       {/* <header className="pt-3">
         <h1>My Profile</h1>
       </header> */}
 
-      <ProfileInfo />
+      <ProfileInfo currentUser={currentUser}/>
       <hr />
 
       <article>
