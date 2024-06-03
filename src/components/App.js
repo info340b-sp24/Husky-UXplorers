@@ -14,7 +14,6 @@ import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
 import PageNotFound from './PageNotFound.js';
 import SignIn from './SignIn.js';
-import SearchResults from './SearchResults.js';
 import Footer from './Footer.js';
 import NavBar from './NavBar.js';
 
@@ -24,7 +23,7 @@ export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigateTo = useNavigate();
-  
+
   // PROJECT DATA
   useEffect(() => {
     const db = getDatabase();
@@ -52,6 +51,8 @@ export default function App() {
   }, []);
 
   const uploadProject = (newProject) => {
+    console.log("uploading in progress...");
+    console.log(newProject);
     const db = getDatabase();
     const projectsRef = ref(db, "projects");
     firebasePush(projectsRef, newProject);
@@ -104,7 +105,9 @@ export default function App() {
         <Route path = "" element = {<Home />} />
         <Route path = "index" element = {<Home />} />
         <Route path = "gallery" element = {<Gallery />} >
-          <Route path = ":projectName" element = {<ProjectPage />} />
+          <Route path = ":projectName" element = {
+            <ProjectPage projectData={projectData} />
+          } />
           <Route index element = {<GalleryMain projectData={projectData} />}/>
         </Route>
         <Route path = "guide" element = {<Guide />} />

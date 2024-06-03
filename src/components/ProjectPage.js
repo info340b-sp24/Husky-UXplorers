@@ -1,13 +1,14 @@
 import _ from 'lodash';
 import { useParams } from 'react-router-dom';
-import PROJECT_DATA from '../data/projects.json';
+// import PROJECT_DATA from '../data/projects.json';
 import { Link } from 'react-router-dom';
 
 export default function ProjectPage(props) {
+  const projectData = props.projectData;
 
   const { projectName } = useParams();
   console.log(projectName);
-  let project = _.find(PROJECT_DATA, (project) => _.get(project, 'metadata.title') === projectName);
+  let project = _.find(projectData, (project) => _.get(project, 'metadata.title') === projectName);
 
   return (
     <div className="m-5">
@@ -40,7 +41,7 @@ function ProjectImage({ data }) {
 }
 
 function ProjectInfo({ data }) {
-  const { metadata, authorData, intro, problem, solution, technicalDetails } = data;
+  const { authorData, intro, metadata, problem, solution, technicalDetails } = data;
   const toolsUsed = technicalDetails.tools.join(", ");
   let links = authorData.links;
 
