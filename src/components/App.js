@@ -13,6 +13,7 @@ import Profile from './Profile.js';
 import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
 import PageNotFound from './PageNotFound.js';
+import SearchResults from './SearchResults.js';
 import SignIn from './SignIn.js';
 import Footer from './Footer.js';
 import NavBar from './NavBar.js';
@@ -107,7 +108,7 @@ export default function App() {
           <Route index element = {<GalleryMain projectData={projectData} />}/>
         </Route>
         <Route path = "guide" element = {<Guide />} />
-        <Route path="search" />
+        <Route path="search" element={<SearchResults projectData={projectData} />} />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
