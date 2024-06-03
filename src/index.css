@@ -155,6 +155,11 @@ header.gallery {
   background-color: #ab91ff
 }
 
+.purple-outline {
+  border-color: #ab91ff;
+  border-width: 2px;
+}
+
 h1.display-text {
   font-size: 4em;
 }

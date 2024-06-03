@@ -21,6 +21,7 @@ import NavBar from './NavBar.js';
 export default function App() {
   const [projectData, setProjectData] = useState([]);
   const [currentUser, setCurrentUser] = useState({  });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const navigateTo = useNavigate();
 
@@ -60,16 +61,6 @@ export default function App() {
     firebasePush(projectsRef, newProject);
   }
 
-  // NEW USER STUFF
-
-  // const loginUser = (userObj) => {
-  //   console.log("Logging in as", userObj.username);
-  //   setCurrentUser(userObj);
-  //   if(userObj.userId !== null) {
-  //     navigateTo("/index"); 
-  //   }
-  // }
-
   // USER AUTH
   useEffect(() => {
     const auth = getAuth();
@@ -87,23 +78,32 @@ export default function App() {
         firebaseUser.userImg = firebaseUser.photoURL || "/img/null.png";
 
         setCurrentUser(firebaseUser);
-
-        navigateTo("/index");
+        setIsAuthenticated(true);
+        navigateTo("/profile");
       } else {
         setCurrentUser(nullUser);
+        setIsAuthenticated(false);
         console.log(firebaseUser);
         console.log("Signed out");
       }
     })
   }, []);
 
-  const signoutUser = (event) => {
-    signOut(getAuth());
+  const signoutUser = async () => {
+    const auth = getAuth();
+    try {
+      await signOut(auth);
+      setIsAuthenticated(false);
+      navigateTo("/index")
+    } catch (error) {
+      console.log(error);
+    }
+      
   }
 
   return (
     <div>
-      <NavBar currentUser={currentUser}/>
+      <NavBar currentUser={currentUser} isAuthenticated={isAuthenticated} signoutUser={signoutUser}/>
       <Routes>
         <Route path = "" element = {<Home />} />
         <Route path = "index" element = {<Home />} />

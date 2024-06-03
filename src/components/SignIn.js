@@ -2,7 +2,22 @@ import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import { StyledFirebaseAuth } from 'react-firebaseui';
 import { Navigate } from 'react-router-dom';
 
-
+const configObj = {
+  signInOptions: [
+    {
+      provider: EmailAuthProvider.PROVIDER_ID,
+      requireDisplayName: true,
+    },
+    {
+      provider: GoogleAuthProvider.PROVIDER_ID
+    }
+  ],
+  signInFlow: 'popup',
+  callbacks: {
+    signInSuccessWithAuthResult: () => false
+  },
+  credentialHelper: 'none'
+}
 
 export default function SignIn (props) {
   const currUser = props.currentUser;
@@ -10,23 +25,6 @@ export default function SignIn (props) {
   console.log(currUser);
 
   const auth = getAuth();
-
-  const configObj = {
-    signInOptions: [
-      {
-        provider: EmailAuthProvider.PROVIDER_ID,
-        requireDisplayName: true,
-      },
-      {
-        provider: GoogleAuthProvider.PROVIDER_ID
-      }
-    ],
-    signInFlow: 'popup',
-    callbacks: {
-      signInSuccessWithAuthResult: () => false
-    },
-    credentialHelper: 'none'
-  }
 
   if (currUser.userId === null) {  // user not signed in
     return (

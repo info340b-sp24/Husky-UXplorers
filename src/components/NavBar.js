@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function NavBar (props) {
@@ -23,6 +23,8 @@ export default function NavBar (props) {
   // }, [])
 
   const currentUser = props.currentUser;
+  const isAuthenticated = props.isAuthenticated;
+  const signoutUser = props.signoutUser;
 
   const handleSignOut = (event) => {
     console.log("Signing out");
@@ -56,14 +58,24 @@ export default function NavBar (props) {
 
           {currentUser.userId &&
             <>
-              <div className="nav-item m-2">
+              <div className="nav-item me-2 mx-2">
                 <Link type="button" className="btn purple-btn text-white" to="../create-project">Upload Project</Link>
               </div>
             </>
           }
 
-          <div className="nav-item m-2">
-            <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link>
+          <div className="nav-item me-2 mx-2">
+            {isAuthenticated &&
+              <>
+                <Link id="sign-out" type="button" className="btn purple purple-outline text-purple" onClick={signoutUser}>Sign Out</Link>
+              </>
+            } 
+            {!isAuthenticated &&
+              <>
+                <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In</Link>
+              </>
+            }
+              {/* <Link id="sign-in" type="button" className="btn purple-btn text-white" to="../sign-in">Sign In/Out</Link> */}
           </div>
           
         </div>
