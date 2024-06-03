@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 export default function MainGallery(props) {
   const { projectData } = props;
-  console.log(projectData);
 
   const [filters, setFilters] = useState({
     purpose: {
@@ -206,7 +205,7 @@ function ProjectCard({ data }) {
     <div className="col">
       <div className="card block mb-3">
         <Link to={"/gallery/" + metadata.title}>
-          <img src={"img/projects/" + intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
+          <img src={getCorrectImgSrc(intro.imgSrc)} className="card-img-top" alt={intro.imgAlt} />
         </Link>
         <div className="card-body">
           <Link to={"/gallery/" + metadata.title} style={{ textDecoration: 'none', color: 'inherit'}}>
@@ -218,4 +217,11 @@ function ProjectCard({ data }) {
       </div>
     </div>
   );
+}
+
+function getCorrectImgSrc (imgSrc) {
+  if (!imgSrc.includes("https://firebasestorage.googleapis.com/")) {
+    imgSrc = "img/projects/" + imgSrc;
+  }
+  return imgSrc;
 }

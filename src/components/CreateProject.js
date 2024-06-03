@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getDatabase, ref, set as firebaseSet } from 'firebase/database';
+import { getStorage, getDownloadURL, ref as storageRef } from 'firebase/storage';
+import { uploadBytes } from 'firebase/storage';
 
 export default function CreateProject (props) {
-  const { uploadProject } = props;
+  const { uploadProject, currUser } = props;
   const navigateTo = useNavigate();
 
   const init = {
@@ -38,8 +41,9 @@ export default function CreateProject (props) {
   }
 
   const [ newProject, setNewProject ] = useState(init);
-
   const [tools, setTools] = useState([]);
+  // const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   const handleChecked = (event) => {
     const { name, checked } = event.target;
@@ -69,21 +73,33 @@ export default function CreateProject (props) {
     setNewProject(copy);
   }
 
-  const handleImageChange = function (event) {
-    // save image to firebase storage and get download url
+  const handleImageChange = async (event) => {
+    let { files } = event.target;
+    if (files.length > 0) {
+      const imageFile = files[0];
+      // setImageFile(imageFile);
 
+      const storage = getStorage();
+      const projectTitle = newProject.metadata.title;
+      const imageRef = storageRef(storage, "projectImages/" + projectTitle + ".png");
+      await uploadBytes(imageRef, imageFile);
+
+      const downloadURL = await getDownloadURL(imageRef);
+      setImageUrl(downloadURL);
+    }
   }
 
   // adds project to firebase database
-  const handleSubmit = function (event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     let copy = {...newProject};
     copy.technicalDetails.tools = tools;
+    copy.intro.imgSrc = imageUrl;
 
     uploadProject(copy);
-    setNewProject({init});
 
+    setNewProject({init});
     navigateTo("../index");
   }
 

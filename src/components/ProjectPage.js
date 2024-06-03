@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function ProjectPage(props) {
   const projectData = props.projectData;
-
   const { projectName } = useParams();
-  console.log(projectName);
   let project = _.find(projectData, (project) => _.get(project, 'metadata.title') === projectName);
 
   return (

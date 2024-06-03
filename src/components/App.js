@@ -121,7 +121,8 @@ export default function App() {
         <Route element={<ProtectedPage currentUser={currentUser} />}>
           <Route path = "profile" element = {<Profile currentUser={currentUser}/>} />
           <Route path = "create-project" element = {
-          <CreateProject uploadProject={uploadProject} projectData={projectData}/>
+          <CreateProject uploadProject={uploadProject} projectData={projectData}
+            currUser={currentUser}/>
         } />
         </Route>
       </Routes>
