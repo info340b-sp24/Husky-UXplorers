@@ -115,7 +115,7 @@ export default function App() {
         <Route path = "*" element = {<PageNotFound />} />
 
         <Route element={<ProtectedPage currentUser={currentUser} />}>
-          <Route path = "profile" element = {<Profile />} />
+          <Route path = "profile" element = {<Profile currentUser={currentUser}/>} />
           <Route path = "create-project" element = {
           <CreateProject uploadProject={uploadProject} projectData={projectData}/>
         } />

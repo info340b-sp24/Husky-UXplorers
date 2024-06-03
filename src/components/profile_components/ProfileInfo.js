@@ -8,6 +8,9 @@ let profileData = {
 }
 
 export default function ProfileInfo(props) {
+  const currentUser = props.currentUser;
+  console.log(currentUser);
+
   return (
     <div className="profile">
       <div className="img-left-container">
@@ -17,9 +20,9 @@ export default function ProfileInfo(props) {
           />
         </section>
         <section className="mt-1" style={{"textAlign" : "left"}}>
-          <h1>{profileData.name}</h1>
-          <p>{"@" + profileData.username}</p>
-          <p className="my-4 px-3 py-1 bg-purple rounded-5 text-light">{profileData.major}, {profileData.gradYear}</p>
+          <h1>test</h1>
+          <p>@</p>
+          <p className="my-4 px-3 py-1 bg-purple rounded-5 text-light">asd</p>
         </section>
       </div>
     </div>
