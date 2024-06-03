@@ -14,7 +14,6 @@ import Guide from './Guide.js';
 import CreateProject from './CreateProject.js';
 import PageNotFound from './PageNotFound.js';
 import SignIn from './SignIn.js';
-import SearchResults from './SearchResults.js';
 import Footer from './Footer.js';
 import NavBar from './NavBar.js';
 
