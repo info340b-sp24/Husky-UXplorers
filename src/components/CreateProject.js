@@ -25,7 +25,6 @@ function MainCreateProject (props) {
       ]
     }
   }
-
   // saves each section of the form in a single object
   const [ newProject, setNewProject ] = useState(init);
   console.log(newProject);
@@ -36,12 +35,7 @@ function MainCreateProject (props) {
 
     /** TO BE FILLED IN */
     if (section === "metadata") {
-      // "metadata": {
-      //   "timestamp": 1,
-      //   "title": "Ostomi",
-      //   "typeOfProj": "school"
-      // }
-      copy[key] = value;
+
     } else if (section === "intro") {
 
     } else if (section === "problem") {
@@ -71,8 +65,8 @@ function MainCreateProject (props) {
     <main className="container-fluid">
       <h1>New Project</h1>
       <p className="small-text">Enter in information to post a new project</p>
-      <form>
-        <IntroCreateProject handleChange={handleChange} />
+      <form onSubmit={handleSubmit}>
+        <IntroCreateProject />
         <DescribeCreateProject />
         <TechnicalCreateProject />
 
@@ -80,7 +74,6 @@ function MainCreateProject (props) {
           className="rounded px-4 py-3 bg-dark text-white"
           href="profile-finished.html"
           type="submit"
-          onSubmit={handleSubmit}
         >
           Submit Project
         </button>
@@ -90,20 +83,16 @@ function MainCreateProject (props) {
 }
 
 function IntroCreateProject (props) {
-  const handleChange = props.handleChange;
   const [typeSelected, setTypeSelected] = useState({});
   const changeTypeSelected = (newType) => {
     setTypeSelected(newType);
   }
-  const [title, setTitle] = useState("");
 
   return (
     <section>
       <h2>Project Introduction</h2>
       <div className="form-floating mb-3">
-        <input type="text" className="form-control" id="project-name"
-        handleChange={() => {handleChange("metadata", "title", title)}}
-        placeholder="ex: Cooking Master App" value={title}/>
+        <input type="text" className="form-control" id="project-name" placeholder="ex: Cooking Master App" />
         <label htmlFor="project-name">Project Name</label>
       </div>
 

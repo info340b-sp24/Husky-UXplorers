@@ -11,7 +11,9 @@
       ]
     },
     "metadata": {
+      "timestamp": 1,
       "title": "Ostomi",
+      "type": "project",
       "typeOfProj": "school"
     },
     "intro": {
@@ -46,7 +48,9 @@
       "links": []
     },
     "metadata": {
+      "timestamp": 2,
       "title": "App Home",
+      "type": "project",
       "typeOfProj": "hackathon"
     },
     "intro": {
@@ -76,7 +80,9 @@
       "links": []
     },
     "metadata": {
+      "timestamp": 3,
       "title": "Park Quest",
+      "type": "project",
       "typeOfProj": "school"
     },
     "intro": {
@@ -108,7 +114,9 @@
       "links": []
     },
     "metadata": {
+      "timestamp": 1,
       "title": "Shoeholic",
+      "type": "project",
       "typeOfProj": "fun"
     },
     "intro": {
