@@ -213,7 +213,6 @@ function ProjectCard({ data, getCorrectImgSrc }) {
           <Link to={"/gallery/" + metadata.title} style={{ textDecoration: 'none', color: 'inherit'}}>
             <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
           </Link>
-          <img className="bookmark" src="img/icons/bookmark-white.png" alt="bookmark" />
           <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
         </div>
       </div>
