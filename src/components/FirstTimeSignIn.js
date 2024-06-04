@@ -16,7 +16,7 @@ export default function FirstTimeSignIn (props) {
     });
 
     const handleUsernameChange = (event) => {
-        const { value } = event.target; 
+        const { value } = event.target;
         setUserInfo((prevUserInfo) => ({
             ...prevUserInfo,
             username: value,
@@ -24,7 +24,7 @@ export default function FirstTimeSignIn (props) {
     };
 
     const handleUsertagChange = (event) => {
-        const { value } = event.target; 
+        const { value } = event.target;
         setUserInfo((prevUserInfo) => ({
             ...prevUserInfo,
             usertag: value,
@@ -97,7 +97,7 @@ export default function FirstTimeSignIn (props) {
                     <h2 className="text-justify">Welcome to Husky UXplorers!</h2>
                     <hr />
                 </div>
-                
+
                 <p><b>Account Information</b></p>
                 <form onSubmit={handleSubmit}>
                     <div className="form-floating mb-3">
@@ -127,15 +127,15 @@ export default function FirstTimeSignIn (props) {
                     <div className=" mb-3">
                         <p className="small-text text-left">Select your major</p>
                         <div className="cardform-check form-check-inline">
-                            <input className="form-check-input" type="radio" id="major-design" name="major" value="Design" onChange={handleMajorChange} checked={userInfo.major == 'Design'} />
+                            <input className="form-check-input" type="radio" id="major-design" name="major" value="Design" onChange={handleMajorChange} checked={userInfo.major === 'Design'} />
                             <label className="form-check-label" htmlFor="major-design">Design</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" id="major-HCDE" name="major" value="HCDE" onChange={handleMajorChange} checked={userInfo.major == 'HCDE'} />
+                            <input className="form-check-input" type="radio" id="major-HCDE" name="major" value="HCDE" onChange={handleMajorChange} checked={userInfo.major === 'HCDE'} />
                             <label className="form-check-label" htmlFor="major-HCDE">Human-Centered Design & Engineering</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" id="major-INFO" name="major" value="INFO" onChange={handleMajorChange} checked={userInfo.major == 'INFO'} />
+                            <input className="form-check-input" type="radio" id="major-INFO" name="major" value="INFO" onChange={handleMajorChange} checked={userInfo.major === 'INFO'} />
                             <label className="form-check-label" htmlFor="major-INFO">Informatics</label>
                         </div>
                     </div>
@@ -151,8 +151,8 @@ export default function FirstTimeSignIn (props) {
                     <button type="submit" className="btn purple-btn text-white mt-5">Submit</button>
                 </form>
             </div>
-            
+
         </main>
     )
-    
+
 }
