@@ -84,6 +84,10 @@ export default function App() {
 
         const creationTime = new Date(firebaseUser.metadata.creationTime).getTime();
         const lastSignInTime = new Date(firebaseUser.metadata.lastSignInTime).getTime();
+        
+        setCurrentUser(firebaseUser);
+        setIsAuthenticated(true);
+        console.log(currentUser);
 
         if (creationTime == lastSignInTime) {
           console.log("First time sign-in for " + firebaseUser.username);
@@ -92,9 +96,6 @@ export default function App() {
           console.log("Welcome back, " + firebaseUser.username);
           navigateTo("/profile");
         }
-
-        setCurrentUser(firebaseUser);
-        setIsAuthenticated(true);
       } else {
         setCurrentUser(nullUser);
         setIsAuthenticated(false);
@@ -136,7 +137,7 @@ export default function App() {
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
-        <Route path="first-time-sign-in" element={<FirstTimeSignIn />} />
+        <Route path="first-time-sign-in" element={<FirstTimeSignIn currentUser={currentUser}/>} />
         <Route path = "*" element = {<PageNotFound />} />
 
         <Route element={<ProtectedPage currentUser={currentUser} />}>
