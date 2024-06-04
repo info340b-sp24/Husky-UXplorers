@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const defaultProfileData = {
   username: "milllan",
@@ -14,24 +15,10 @@ export default function ProfileInfo(props) {
   const [profileData, setProfileData] = useState(defaultProfileData);
 
   const currentUser = props.currentUser || profileData;
+  const navigateTo = useNavigate();
 
   const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleSaveClick = () => {
-    // Save changes to the profile (e.g., update the database)
-    // Assuming we have a function updateProfile to handle this.
-    updateProfile(profileData);
-    setIsEditing(false);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProfileData(prevData => ({
-      ...prevData,
-      [name]: value
-    }));
+    navigateTo("/first-time-sign-in");
   };
 
   return (
@@ -46,48 +33,14 @@ export default function ProfileInfo(props) {
           />
         </section>
         <section className="mt-1" style={{ textAlign: "left" }}>
-          {isEditing ? (
-            <div>
-              <input
-                type="text"
-                name="username"
-                value={profileData.username}
-                onChange={handleChange}
-              />
-              <input
-                type="file"
-                name="profilePic"
-                onChange={(e) => {
-                  const file = e.target.files[0];
-                  const reader = new FileReader();
-                  reader.onloadend = () => {
-                    setProfileData(prevData => ({
-                      ...prevData,
-                      profilePic: reader.result
-                    }));
-                  };
-                  if (file) {
-                    reader.readAsDataURL(file);
-                  }
-                }}
-              />
-              <button onClick={handleSaveClick}>Save</button>
-            </div>
-          ) : (
             <div>
               <h1>{currentUser.username}</h1>
               <p>{"@" + currentUser.usertag}</p>
               <p className="badge px-3 py-2 bg-purple rounded-5 text-light">{currentUser.major + ", " + currentUser.graduatingYear}</p>
               <button className="btn" onClick={handleEditClick}>Edit Profile</button>
             </div>
-          )}
         </section>
       </div>
     </div>
   );
-}
-
-function updateProfile(profileData) {
-  // Placeholder function to update the profile data in your database
-  console.log("Profile updated", profileData);
 }
