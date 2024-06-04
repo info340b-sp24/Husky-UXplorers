@@ -70,7 +70,7 @@ function ProjectInfo({ data }) {
       <div className="d-flex align-items-center">
         <img className="profile-pic rounded-circle mx-3"
           style={Object.assign({"width" : "50px"}, {"height" : "50px"})}
-          src={"/img/profiles/" + authorData.authorPicture}
+          src={authorData.authorPicture}
           alt={authorData.username + "'s profile picture"}
         />
         <h5 className="heading-body-typeface">{authorData.author}</h5>

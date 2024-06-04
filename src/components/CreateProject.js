@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { getDatabase, ref, set as firebaseSet } from 'firebase/database';
+import { getDatabase, ref as dataRef, set as firebaseSet, onValue } from 'firebase/database';
 import { getStorage, getDownloadURL, ref as storageRef } from 'firebase/storage';
 import { uploadBytes } from 'firebase/storage';
 
@@ -37,13 +37,29 @@ const INIT_PROJECT = {
 }
 
 export default function CreateProject (props) {
-  const { uploadProject, currUser } = props;
-  console.log(currUser);
   const navigateTo = useNavigate();
+  const { uploadProject, currUser } = props;
 
-  const { username, userId, userImg } = currUser;
-  INIT_PROJECT.authorData.author = username;
-  INIT_PROJECT.authorData.username = username;
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    const userId = currUser.userId;
+    const db = getDatabase();
+    const userRef = dataRef(db, "users/" + userId);
+
+    const unregisterFunction = onValue(userRef, (snapshot) => {
+      const userData = snapshot.val();
+      console.log(userData);
+      setUserData(userData);
+    });
+
+    const cleanup = () => {
+      unregisterFunction();
+    }
+
+    return cleanup;
+  }, [currUser]);
+
+  updateAuthorData(userData);
 
   const [ newProject, setNewProject ] = useState(INIT_PROJECT);
   const [tools, setTools] = useState([]);
@@ -73,6 +89,7 @@ export default function CreateProject (props) {
     copy[section][key] = value;
     copy.technicalDetails.tools = tools;
 
+    console.log(copy);
     setNewProject(copy);
   }
 
@@ -125,6 +142,16 @@ export default function CreateProject (props) {
       </form>
     </main>
   )
+}
+
+const updateAuthorData = (userData) => {
+  const {graduatingYear, userImg, username, usertag, major } = userData;
+
+  INIT_PROJECT.authorData.author = username;
+  INIT_PROJECT.authorData.username = usertag;
+  INIT_PROJECT.authorData.authorGrad = graduatingYear;
+  INIT_PROJECT.authorData.authorMajor = major;
+  INIT_PROJECT.authorData.authorPicture = userImg;
 }
 
 function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
