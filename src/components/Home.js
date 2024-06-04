@@ -62,7 +62,6 @@ function FeaturedSection() {
 
       </div>
 
-      <FeaturedPortfolios />
       <FeaturedProjects />
     </div>
   );
@@ -97,43 +96,6 @@ function FeaturedProjects() {
             <div className="card-body">
               <h4 className="card-title">AI Career Assistant</h4>
               <p className="card-text">Lauren James INFO '24</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function FeaturedPortfolios() {
-  return (
-    <section className="mx-5">
-      <h3 className="mt-5">Featured Portfolios</h3>
-      <div className="row row-cols-1 row-cols-md-3">
-        <div className="col">
-          <div className="card block">
-            <img src="img/portfolios/port1.jpeg" className="card-img-top" alt="Maya Patel's Portfolio" />
-            <div className="card-body">
-              <h4 className="card-title">Maya Patel </h4>
-              <p className="card-text">HCDE '26</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/portfolios/emily_walter.jpg" className="card-img-top" alt="Emily Walter's Portfolio" />
-            <div className="card-body">
-              <h4 className="card-title">Emily Walter</h4>
-              <p className="card-text">IxD '26</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/portfolios/marcel_mounie.png" className="card-img-top" alt="Marcel Mounie's Portfolio" />
-            <div className="card-body">
-              <h4 className="card-title">Marcel Mounie</h4>
-              <p className="card-text">INFO '25</p>
             </div>
           </div>
         </div>
