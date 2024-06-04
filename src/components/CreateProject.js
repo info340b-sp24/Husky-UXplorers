@@ -38,6 +38,7 @@ const INIT_PROJECT = {
 
 export default function CreateProject (props) {
   const { uploadProject, currUser } = props;
+  console.log(currUser);
   const navigateTo = useNavigate();
 
   const { username, userId, userImg } = currUser;
