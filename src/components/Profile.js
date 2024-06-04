@@ -1,36 +1,28 @@
-import React, { useState } from 'react';
-import ProfileInfo from './profile_components/ProfileInfo';
-
-const defaultProfileData = {
-  username: "milllan",
-  profilePic: "red-panda.jpg",
-  profilePicAlt: "red panda profile picture",
-  name: "Mila Nguyen",
-  major: "Human Centered Design & Engineering",
-  gradYear: "2026"
-};
+import React from 'react';
+import ProfileInfo from './profile_components/ProfileInfo'
 
 export default function Profile(props) {
-  const [currentUser, setCurrentUser] = useState(defaultProfileData);
-
-  const updateProfile = (newProfileData) => {
-    setCurrentUser(newProfileData);
-  };
+  const currentUser = props.currentUser;
 
   return (
     <div>
-      <MainProfile currentUser={currentUser} updateProfile={updateProfile} />
+      <MainProfile currentUser={currentUser}/>
     </div>
   );
 }
 
 function MainProfile(props) {
-  const { currentUser, updateProfile } = props;
+  const currentUser = props.currentUser;
 
   return (
     <main className="container-fluid mx-5 mt-3">
-      <ProfileInfo currentUser={currentUser} updateProfile={updateProfile} />
+      {/* <header className="pt-3">
+        <h1>My Profile</h1>
+      </header> */}
+
+      <ProfileInfo currentUser={currentUser}/>
       <hr />
+
       <article>
         <ProfileProjects />
         <ProfileBookmarks />
@@ -50,7 +42,7 @@ function ProfileProjects(props) {
             <div className="card-body">
               <h3 className="card-title">Shoeholic</h3>
               <p className="card-text">An app for sneakerheads.</p>
-              <img className="arrow" src="img/icons/arrow.png" alt="arrow button" />
+              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button" />
             </div>
           </div>
         </div>
@@ -70,17 +62,18 @@ function ProfileBookmarks(props) {
             <div className="card-body">
               <h3 className="card-title">Maya Patel's Portfolio</h3>
               <p className="card-text">HCDE '26</p>
-              <img className="arrow" src="img/icons/arrow.png" alt="arrow button" />
+              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button"/>
             </div>
           </div>
         </div>
+
         <div className="col">
           <div className="card">
             <img src="img/portfolios/port2.jpeg" className="card-img-top" alt="shoe shopping app mockup" />
             <div className="card-body">
               <h3 className="card-title">Noah Martinez's Portfolio</h3>
               <p className="card-text">INFO '25</p>
-              <img className="arrow" src="img/icons/arrow.png" alt="arrow button" />
+              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button"/>
             </div>
           </div>
         </div>
