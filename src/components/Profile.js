@@ -21,7 +21,7 @@ export default function Profile(props) {
     }
 
     return cleanup;
-  }, [currentUser]);
+  }, []);
 
   return (
     <div>

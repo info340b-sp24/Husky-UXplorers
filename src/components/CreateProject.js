@@ -57,7 +57,7 @@ export default function CreateProject (props) {
     }
 
     return cleanup;
-  }, [currUser]);
+  }, []);
 
   updateAuthorData(userData);
 

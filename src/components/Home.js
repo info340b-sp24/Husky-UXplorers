@@ -85,35 +85,6 @@ function FeaturedProjects(props) {
           projects={projectData}
           getCorrectImgSrc={getCorrectImgSrc}
         />
-      {/* <div className="row row-cols-1 row-cols-md-3">
-        <div className="col">
-          <div className="card block">
-            <img src="img/projects/bloom.png" className="card-img-top" alt="Bloom Mentor Matcher" />
-            <div className="card-body">
-              <h4 className="card-title">Bloom Mentor Matcher</h4>
-              <p className="card-text">Darrel Sudra IxD '26</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/projects/p4.jpg" className="card-img-top" alt="Shoeholic" />
-            <div className="card-body">
-              <h4 className="card-title">Shoeholic</h4>
-              <p className="card-text">Mila Nguyen HCDE '24</p>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card block">
-            <img src="img/projects/career_assistant.jpeg" className="card-img-top" alt="AI Career Assistant" />
-            <div className="card-body">
-              <h4 className="card-title">AI Career Assistant</h4>
-              <p className="card-text">Lauren James INFO '24</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </section>
   );
 }
