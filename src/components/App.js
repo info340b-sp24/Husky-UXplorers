@@ -134,17 +134,17 @@ export default function App() {
         <Route path="search" element={<SearchResults projectData={projectData} getCorrectImgSrc={getCorrectImgSrc} />} />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
-        } />
-        <Route path="first-time-sign-in" element={<FirstTimeSignIn currentUser={currentUser}/>} />
-        <Route path = "*" element = {<PageNotFound />} />
-
+        } /> 
         <Route element={<ProtectedPage currentUser={currentUser} />}>
           <Route path = "profile" element = {<Profile currentUser={currentUser}/>} />
+          <Route path="first-time-sign-in" element={<FirstTimeSignIn currentUser={currentUser}/>} />
           <Route path = "create-project" element = {
           <CreateProject uploadProject={uploadProject} projectData={projectData}
             currUser={currentUser}/>
         } />
         </Route>
+
+        <Route path = "*" element = {<PageNotFound />} />
       </Routes>
       <Footer />
     </div>
