@@ -38,12 +38,14 @@ export default function MainGallery(props) {
   };
 
   const filteredProjects = projectData.filter((project) => {
+    const typeOfProj = project.metadata.typeOfProj.toLowerCase();
+    const tools = project.technicalDetails.tools;
+
     const filterPurpose =
-      ((!filters.purpose.school || project.metadata.typeOfProj === 'school') &&
-      (!filters.purpose.hackathon || project.metadata.typeOfProj === 'hackathon') &&
-      (!filters.purpose.fun || project.metadata.typeOfProj === 'fun'));
-    const filterTools = Object.keys(filters.tools).every((key) => !filters.tools[key] || (project.technicalDetails.tools && project.technicalDetails.tools.includes(key)));
-    // const filterMajor = !filters.major || project.authorData.authorMajor === filters.major;
+      ((!filters.purpose.school || typeOfProj === "school") &&
+      (!filters.purpose.hackathon || typeOfProj === 'hackathon') &&
+      (!filters.purpose.fun || typeOfProj === 'fun'));
+    const filterTools = Object.keys(filters.tools).every((key) => !filters.tools[key] || (tools && tools.includes(key)));
     const filterMajor = filters.major === 'AllMajors' || project.authorData.authorMajor === filters.major;
     return filterPurpose && filterTools && filterMajor;
   });
