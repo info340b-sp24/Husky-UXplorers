@@ -41,7 +41,7 @@ function Spotlight() {
             </div>
           </div>
 
-          <img src="img/landing_img.png" alt="UXplorers logo" className="m-5"/>
+          <img src="img/landing_logo.png" alt="UXplorers logo" className="m-5"/>
         </div>
       </div>
     </div>
