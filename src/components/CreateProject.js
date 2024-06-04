@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDatabase, ref as dataRef, onValue } from 'firebase/database';
+import { getDatabase, ref as dataRef, push, set, onValue } from 'firebase/database';
 import { getStorage, getDownloadURL, ref as storageRef } from 'firebase/storage';
 import { uploadBytes } from 'firebase/storage';
 
@@ -110,14 +110,19 @@ export default function CreateProject (props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    let copy = {...newProject};
+  
+    let copy = { ...newProject };
     copy.technicalDetails.tools = tools;
     copy.intro.imgSrc = imageUrl;
-
-    uploadProject(copy);
-
-    setNewProject({INIT_PROJECT});
+  
+    // Here, you need to push the new project data to the database
+    const db = getDatabase();
+    const projectsRef = dataRef(db, `users/${currUser.userId}/projects`);
+    const newProjectRef = push(projectsRef); // eslint-disable-line
+    await set(newProjectRef, copy); 
+  
+    // Reset form fields and navigate to the profile page
+    setNewProject(INIT_PROJECT);
     navigateTo("../index");
   }
 
