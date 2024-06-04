@@ -145,12 +145,13 @@ export default function CreateProject (props) {
 }
 
 const updateAuthorData = (userData) => {
-  const {graduatingYear, userId, userImg, username, usertag, major } = userData;
+  const {graduatingYear, userImg, username, usertag, major } = userData;
 
   INIT_PROJECT.authorData.author = username;
   INIT_PROJECT.authorData.username = usertag;
   INIT_PROJECT.authorData.authorGrad = graduatingYear;
   INIT_PROJECT.authorData.authorMajor = major;
+  INIT_PROJECT.authorData.authorPicture = userImg;
 }
 
 function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
