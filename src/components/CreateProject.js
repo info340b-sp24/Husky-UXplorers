@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { getDatabase, ref as dataRef, set as firebaseSet, onValue } from 'firebase/database';
+import { getDatabase, ref as dataRef, onValue } from 'firebase/database';
 import { getStorage, getDownloadURL, ref as storageRef } from 'firebase/storage';
 import { uploadBytes } from 'firebase/storage';
 

@@ -82,12 +82,12 @@ export default function App() {
 
         const creationTime = new Date(firebaseUser.metadata.creationTime).getTime();
         const lastSignInTime = new Date(firebaseUser.metadata.lastSignInTime).getTime();
-        
+
         setCurrentUser(firebaseUser);
         setIsAuthenticated(true);
         console.log(currentUser);
 
-        if (creationTime == lastSignInTime) {
+        if (creationTime === lastSignInTime) {
           console.log("First time sign-in for " + firebaseUser.username);
           navigateTo("/first-time-sign-in")
         } else {
@@ -135,7 +135,7 @@ export default function App() {
         <Route path="search" element={<SearchResults projectData={projectData} getCorrectImgSrc={getCorrectImgSrc} />} />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
-        } /> 
+        } />
         <Route element={<ProtectedPage currentUser={currentUser} />}>
           <Route path = "profile" element = {<Profile currentUser={currentUser}/>} />
           <Route path="first-time-sign-in" element={<FirstTimeSignIn currentUser={currentUser}/>} />
