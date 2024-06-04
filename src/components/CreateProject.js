@@ -71,6 +71,8 @@ export default function CreateProject (props) {
     let copy = {...newProject};
     copy[section][key] = value;
     copy.technicalDetails.tools = tools;
+
+    setNewProject(copy);
   }
 
   const handleImageChange = async (event) => {
@@ -171,7 +173,6 @@ function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
         <input className="form-control" type="file" id="project-images"
         name="intro.imgSrc"
         onChange={handleImageChange}
-        value={newProject.intro.imgSrc}
         required />
       </div>
     </section>
