@@ -36,7 +36,7 @@ export default function FirstTimeSignIn (props) {
         if (files.length > 0) {
             const imageFile = files[0];
             const storage = getStorage();
-            const imageRef = storageRef(storage, "profileImages/" + currentUser.userid + ".png");
+            const imageRef = storageRef(storage, "profileImages/" + currentUser.userId + ".png");
 
             try {
                 await uploadBytes(imageRef, imageFile);
