@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 
 export default function MainGallery(props) {
-  const { projectData, getCorrectImgSrc } = props;
+  const { projectData  } = props;
 
   const [filters, setFilters] = useState({
     purpose: {
@@ -60,7 +60,6 @@ export default function MainGallery(props) {
           onFilterChange={handleFilterChange}
           onMajorChange={handleMajorChange}
           projects={filteredProjects}
-          getCorrectImgSrc={getCorrectImgSrc}
         />
       </main>
     </div>
@@ -78,19 +77,19 @@ function GalleryHeader(props) {
   );
 }
 
-function GalleryContent({ filters, onFilterChange, onMajorChange, projects, getCorrectImgSrc }) {
+function GalleryContent({ filters, onFilterChange, onMajorChange, projects  }) {
   return (
     <div className="d-flex flex-row mb-3 align-items-start">
       <GalleryFilter filters={filters} onFilterChange={onFilterChange} onMajorChange={onMajorChange} />
-      <GalleryProjects projects={projects} getCorrectImgSrc={getCorrectImgSrc} />
+      <GalleryProjects projects={projects} />
     </div>
   );
 }
 
-function GalleryProjects({ projects, getCorrectImgSrc }) {
+function GalleryProjects({ projects  }) {
   return (
     <div className="projects container">
-      <ProjectCardRow data={projects} getCorrectImgSrc={getCorrectImgSrc} />
+      <ProjectCardRow data={projects} />
     </div>
   );
 }
@@ -184,13 +183,12 @@ function GalleryFilter({ filters, onFilterChange, onMajorChange }) {
   )
 }
 
-function ProjectCardRow({ data, getCorrectImgSrc }) {
+function ProjectCardRow({ data }) {
   const row = data.map((currData) => {
     return (
       <ProjectCard
         data={currData}
         key={currData.metadata.title + currData.authorData.author}
-        getCorrectImgSrc={getCorrectImgSrc}
       />
     );
   });
@@ -202,7 +200,7 @@ function ProjectCardRow({ data, getCorrectImgSrc }) {
   );
 }
 
-function ProjectCard({ data, getCorrectImgSrc }) {
+function ProjectCard({ data }) {
   const { metadata, authorData, intro } = data;
   const projectPath = getProjectPath(metadata, authorData);
 
@@ -210,7 +208,7 @@ function ProjectCard({ data, getCorrectImgSrc }) {
     <div className="col">
       <div className="card block mb-3">
         <Link to={"/gallery/" + projectPath}>
-          <img src={getCorrectImgSrc(intro.imgSrc)} className="card-img-top" alt={intro.imgAlt} />
+          <img src={intro.imgSrc} className="card-img-top" alt={intro.imgAlt} />
         </Link>
         <div className="card-body">
           <Link to={"/gallery/" + projectPath} style={{ textDecoration: 'none', color: 'inherit'}}>

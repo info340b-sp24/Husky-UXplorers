@@ -17,25 +17,12 @@ export default function Profile(props) {
       setUserData(userData);
     });
 
-    const projectsRef = dbRef(db, `users/${userId}/projects`);
-    const unregisterProjects = onValue(projectsRef, (snapshot) => {
-      const projects = snapshot.val();
-      if (projects) {
-        const projectList = Object.keys(projects).map((projectId) => ({
-          id: projectId,
-          ...projects[projectId]
-        }));
-        setUserProjects(projectList);
-      } else {
-        setUserProjects([]);
-      }
-    });
+    const cleanup = () => {
+      unregisterFunction();
+    }
 
-    return () => {
-      unregisterUserData();
-      unregisterProjects();
-    };
-  }, [currentUser]);
+    return cleanup;
+  }, []);
 
   return (
     <div>

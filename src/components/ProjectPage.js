@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function ProjectPage(props) {
-  const { projectData, getCorrectImgSrc } = props;
+  const { projectData } = props;
   const { projectName } = useParams();
   const title = projectName.split("-")[0];
   const username = projectName.split("-")[1];
@@ -21,15 +21,15 @@ export default function ProjectPage(props) {
       </p>
       <div className="d-flex" style={{"gap" : "1rem"}}>
         <ProjectInfo data={project}/>
-        <ProjectImage data={project} getCorrectImgSrc={getCorrectImgSrc} />
+        <ProjectImage data={project} />
       </div>
     </div>
   )
 }
 
-function ProjectImage({ data, getCorrectImgSrc }) {
+function ProjectImage({ data }) {
   const { intro } = data;
-  const imgSrc = getCorrectImgSrc(intro.imgSrc);
+  const imgSrc = intro.imgSrc;
 
   return (
     <img src={imgSrc}
