@@ -58,15 +58,6 @@ export default function App() {
     firebasePush(projectsRef, newProject);
   }
 
-
-  const getCorrectImgSrc = function (imgSrc) {
-    if (!imgSrc.includes("https://firebasestorage.googleapis.com/")) {
-      imgSrc = "img/projects/" + imgSrc;
-      console.log(imgSrc);
-    }
-    return imgSrc;
-  }
-
   // USER AUTH
   useEffect(() => {
     const auth = getAuth();
@@ -120,19 +111,16 @@ export default function App() {
       <NavBar currentUser={currentUser} isAuthenticated={isAuthenticated} signoutUser={signoutUser}/>
       <Routes>
         <Route path = "" element = {<Home projectData={projectData}/>} />
-        <Route path = "index" element = {<Home projectData={projectData}
-          getCorrectImgSrc={getCorrectImgSrc}/>} />
+        <Route path = "index" element = {<Home projectData={projectData}/>} />
         <Route path = "gallery" element = {<Gallery />} >
           <Route path = ":projectName" element = {
-            <ProjectPage projectData={projectData}
-            getCorrectImgSrc={getCorrectImgSrc} />
+            <ProjectPage projectData={projectData} />
           } />
-          <Route index element = {<GalleryMain projectData={projectData}
-            getCorrectImgSrc={getCorrectImgSrc} />}
+          <Route index element = {<GalleryMain projectData={projectData} />}
           />
         </Route>
         <Route path = "guide" element = {<Guide />} />
-        <Route path="search" element={<SearchResults projectData={projectData} getCorrectImgSrc={getCorrectImgSrc} />} />
+        <Route path="search" element={<SearchResults projectData={projectData} />} />
         <Route path="sign-in" element={
           <SignIn signOut={signoutUser} currentUser={currentUser}/>
         } />
