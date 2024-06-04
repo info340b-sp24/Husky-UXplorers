@@ -49,7 +49,6 @@ function MainProfile(props) {
 
       <article>
         <ProfileProjects />
-        <ProfileBookmarks />
       </article>
     </main>
   );
@@ -75,33 +74,3 @@ function ProfileProjects(props) {
   );
 }
 
-function ProfileBookmarks(props) {
-  return (
-    <section>
-      <h2>Bookmarked Projects</h2>
-      <div className="row row-cols-1 row-cols-md-3">
-        <div className="col">
-          <div className="card">
-            <img src="img/portfolios/port1.jpeg" className="card-img-top" alt="shoe shopping app mockup" />
-            <div className="card-body">
-              <h3 className="card-title">Maya Patel's Portfolio</h3>
-              <p className="card-text">HCDE '26</p>
-              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button"/>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div className="card">
-            <img src="img/portfolios/port2.jpeg" className="card-img-top" alt="shoe shopping app mockup" />
-            <div className="card-body">
-              <h3 className="card-title">Noah Martinez's Portfolio</h3>
-              <p className="card-text">INFO '25</p>
-              <img className="arrow" src="img/icons/arrow.png" alt = "arrow button"/>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
