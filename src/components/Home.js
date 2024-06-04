@@ -1,18 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 export default function Home(props) {
+  const { projectData, getCorrectImgSrc } = props;
+  const recentProjects = projectData.slice(-3);
+
   return (
     <div>
-      <MainHome />
+      <MainHome projectData={recentProjects} getCorrectImgSrc={getCorrectImgSrc}/>
     </div>
   );
 }
 
 function MainHome (props) {
+  const { projectData, getCorrectImgSrc } = props;
+
   return (
     <main className="container-fluid">
       <Spotlight />
-      <FeaturedSection />
+      <FeaturedSection projectData={projectData} getCorrectImgSrc={getCorrectImgSrc}/>
     </main>
   );
 }
@@ -48,7 +54,9 @@ function Spotlight() {
   );
 }
 
-function FeaturedSection() {
+function FeaturedSection(props) {
+  const { projectData, getCorrectImgSrc } = props;
+
   return (
     <div>
       <div className="container">
@@ -62,16 +70,22 @@ function FeaturedSection() {
 
       </div>
 
-      <FeaturedProjects />
+      <FeaturedProjects projectData={projectData} getCorrectImgSrc={getCorrectImgSrc}/>
     </div>
   );
 }
 
-function FeaturedProjects() {
+function FeaturedProjects(props) {
+  const { projectData, getCorrectImgSrc } = props;
+
   return (
     <section className="mx-5 mb-5">
-      <h3 className="mt-5">Featured Projects</h3>
-      <div className="row row-cols-1 row-cols-md-3">
+      <h3 className="mt-5">Recent Projects</h3>
+      <GalleryContent
+          projects={projectData}
+          getCorrectImgSrc={getCorrectImgSrc}
+        />
+      {/* <div className="row row-cols-1 row-cols-md-3">
         <div className="col">
           <div className="card block">
             <img src="img/projects/bloom.png" className="card-img-top" alt="Bloom Mentor Matcher" />
@@ -99,7 +113,61 @@ function FeaturedProjects() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
+  );
+}
+
+function GalleryContent({ projects, getCorrectImgSrc }) {
+  return (
+    <div className="d-flex flex-row mb-3 align-items-start">
+      <GalleryProjects projects={projects} getCorrectImgSrc={getCorrectImgSrc} />
+    </div>
+  );
+}
+
+function GalleryProjects({ projects, getCorrectImgSrc }) {
+  return (
+    <div className="projects container">
+      <ProjectCardRow data={projects} getCorrectImgSrc={getCorrectImgSrc} />
+    </div>
+  );
+}
+
+function ProjectCardRow({ data, getCorrectImgSrc }) {
+  const row = data.map((currData) => {
+    return (
+      <ProjectCard
+        data={currData}
+        key={currData.metadata.title + currData.authorData.author}
+        getCorrectImgSrc={getCorrectImgSrc}
+      />
+    );
+  });
+
+  return (
+    <div className="row row-cols-1 row-cols-md-3">
+      {row}
+    </div>
+  );
+}
+
+function ProjectCard({ data, getCorrectImgSrc }) {
+  const { metadata, authorData, intro } = data;
+
+  return (
+    <div className="col">
+      <div className="card block mb-3">
+        <Link to={"/gallery/" + metadata.title}>
+          <img src={getCorrectImgSrc(intro.imgSrc)} className="card-img-top" alt={intro.imgAlt} />
+        </Link>
+        <div className="card-body">
+          <Link to={"/gallery/" + metadata.title} style={{ textDecoration: 'none', color: 'inherit'}}>
+            <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
+          </Link>
+          <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
+        </div>
+      </div>
+    </div>
   );
 }

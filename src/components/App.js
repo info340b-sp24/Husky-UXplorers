@@ -119,8 +119,9 @@ export default function App() {
     <div>
       <NavBar currentUser={currentUser} isAuthenticated={isAuthenticated} signoutUser={signoutUser}/>
       <Routes>
-        <Route path = "" element = {<Home />} />
-        <Route path = "index" element = {<Home />} />
+        <Route path = "" element = {<Home projectData={projectData}/>} />
+        <Route path = "index" element = {<Home projectData={projectData}
+          getCorrectImgSrc={getCorrectImgSrc}/>} />
         <Route path = "gallery" element = {<Gallery />} >
           <Route path = ":projectName" element = {
             <ProjectPage projectData={projectData}
