@@ -37,8 +37,19 @@ const INIT_PROJECT = {
 }
 
 export default function CreateProject (props) {
-  const { uploadProject, currUser } = props;
+  const { uploadProject, currUser, projectData } = props;
   const navigateTo = useNavigate();
+
+  const getProjectNames = function (projectData) {
+    const names = projectData.map((currProject) => {
+      const title = currProject.metadata.title;
+      return title;
+    })
+    return names;
+  }
+  const projectNames = getProjectNames(projectData);
+  const [titleTaken, setTitleTaken] = useState(false);
+
 
   const { username, userId, userImg } = currUser;
   INIT_PROJECT.authorData.author = username;
@@ -73,6 +84,16 @@ export default function CreateProject (props) {
     copy.technicalDetails.tools = tools;
 
     setNewProject(copy);
+
+    // checks new title's uniqueness
+    if (section === "metadata" && key === "title") {
+      const newTitle = value;
+      if (projectNames.includes(newTitle)) {
+        setTitleTaken(true);
+      } else {
+        setTitleTaken(false);
+      }
+    }
   }
 
   const handleImageChange = async (event) => {
@@ -93,6 +114,20 @@ export default function CreateProject (props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+
     let copy = {...newProject};
     copy.technicalDetails.tools = tools;
     copy.intro.imgSrc = imageUrl;
@@ -107,9 +142,9 @@ export default function CreateProject (props) {
     <main className="container-fluid">
       <h1>New Project</h1>
       <p className="small-text">Enter in information to post a new project</p>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="needs-validation" noValidate >
         <Intro newProjectData={newProject} changeCallback={handleChange}
-        changeImageCallback={handleImageChange} />
+        changeImageCallback={handleImageChange} titleTaken={titleTaken} />
         <Descriptions newProjectData={newProject} changeCallback={handleChange} />
         <TechnicalDetails newProjectData={newProject} changeCallback={handleChange}
         tools={tools} changeTools={handleChecked} />
@@ -126,7 +161,7 @@ export default function CreateProject (props) {
   )
 }
 
-function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
+function Intro ({ newProjectData, changeCallback, changeImageCallback, titleTaken }) {
   const newProject = newProjectData;
   const handleChange = changeCallback;
   const handleImageChange = changeImageCallback;
@@ -139,8 +174,13 @@ function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
         placeholder="ex: Cooking Master App"
         name="metadata-title"
         onChange={handleChange}
-        value={newProject.metadata.title}/>
+        value={newProject.metadata.title}
+        required
+        isInvalid={titleTaken}/>
         <label htmlFor="project-name">Project Name</label>
+        <div className="invalid-feedback">
+          This project name has been taken :(
+        </div>
       </div>
 
       <div className="form-floating mb-3">
@@ -148,8 +188,9 @@ function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
         placeholder="ex: School"
         name = "metadata-typeOfProj"
         onChange={handleChange}
-        value={newProject.metadata.typeOfProj}/>
-        <label htmlFor="project-type">Project for (School, Fun, Client)</label>
+        value={newProject.metadata.typeOfProj}
+        required/>
+        <label htmlFor="project-type">Project for (School, Fun, Client, Hackathon)</label>
       </div>
 
       <div className="form-floating mb-3">
@@ -160,6 +201,7 @@ function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
           name = "intro-description"
           onChange={handleChange}
           value={newProject.intro.description}
+          required
           >
         </textarea>
         <label htmlFor="project-description">Give an introduction to the project</label>
@@ -170,7 +212,8 @@ function Intro ({ newProjectData, changeCallback, changeImageCallback }) {
         <input className="form-control" type="file" id="project-images"
         name="intro.imgSrc"
         onChange={handleImageChange}
-        value={newProject.intro.imgSrc} />
+        value={newProject.intro.imgSrc}
+        required />
       </div>
     </section>
   );
@@ -192,7 +235,8 @@ function Descriptions ({newProjectData, changeCallback }) {
             type="text"
             name = "problem-description"
             onChange={handleChange}
-            value={newProject.problem.description}>
+            value={newProject.problem.description}
+            required >
           </textarea>
           <label htmlFor="project-problem">Give a description of the problem</label>
         </div>
@@ -206,7 +250,8 @@ function Descriptions ({newProjectData, changeCallback }) {
             style={{height: "100px"}}
             name = "solution-description"
             onChange={handleChange}
-            value={newProject.solution.description}>
+            value={newProject.solution.description}
+            required >
           </textarea>
           <label htmlFor="project-solution">Give a description of the solution</label>
         </div>
@@ -229,7 +274,8 @@ function TechnicalDetails ({newProjectData, changeCallback, tools,
         placeholder="ex: March 2021"
         name = "technicalDetails-date"
         onChange={handleChange}
-        value={newProject.technicalDetails.date} />
+        value={newProject.technicalDetails.date}
+        required />
         <label htmlFor="project-date">Month and year of project</label>
       </div>
       <div className="mb-3">

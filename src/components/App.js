@@ -53,8 +53,6 @@ export default function App() {
   }, []);
 
   const uploadProject = (newProject) => {
-    console.log("uploading in progress...");
-    console.log(newProject);
     const db = getDatabase();
     const projectsRef = ref(db, "projects");
     firebasePush(projectsRef, newProject);
