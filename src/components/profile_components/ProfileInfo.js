@@ -41,8 +41,8 @@ export default function ProfileInfo(props) {
           <img
             className="profile-pic rounded-circle mx-3"
             style={{ width: "150px", height: "150px" }}
-            src={currentUser.profilePic}
-            alt={currentUser.profilePicAlt}
+            src={currentUser.userImg}
+            alt={currentUser.username + "'s profile icon"}
           />
         </section>
         <section className="mt-1" style={{ textAlign: "left" }}>
@@ -76,9 +76,9 @@ export default function ProfileInfo(props) {
           ) : (
             <div>
               <h1>{currentUser.username}</h1>
-              <p>{"@" + currentUser.userId}</p>
-              <p className="my-4 px-3 py-1 bg-purple rounded-5 text-light">TO DO</p>
-              <button onClick={handleEditClick}>Edit Profile</button>
+              <p>{"@" + currentUser.usertag}</p>
+              <p className="badge px-3 py-2 bg-purple rounded-5 text-light">{currentUser.major + ", " + currentUser.graduatingYear}</p>
+              <button className="btn" onClick={handleEditClick}>Edit Profile</button>
             </div>
           )}
         </section>
