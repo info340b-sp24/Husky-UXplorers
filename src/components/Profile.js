@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {getDatabase, ref as dbRef, get as dbGet } from 'firebase/database';
+import {getDatabase, ref as dbRef, onValue } from 'firebase/database';
 import ProfileInfo from './profile_components/ProfileInfo'
 
 export default function Profile(props) {
@@ -7,26 +7,21 @@ export default function Profile(props) {
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    if (currentUser) {
-      fetchUserData(currentUser.uid);
-    }
-  }, [currentUser]);
-
-  const fetchUserData = (userId) => {
+    const userId = currentUser.userId;
     const db = getDatabase();
     const userRef = dbRef(db, "users/" + userId);
-    dbGet(userRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setUserData(snapshot.val());
-        } else {
-          console.log("User data does not exist");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+
+    const unregisterFunction = onValue(userRef, (snapshot) => {
+      const userData = snapshot.val();
+      setUserData(userData);
+    });
+
+    const cleanup = () => {
+      unregisterFunction();
+    }
+
+    return cleanup;
+  }, [currentUser]);
 
   return (
     <div>

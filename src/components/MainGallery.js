@@ -220,3 +220,10 @@ function ProjectCard({ data, getCorrectImgSrc }) {
     </div>
   );
 }
+
+const getProjectPath = (metadata, authorData) => {
+  const title = metadata.title;
+  const author = metadata.author;
+
+  return (title + author);
+}
