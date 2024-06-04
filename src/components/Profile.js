@@ -18,7 +18,7 @@ export default function Profile(props) {
     });
 
     const cleanup = () => {
-      unregisterFunction();
+      unregisterUserData(); 
     }
 
     return cleanup;
