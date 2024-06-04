@@ -154,15 +154,16 @@ function ProjectCardRow({ data, getCorrectImgSrc }) {
 
 function ProjectCard({ data, getCorrectImgSrc }) {
   const { metadata, authorData, intro } = data;
+  const projectPath = getProjectPath(metadata, authorData);
 
   return (
     <div className="col">
       <div className="card block mb-3">
-        <Link to={"/gallery/" + metadata.title}>
+        <Link to={"/gallery/" + projectPath}>
           <img src={getCorrectImgSrc(intro.imgSrc)} className="card-img-top" alt={intro.imgAlt} />
         </Link>
         <div className="card-body">
-          <Link to={"/gallery/" + metadata.title} style={{ textDecoration: 'none', color: 'inherit'}}>
+          <Link to={"/gallery/" + projectPath} style={{ textDecoration: 'none', color: 'inherit'}}>
             <h3 className="card-title">{metadata.title} <b>&rArr;</b></h3>
           </Link>
           <p className="card-text">{authorData.author + " " + authorData.authorMajor + " " + authorData.authorGrad}</p>
@@ -170,4 +171,11 @@ function ProjectCard({ data, getCorrectImgSrc }) {
       </div>
     </div>
   );
+}
+
+const getProjectPath = (metadata, authorData) => {
+  const title = metadata.title;
+  const username = authorData.username;
+
+  return (title + "-" + username);
 }
